@@ -40,6 +40,15 @@ try {
                 throw new Exception('Impossible de modifier ce commentaire');
             }
         }
+        elseif ($_GET['action'] == 'bio') {
+            biographie();
+        }
+        elseif ($_GET['action'] == 'contact') {
+            contact();
+        }
+        elseif ($_GET['action'] == 'connect') {
+            connect();
+        }
     } else {
         listPosts();
     }

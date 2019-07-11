@@ -40,3 +40,13 @@ function modifyComment($id, $commentaire, $idArticle) {
     $commentaire = $commentManager -> updateComment($id, $commentaire);
     header('Location: index.php?action=post&id='.$idArticle);
 }
+
+function biographie(){
+    header('Location: view/biographie.php');
+}
+function contact(){
+    header('Location: view/contact.php');
+}
+function connect(){
+    header('Location: view/connect.php');
+}

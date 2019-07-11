@@ -90,6 +90,7 @@ article
     background-color: whitesmoke;
     margin-bottom: 20px;
     border-radius: 5px;
+    align-items: center;
 }
 article img{
     width: 300px;
@@ -189,4 +190,34 @@ aside a
     right: 0;
     text-align: center;
     border-radius: 0 0 5px 5px;
+}
+
+.corpConnectPage
+{
+    position: absolute;
+    background-color: rgba(243, 156, 18, 0.9);
+    border-radius: 10px;
+    text-align: center;
+    width: 34%;
+    margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+    margin-left: 33%;
+
+}
+.corpConnectPage input
+{
+    width: 90%;
+    height: 37px;
+    border-radius: 5px;
+
+}
+
+#checkbox
+{
+    width: auto;
+    height: auto;
+}
+form
+{
+    margin-bottom: 30px;
 }

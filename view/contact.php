@@ -16,7 +16,7 @@
 
         <section class="corps">
             <section class="contenuCorps">
-				Ici la bio de jean foutreRoche             
+				Ici formulaire pour contacter jean foutreRoche             
             </section>
 
         </section>

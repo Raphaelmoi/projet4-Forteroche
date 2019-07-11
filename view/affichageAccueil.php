@@ -12,7 +12,7 @@ while ($donnees = $reponse->fetch())
           </div>
           <p class="textArticle"> <?=
           //fournit un extrait de l'article,l les 600 premiers caracteres
-          $rest = substr(htmlspecialchars($donnees['contenu']), 0, 600); 
+          $rest = substr(htmlspecialchars($donnees['contenu']), 0, 600) .'...'; 
            ?>
           </p>
           <a href="index.php?action=post&amp;id=<?=$donnees['id'] ?>">Lire la suite</a>
