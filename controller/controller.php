@@ -42,11 +42,11 @@ function modifyComment($id, $commentaire, $idArticle) {
 }
 
 function biographie(){
-    header('Location: view/biographie.php');
+    header('Location: view/biographieView.php');
 }
 function contact(){
-    header('Location: view/contact.php');
+    header('Location: view/contactView.php');
 }
 function connect(){
-    header('Location: view/connect.php');
+    header('Location: view/connectView.php');
 }
