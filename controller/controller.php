@@ -72,3 +72,10 @@ function homeControl(){
 function nouveauBillet(){
     require('view/connectedViews/nouveauBillet.php');
 }
+
+function addPost($titre, $contenu)
+{
+    $postManager = new PostManager(); // Création d'un objet
+    $envoi = $postManager -> postPost($titre, $contenu);
+    homeControl();
+}

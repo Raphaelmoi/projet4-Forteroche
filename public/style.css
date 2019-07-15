@@ -99,6 +99,10 @@ article img{
     height: 250px;
     object-fit: cover;
 }
+article>div
+{
+    width: 100%;
+}
 article a 
 {
     float: right;

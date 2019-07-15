@@ -18,6 +18,19 @@ class PostManager extends Manager
 
         return $article;
     }
+
+    public function postPost($titre, $contenu){
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare('INSERT INTO billets( titre, contenu, date_creation) VALUES( :titre , :contenu,  NOW())');
+        $req->execute(array(
+                    'titre' => $titre,
+                    'contenu' => $contenu,
+                ));
+
+        return $req;
+    }
+
+
     public function count()
     {
         $bdd = $this->dbConnect();

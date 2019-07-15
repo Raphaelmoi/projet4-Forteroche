@@ -71,7 +71,14 @@ try {
             nouveauBillet();
         }
 
-
+        // pour ajouter billet 
+        elseif ($_GET['action'] == 'addPost') {
+            if (!empty($_POST['titre']) && !empty($_POST['contenu'])) {
+                addPost( $_POST['titre'], $_POST['contenu']);
+            } else {
+                throw new Exception('Tous les champs ne sont pas remplis !');
+            }
+        }
 
 
 

@@ -4,7 +4,7 @@ $title = 'gestion';
 ob_start(); ?>
 
 <article class="nouvelArticle">
-	<a href="#"> Créer un nouveau billet</a>
+	<a href="/projet4/index.php?action=nouveaubillet"> Créer un nouveau billet</a>
 </article>
 
 <?php
@@ -25,8 +25,8 @@ while ($donnees = $reponse->fetch())
 		          <div class="gestionnaireArticle">
 			          	<nav>
 			          		<li><a href="#">Changer l'image</a></li>
-			          		<li><a href="#">Modifier l'article</a></li>
-			          		<li><a href="#"><i class="fas fa-trash"></i> Supprimer l'article</a></li>     		
+			          		<li><a href="#">Modifier le billet</a></li>
+			          		<li><a href="#"><i class="fas fa-trash"></i> Supprimer le billet</a></li>     		
 			          	</nav>
 			       </div>
       </div>
