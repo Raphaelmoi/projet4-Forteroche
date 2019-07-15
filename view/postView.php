@@ -26,7 +26,7 @@ while ($thiscomment = $comment->fetch())
       <div class="titreComm">
         <strong><?php echo htmlspecialchars($thiscomment['auteur']); ?> : </strong>
         <?php echo htmlspecialchars($thiscomment['date_commentaire_fr']); ?>
-       <a id="modifyLink" href="index.php?action=modifyCommentView&amp;id=<?=htmlspecialchars($thiscomment['id']) ?>">(modifier)</a>
+       <a id="modifyLink" href="">Signaler ce commentaire</a>
       </div>
       <div>
          <p><?php echo htmlspecialchars($thiscomment['commentaire']); ?></p>

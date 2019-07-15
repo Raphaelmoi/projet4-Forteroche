@@ -10,20 +10,26 @@
     </head>
     
     <body>
-    	<header>
-            <?php include('headerView.php'); ?>            
+        <header>
+            <div class="test">
+                <?php include('headerView.php'); ?>  
+            </div>
+            <div class="menuIn">
+                <?php include('connectedViews/menu.php'); ?> 
+            </div>
         </header>
-
+        
         <section class="corps">
             <section class="contenuCorps">
 				<?= $content ?>              
             </section>
 
-            <aside>
+            <aside id="aside">
                 <?php include('asideView.php'); ?>
             </aside>
         </section>
         
+
     </body>
 </html>
 

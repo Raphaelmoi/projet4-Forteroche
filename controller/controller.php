@@ -1,7 +1,11 @@
 <?php
-// Chargement des classes
-require_once('model/PostManager.php');
-require_once('model/CommentManager.php');
+//autoload.
+function chargerClasse($classname)
+{
+  require 'model/'.$classname.'.php';
+}
+spl_autoload_register('chargerClasse');
+
 
 function listPosts() {
     $postManager = new PostManager(); // Création d'un objet
@@ -42,11 +46,29 @@ function modifyComment($id, $commentaire, $idArticle) {
 }
 
 function biographie(){
-    header('Location: view/biographieView.php');
-}
+    $postManager = new PostManager(); // Création d'un objet
+    $reponse = $postManager -> getPosts();
+    require 'view/biographieView.php';
+/*    header('Location: view/biographieView.php');
+*/}
 function contact(){
-    header('Location: view/contactView.php');
+    $postManager = new PostManager(); // Création d'un objet
+    $reponse = $postManager -> getPosts();
+    require 'view/contactView.php';
 }
 function connect(){
-    header('Location: view/connectView.php');
+    $postManager = new PostManager(); // Création d'un objet
+    $reponse = $postManager -> getPosts();
+    require 'view/connectView.php';
+}
+function disconnect(){
+    header('Location: controller/deconnexion.php');
+}
+function homeControl(){
+    $postManager = new PostManager(); // Création d'un objet
+    $reponse = $postManager -> getPosts();
+    require('view/connectedViews/connectedIndex.php');
+}
+function nouveauBillet(){
+    require('view/connectedViews/nouveauBillet.php');
 }
