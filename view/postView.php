@@ -1,4 +1,5 @@
 <?php
+
 ob_start();
 while ($thisarticle = $article->fetch())
 {
@@ -30,7 +31,23 @@ while ($thiscomment = $comment->fetch())
       <div class="titreComm">
         <strong><?php echo htmlspecialchars($thiscomment['auteur']); ?> : </strong>
         <?php echo htmlspecialchars($thiscomment['date_commentaire_fr']); ?>
-       <a id="modifyLink" href="index.php?action=signalcomment&amp;commentid=<?=$thiscomment['id']?>&amp;id=<?=$idArticle?>">Signaler ce commentaire</a>
+       
+
+      <?php
+          if (!empty($_SESSION['pseudo'])) {?>
+            <a href="index.php?action=deletecommentfromviewpage&amp;commentid=<?=$thiscomment['id']?>&amp;id=<?=$idArticle?>">
+              <i class="fas fa-trash"> Supprimer ce commentaire</i>
+            </a> <?php
+          }
+          else
+          {?>
+            <a id="modifyLink" href="index.php?action=signalcomment&amp;commentid=<?=$thiscomment['id']?>&amp;id=<?=$idArticle?>">Signaler ce commentaire</a>
+         <?php }
+      ?>
+
+
+
+       
       </div>
       <div>
          <p><?php echo htmlspecialchars($thiscomment['commentaire']); ?></p>

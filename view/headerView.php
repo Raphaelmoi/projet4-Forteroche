@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <h1> Billet simple pour l'Alaska : le blog de Jean Forteroche</h1>
 <nav>
 	<ul>

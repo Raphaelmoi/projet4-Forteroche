@@ -1,4 +1,5 @@
  <?php
+ session_start();
 require('controller/controller.php');
 
 try {
@@ -137,11 +138,15 @@ try {
         }
 
         elseif ($_GET['action'] == 'deletecomment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
+            if (isset($_GET['id']) && $_GET['id'] > 0 ) {
                 deleteComment($_GET['id']);
             }
         }
-
+        elseif ($_GET['action'] == 'deletecommentfromviewpage') {
+            if (isset($_GET['commentid']) && $_GET['commentid'] > 0 ) {
+                deleteCommentFromViewPage($_GET['commentid']);
+            }
+        }
 
 
         } else {
@@ -169,9 +174,5 @@ if (!empty($_SESSION['pseudo'])) {?>
                 <?php
                 echo "spaceForSecondMenu();"
                 ?>
-
-                function champSuplementaire(){
-                    console.log('test');
-                }
             </script>
      <?php } ?>

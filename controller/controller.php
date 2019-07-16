@@ -130,3 +130,9 @@ function deleteComment($id)
     $delete = $commentManager -> deleteComment($id);
     badCommentView();
 }
+function deleteCommentFromViewPage($id)
+{
+    $commentManager = new CommentManager();
+    $delete = $commentManager -> deleteComment($id);
+    post();
+}

@@ -347,14 +347,18 @@ form
 .changeThePicture
 {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background-color: whitesmoke;
     margin-top: 20px;
+    width: 100%;
 }
 
 .changeThePicture img{
     margin: 20px;
-    width: 200px;
-    height: auto;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+.changeThePicture div{
+    width: 100%;
 }
