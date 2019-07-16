@@ -8,7 +8,7 @@ spl_autoload_register('chargerClasse');
 
 
 function listPosts() {
-    $postManager = new PostManager(); // Création d'un objet
+    $postManager = new PostManager();
     $reponse = $postManager -> getPosts();
     require('view/affichageAccueil.php');
 }
@@ -73,9 +73,55 @@ function nouveauBillet(){
     require('view/connectedViews/nouveauBillet.php');
 }
 
-function addPost($titre, $contenu)
+function addPost($titre, $contenu, $imageurl)
 {
-    $postManager = new PostManager(); // Création d'un objet
-    $envoi = $postManager -> postPost($titre, $contenu);
+    $postManager = new PostManager(); 
+
+    $envoi = $postManager -> postPost($titre, $contenu, $imageurl);
     homeControl();
+}
+
+function modifyPost($id)
+{
+    $postManager = new PostManager();
+    $article = $postManager -> getPost($id); 
+    require('view/connectedViews/modifyBillet.php');
+}
+
+function updatePost($id, $titre, $contenu){
+    $postManager = new PostManager();
+    $req = $postManager -> updatePost($id, $titre, $contenu); 
+    homeControl();
+}
+
+function deletePost($id)
+{
+    $postManager = new PostManager();
+    $req = $postManager -> deletePost($id); 
+    homeControl();
+}
+
+function signalComment($id, $commentid){
+    $commentManager = new CommentManager();
+    $postManager = new PostManager();
+
+    $req = $commentManager -> updateComment($commentid);
+    $article = $postManager -> getPost($id);
+    $comment = $commentManager -> getComments($id);
+    require('view/postView.php');
+}
+
+function badCommentView()
+{
+    $commentManager = new CommentManager();
+    $comment = $commentManager -> getSignaledComments();
+
+    require('view/connectedViews/badComment.php');
+}
+
+function deleteComment($id)
+{
+    $commentManager = new CommentManager();
+    $delete = $commentManager -> deleteComment($id);
+    badCommentView();
 }

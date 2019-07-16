@@ -73,10 +73,58 @@ try {
 
         // pour ajouter billet 
         elseif ($_GET['action'] == 'addPost') {
-            if (!empty($_POST['titre']) && !empty($_POST['contenu'])) {
-                addPost( $_POST['titre'], $_POST['contenu']);
+
+
+            if (!empty($_POST['titre']) && !empty($_POST['contenu']) && isset($_FILES['fileToUpload'])) {
+            
+                require 'controller/upload.php';                
+                imageUploader();
+                $target_dir = "public/images/";
+                $imageurl = $target_dir . basename($_FILES['fileToUpload']["name"]);
+                addPost( $_POST['titre'], $_POST['contenu'], $imageurl);
             } else {
                 throw new Exception('Tous les champs ne sont pas remplis !');
+            }
+        }
+
+        elseif ($_GET['action'] == 'modifyPostView') {
+            # recuperer id de l'article
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                modifyPost($_GET['id']);
+            }
+        }
+
+        elseif ($_GET['action'] == 'modifyPost') {
+            # recuperer id de l'article
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                if (!empty($_POST['titre']) && !empty($_POST['contenu'])) {
+                    updatePost($_GET['id'], $_POST['titre'], $_POST['contenu']);
+                }
+            }
+        }
+
+        elseif ($_GET['action'] == 'deletePost') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                deletePost($_GET['id']);
+            }
+        }
+
+        elseif ($_GET['action'] == 'signalcomment') {
+            # garde l'id de l'article pour y revenir, ajoute 1 au comm signale
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                if (isset($_GET['commentid']) && $_GET['commentid'] > 0) {
+                    signalComment($_GET['id'], $_GET['commentid']);
+                }
+            }
+        }
+
+        elseif ($_GET['action'] == 'badcommentview') {
+            badCommentView();
+        }
+
+        elseif ($_GET['action'] == 'deletecomment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                deleteComment($_GET['id']);
             }
         }
 

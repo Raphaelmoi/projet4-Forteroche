@@ -7,20 +7,29 @@ class CommentManager extends Manager
     public function getComments($postId)
     {
         $bdd = $this->dbConnect();
-        $comment = $bdd->prepare("SELECT id, id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%imin') AS date_commentaire_fr FROM commentaires WHERE id_billet = ? ORDER BY date_commentaire DESC");
+        $comment = $bdd->prepare("SELECT id, id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%imin') AS date_commentaire_fr, signalement FROM commentaires WHERE id_billet = ? ORDER BY date_commentaire DESC");
         $comment->execute(array($postId));
 
         return $comment;
     }
+
+        public function getSignaledComments()
+    {
+        $bdd = $this->dbConnect();
+        $comment = $bdd->prepare("SELECT id, id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%imin') AS date_commentaire_fr, signalement FROM commentaires WHERE signalement != ? ORDER BY date_commentaire DESC");
+        $comment->execute(array(0));
+
+        return $comment;
+    }
     //recupere le commentaire que l'on souhaite modifier grace à son id
-    public function getCommentToModify($id)
+/*    public function getCommentToModify($id)
     {
         $bdd = $this->dbConnect();
         $comment = $bdd->prepare("SELECT id, id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%imin') AS date_commentaire_fr FROM commentaires WHERE id = ? ");
         $comment->execute(array($id));
 
         return $comment;
-    }
+    }*/
     //permet la création dun nouveau commentaire
     public function postComment($idArticle, $auteur, $commentaire)
     {
@@ -34,12 +43,27 @@ class CommentManager extends Manager
 
         return $req;
     }
-    //permet la mise à jour d'un nouveau commentaire
-    public function updateComment($currentId, $commentaire)
+
+    public function updateComment($currentId)
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->query("UPDATE commentaires SET commentaire = '$commentaire', date_commentaire = NOW() WHERE id = $currentId;");
+        $req = $bdd->query("UPDATE commentaires SET signalement = signalement + 1 WHERE id = $currentId;");
 
         return $req;
     }
+
+    public function deleteComment($id)
+    {
+        $bdd = $this->dbConnect();
+        $delete = $bdd->query("DELETE FROM commentaires WHERE id = $id; ");
+    }    
+
+        public function countBadComment()
+    {
+        $bdd = $this->dbConnect();
+        $count = $bdd->query('SELECT COUNT(*) FROM commentaires where signalement != 0')->fetchColumn();
+
+        return $count;
+    }
+
 }

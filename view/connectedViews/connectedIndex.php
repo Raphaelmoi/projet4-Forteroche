@@ -9,24 +9,24 @@ ob_start(); ?>
 
 <?php
 while ($donnees = $reponse->fetch())
+
 {
 ?>
     <article>
-      <img src="public/images/montagnes.jpg">
+      <img src="<?php echo ($donnees['url']); ?>">
       <div>
           <div class="enteteSommaire enteteConnected"> <h2><?php echo htmlspecialchars($donnees['titre']); ?>  </h2> 
           </div>
           <p class="textArticle"> <?=
           //fournit un extrait de l'article,l les 600 premiers caracteres
-          $rest = substr(htmlspecialchars($donnees['contenu']), 0, 600); 
+          $rest = substr(($donnees['contenu']), 0, 600); 
            ?>
           </p>
           <a href="index.php?action=post&amp;id=<?=$donnees['id'] ?>">Lire la suite</a>
 		          <div class="gestionnaireArticle">
 			          	<nav>
-			          		<li><a href="#">Changer l'image</a></li>
-			          		<li><a href="#">Modifier le billet</a></li>
-			          		<li><a href="#"><i class="fas fa-trash"></i> Supprimer le billet</a></li>     		
+			          		<li><a href="index.php?action=modifyPostView&amp;id=<?=$donnees['id'] ?>">Modifier le billet</a></li>
+			          		<li><a href="index.php?action=deletePost&amp;id=<?=$donnees['id'] ?>"><i class="fas fa-trash"></i> Supprimer le billet</a></li>     		
 			          	</nav>
 			       </div>
       </div>

@@ -3,6 +3,7 @@ ob_start();
 while ($thisarticle = $article->fetch())
 {
     $title = htmlspecialchars($thisarticle['titre']);
+    $idArticle = $thisarticle['id'];
 ?>
 
    <p id="retour"><a  href="index.php">Retour à la liste des billets</a></p>    
@@ -13,7 +14,10 @@ while ($thisarticle = $article->fetch())
           <h2><?=htmlspecialchars($thisarticle['titre']) ?> : lorem ipsum etc</h2>
         </div >
         <p class="textArticle" ><?php echo htmlspecialchars($thisarticle['date_creation_fr']); ?></p>
-        <p class="textArticle" ><?php echo htmlspecialchars($thisarticle['contenu']); ?></p>
+        <p class="textArticle" ><?php echo $thisarticle['contenu']; ?></p>
+
+        <div class="footer"> <a href=""><i class="fas fa-heart"> J'aime ce billet</i></a></div>
+
       </div>
   </article>    
 <?php
@@ -26,11 +30,13 @@ while ($thiscomment = $comment->fetch())
       <div class="titreComm">
         <strong><?php echo htmlspecialchars($thiscomment['auteur']); ?> : </strong>
         <?php echo htmlspecialchars($thiscomment['date_commentaire_fr']); ?>
-       <a id="modifyLink" href="">Signaler ce commentaire</a>
+       <a id="modifyLink" href="index.php?action=signalcomment&amp;commentid=<?=$thiscomment['id']?>&amp;id=<?=$idArticle?>">Signaler ce commentaire</a>
       </div>
       <div>
          <p><?php echo htmlspecialchars($thiscomment['commentaire']); ?></p>
       </div>
+
+
     </article>
     <?php
 }

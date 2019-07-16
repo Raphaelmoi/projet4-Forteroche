@@ -6,13 +6,13 @@ while ($donnees = $reponse->fetch())
 {
 ?>
     <article>
-      <img src="public/images/montagnes.jpg">
+      <img src="<?php echo ($donnees['url']); ?>">
       <div>
-          <div class="enteteSommaire"> <h2><?php echo htmlspecialchars($donnees['titre']); ?>  </h2> 
+          <div class="enteteSommaire"> <h2><?php echo ($donnees['titre']); ?>  </h2> 
           </div>
           <p class="textArticle"> <?=
           //fournit un extrait de l'article,l les 600 premiers caracteres
-          $rest = substr(htmlspecialchars($donnees['contenu']), 0, 600) .'...'; 
+          substr($donnees['contenu'], 0, 600) .'...'; 
            ?>
           </p>
           <a href="index.php?action=post&amp;id=<?=$donnees['id'] ?>">Lire la suite</a>

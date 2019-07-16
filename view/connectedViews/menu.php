@@ -1,12 +1,32 @@
-<?php 
+<?php
+require_once("model/CommentManager.php");  
+$commentManager = new CommentManager();
+$count = $commentManager -> countBadComment();
+
+
 if (!empty($_SESSION['pseudo'])) {?>
+  
 
 <nav class="navDeux">
 	<ul>
 		<li><a href="/projet4/index.php?action=homeControl">Mes billets</a></li>    
 		<li><a href="/projet4/index.php?action=nouveaubillet">Créer un nouveau billet</a></li>
 		<li><a href="/projet4/index.php?action=contact">Nouveaux commentaires</a></li>
-		<li><i class="fas fa-exclamation-triangle"></i><a href="/projet4/index.php?action=contact">Commentaires signalés</a></li>
+		<li><a  href="/projet4/index.php?action=badcommentview"> 
+			<i id="signaledComm" class="fas fa-exclamation-triangle"><span id="span">Commentaires signalés</span></i>
+			</a>
+		</li>
+		<?php if ($count != 0) {
+			?> <script type="text/javascript">
+				badComm = document.getElementById('signaledComm');
+				span =document.getElementById('span');
+				badComm.style.color = 'red';
+				span.style.color = 'red';
+				span.textContent +=" (" + <?php echo $count ?> + ")";
+				span.style.fontWeight = 'normal';
+			</script><?php
+		}?>
+		
 	</ul>
 </nav>
 

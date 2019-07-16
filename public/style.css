@@ -13,7 +13,6 @@ header
 {
     align-items: center;
     width: 100%;
-    z-index: 99;
 }
 
 .test
@@ -24,6 +23,7 @@ header
     position: fixed;
     display: flex;
     justify-content: space-around;
+    z-index: 99;
 
 }
 header div>a
@@ -71,7 +71,11 @@ li
     margin: 0 20px;
     font-size: 20px;
 }
+.fas>span
+{
+    font-weight: normal;
 
+}
 /*BODY*/
 .corps
 {
@@ -141,6 +145,13 @@ strong
     height: 38px;
     background-color: rgba(187, 222, 250, 1);
     padding-left: 20px;
+}
+.footer{
+    background-color: lightblue;
+    height: 30px;
+    text-align: right;
+    line-height: 30px;
+    padding-right: 20px;
 }
 
 .textArticle
@@ -295,4 +306,39 @@ form
     text-align: center;
     line-height: 100px;
     font-size: 30px;
+}
+
+.tinyForm
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tinyForm textarea
+{
+    width: 100%;
+    height: 400px;
+}
+.tinyForm input
+{
+    height: 30px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+.tinyFormTitre{
+    width: 80%;
+    height: 50px;
+    font-size: 30px;
+    color: red;
+}
+.tinyFormButon{
+    background-color: #26a69a;
+    color: white;
+    font-size: 20px;
+    width: 30%;
+}
+.tinyFormImg{
+    width: 80%;
+    background-color: whitesmoke;
 }
