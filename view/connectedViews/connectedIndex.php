@@ -9,7 +9,6 @@ ob_start(); ?>
 
 <?php
 while ($donnees = $reponse->fetch())
-
 {
 ?>
     <article>

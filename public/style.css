@@ -342,3 +342,19 @@ form
     width: 80%;
     background-color: whitesmoke;
 }
+
+/*quand on modifie un article*/
+.changeThePicture
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: whitesmoke;
+    margin-top: 20px;
+}
+
+.changeThePicture img{
+    margin: 20px;
+    width: 200px;
+    height: auto;
+}

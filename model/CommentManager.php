@@ -7,7 +7,7 @@ class CommentManager extends Manager
     public function getComments($postId)
     {
         $bdd = $this->dbConnect();
-        $comment = $bdd->prepare("SELECT id, id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%imin') AS date_commentaire_fr, signalement FROM commentaires WHERE id_billet = ? ORDER BY date_commentaire DESC");
+        $comment = $bdd->prepare("SELECT id, id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%imin') AS date_commentaire_fr, signalement FROM commentaires WHERE id_billet = ? && signalement < 10 ORDER BY date_commentaire DESC");
         $comment->execute(array($postId));
 
         return $comment;
@@ -16,7 +16,7 @@ class CommentManager extends Manager
         public function getSignaledComments()
     {
         $bdd = $this->dbConnect();
-        $comment = $bdd->prepare("SELECT id, id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%imin') AS date_commentaire_fr, signalement FROM commentaires WHERE signalement != ? ORDER BY date_commentaire DESC");
+        $comment = $bdd->prepare("SELECT id, id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%imin') AS date_commentaire_fr, signalement FROM commentaires WHERE signalement != ? ORDER BY signalement DESC");
         $comment->execute(array(0));
 
         return $comment;

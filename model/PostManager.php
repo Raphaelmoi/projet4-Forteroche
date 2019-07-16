@@ -32,7 +32,15 @@ class PostManager extends Manager
     }
 
     //permet la mise à jour d'un nouveau commentaire
-    public function updatePost($currentId, $titre, $contenu)
+    public function updatePost($currentId, $titre, $contenu, $url)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->query("UPDATE billets SET titre = '$titre', contenu = '$contenu', url = '$url', date_creation = NOW() WHERE id = $currentId;");
+
+        return $req;
+    }
+
+    public function updatePostWithoutImg($currentId, $titre, $contenu)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->query("UPDATE billets SET titre = '$titre', contenu = '$contenu', date_creation = NOW() WHERE id = $currentId;");

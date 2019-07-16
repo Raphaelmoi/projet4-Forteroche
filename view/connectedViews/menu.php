@@ -11,7 +11,6 @@ if (!empty($_SESSION['pseudo'])) {?>
 	<ul>
 		<li><a href="/projet4/index.php?action=homeControl">Mes billets</a></li>    
 		<li><a href="/projet4/index.php?action=nouveaubillet">Créer un nouveau billet</a></li>
-		<li><a href="/projet4/index.php?action=contact">Nouveaux commentaires</a></li>
 		<li><a  href="/projet4/index.php?action=badcommentview"> 
 			<i id="signaledComm" class="fas fa-exclamation-triangle"><span id="span">Commentaires signalés</span></i>
 			</a>

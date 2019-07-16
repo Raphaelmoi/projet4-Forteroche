@@ -98,7 +98,21 @@ try {
             # recuperer id de l'article
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['titre']) && !empty($_POST['contenu'])) {
-                    updatePost($_GET['id'], $_POST['titre'], $_POST['contenu']);
+                    if (($_FILES['fileToUpload']['name'] != "")) {
+                        require 'controller/upload.php';                
+                        imageUploader();
+
+                        $target_dir = "public/images/";
+                        $imageurl = $target_dir . basename($_FILES['fileToUpload']["name"]);
+
+                        updateThePost($_GET['id'], $_POST['titre'], $_POST['contenu'], $imageurl);
+                    }
+                    else {
+                        updatePostWithoutImg($_GET['id'], $_POST['titre'], $_POST['contenu']);
+                    }
+                }
+                else {
+                    throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             }
         }
@@ -155,5 +169,9 @@ if (!empty($_SESSION['pseudo'])) {?>
                 <?php
                 echo "spaceForSecondMenu();"
                 ?>
-         </script>
+
+                function champSuplementaire(){
+                    console.log('test');
+                }
+            </script>
      <?php } ?>

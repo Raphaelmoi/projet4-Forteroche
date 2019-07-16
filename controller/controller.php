@@ -88,9 +88,14 @@ function modifyPost($id)
     require('view/connectedViews/modifyBillet.php');
 }
 
-function updatePost($id, $titre, $contenu){
+function updateThePost($id, $titre, $contenu, $url){
     $postManager = new PostManager();
-    $req = $postManager -> updatePost($id, $titre, $contenu); 
+    $req = $postManager -> updatePost($id, $titre, $contenu, $url); 
+    homeControl();
+}
+function updatePostWithoutImg($id, $titre, $contenu) {
+    $postManager = new PostManager();
+    $req = $postManager -> updatePostWithoutImg($id, $titre, $contenu); 
     homeControl();
 }
 
