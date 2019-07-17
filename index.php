@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 require('controller/controller.php');
 try {
     if (isset($_GET['action'])) {
@@ -16,7 +18,7 @@ try {
             }
         }
         //action when visitor add a new comment
-            elseif ($_GET['action'] == 'addComment') {
+        elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['auteur']) && !empty($_POST['commentaire'])) {
                     addComment($_GET['id'], $_POST['auteur'], $_POST['commentaire']);
@@ -28,31 +30,31 @@ try {
             }
         }
         //PAGE BIO
-            elseif ($_GET['action'] == 'bio') {
+        elseif ($_GET['action'] == 'bio') {
             biographie();
         }
         //PAGE CONTACT
-            elseif ($_GET['action'] == 'contact') {
+        elseif ($_GET['action'] == 'contact') {
             contact();
         }
         //PAGE for connect
-            elseif ($_GET['action'] == 'connect') {
+        elseif ($_GET['action'] == 'connect') {
             connect();
         }
         //page for disconnect
-            elseif ($_GET['action'] == 'disconnect') {
+        elseif ($_GET['action'] == 'disconnect') {
             disconnect();
         }
         //home when you are connect
-            elseif ($_GET['action'] == 'homeControl') {
+        elseif ($_GET['action'] == 'homeControl') {
             homeControl();
         }
         //page when you want create new article
-            elseif ($_GET['action'] == 'nouveaubillet') {
+        elseif ($_GET['action'] == 'nouveaubillet') {
             nouveauBillet();
         }
         // creating a new article
-            elseif ($_GET['action'] == 'addPost') {
+        elseif ($_GET['action'] == 'addPost') {
             if (!empty($_POST['titre']) && !empty($_POST['contenu']) && isset($_FILES['fileToUpload'])) {
                 require 'controller/postAcceptor.php';
                 $imageurl   = "public/images/" . basename($_FILES['fileToUpload']["name"]);
@@ -62,14 +64,14 @@ try {
             }
         }
         //page for modify a post
-            elseif ($_GET['action'] == 'modifyPostView') {
+        elseif ($_GET['action'] == 'modifyPostView') {
             # recuperer id de l'article
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 modifyPost($_GET['id']);
             }
         }
         //modify a post with 2 possibility : with or without an img
-            elseif ($_GET['action'] == 'modifyPost') {
+        elseif ($_GET['action'] == 'modifyPost') {
             # recuperer id de l'article
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['titre']) && !empty($_POST['contenu'])) {
@@ -86,13 +88,13 @@ try {
             }
         }
         //when you delete a post
-            elseif ($_GET['action'] == 'deletePost') {
+        elseif ($_GET['action'] == 'deletePost') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 deletePost($_GET['id']);
             }
         }
         //when a comment is reported
-            elseif ($_GET['action'] == 'signalcomment') {
+        elseif ($_GET['action'] == 'signalcomment') {
             # garde l'id de l'article pour y revenir, ajoute 1 au comm signale
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (isset($_GET['commentid']) && $_GET['commentid'] > 0) {
@@ -101,25 +103,39 @@ try {
             }
         }
         //page where all the comment who are report appear
-            elseif ($_GET['action'] == 'badcommentview') {
+        elseif ($_GET['action'] == 'badcommentview') {
             badCommentView();
         }
         //reset the value of comment signalement for abusive reporting
-            elseif ($_GET['action'] == 'validatecomment') {
+        elseif ($_GET['action'] == 'validatecomment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 validateComment($_GET['id']);
             }
         }
         //when you want delete a comment from the badcommentview page
-            elseif ($_GET['action'] == 'deletecomment') {
+        elseif ($_GET['action'] == 'deletecomment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 deleteComment($_GET['id']);
             }
         }
         //when you want delete a comment from any page
-            elseif ($_GET['action'] == 'deletecommentfromviewpage') {
+        elseif ($_GET['action'] == 'deletecommentfromviewpage') {
             if (isset($_GET['commentid']) && $_GET['commentid'] > 0) {
                 deleteCommentFromViewPage($_GET['commentid']);
+            }
+        }
+        elseif ($_GET['action'] == 'ilike') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                
+                if ($_GET['val'] == 'plus') {
+                    $_SESSION['like'.$_GET['id']] = $_GET['id']; 
+                    ILike($_GET['id'], 1);
+                }
+                elseif($_GET['val'] == 'moins'){
+                    $_SESSION['like'.$_GET['id']] = 0;
+                    ILike($_GET['id'], -1);
+                }
+                     
             }
         }
         //if no $_GET['action'] defined, go to home page
@@ -136,5 +152,6 @@ if (!empty($_SESSION['pseudo'])) {
 ?>
     <script type="text/javascript" src="public/DesignScript.js"></script>
 <?php
+
 }
 ?>

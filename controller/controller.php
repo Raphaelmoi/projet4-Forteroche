@@ -115,3 +115,14 @@ function validateComment($id){
     $validate = $commentManager -> validateComment($id);
     badCommentView();
 }
+
+function ILike($id, $val){
+    $postManager = new PostManager();
+    $commentManager = new CommentManager();
+    $like = $postManager -> setLike($id, $val);
+    $_GET['val'] = "";
+    $article = $postManager -> getPost($id);
+    $comment = $commentManager -> getComments($id);
+    require('view/postView.php');
+
+}

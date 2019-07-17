@@ -48,9 +48,7 @@ if(is_uploaded_file($temp['tmp_name'])){
          move_uploaded_file($temp['tmp_name'], '../' .$filetowrite);  
          // Respond to the successful upload with JSON.
          echo json_encode(array('location' => $filetowrite));
-     } 
-  
-    
+     }     
 } else {
     // Notify editor that the upload failed
     header("HTTP/1.1 500 Server Error");

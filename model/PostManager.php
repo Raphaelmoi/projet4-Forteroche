@@ -13,7 +13,7 @@ class PostManager extends Manager
     public function getPost($postId)
     {
         $bdd = $this->dbConnect();
-        $article = $bdd->prepare('SELECT id, titre, contenu, url, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr FROM billets WHERE id = ?');
+        $article = $bdd->prepare('SELECT id, titre, contenu, url, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr, numberlike FROM billets WHERE id = ?');
         $article->execute(array($postId));
 
         return $article;
@@ -53,7 +53,6 @@ class PostManager extends Manager
         $delete = $bdd->query("DELETE FROM billets WHERE id = $id; ");
     }
 
-
     public function count()
     {
         $bdd = $this->dbConnect();
@@ -62,5 +61,15 @@ class PostManager extends Manager
         return $count;
     }
 
-
+    public function getLike()
+    {
+        $bdd = $this->dbConnect();
+        $like = $bdd->query('SELECT COUNT(numberlike)  FROM billets');
+        return $like;
+    }
+    public function setLike($id, $val){
+        $bdd = $this->dbConnect();
+        $like = $bdd->query("UPDATE billets SET numberlike = numberlike + $val WHERE id = $id;");
+        return $like;
+    }
 }

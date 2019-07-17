@@ -1,10 +1,26 @@
 <?php
-
 ob_start();
+
+
+  /*si get existe ou session existe
+        si session idarticle = id de cet article et session like = id de ce meme article
+          like= ID DE Larticle
+        sinon
+          like = 0
+
+  */
+
 while ($thisarticle = $article->fetch())
 {
     $title = htmlspecialchars($thisarticle['titre']);
     $idArticle = $thisarticle['id'];
+
+  if (!isset($_SESSION['like'.$idArticle]) || ( $_SESSION['like'.$idArticle] !== $idArticle) ) {
+      $_SESSION['like'.$idArticle] = 0;
+    
+  };
+
+  echo $_SESSION['like'.$idArticle];
 ?>
 
    <p id="retour"><a  href="index.php">Retour à la liste des billets</a></p>    
@@ -17,13 +33,40 @@ while ($thisarticle = $article->fetch())
         <p class="textArticle" ><?php echo htmlspecialchars($thisarticle['date_creation_fr']); ?></p>
         <p class="textArticle" ><?php echo $thisarticle['contenu']; ?></p>
 
-        <div class="footer" > <a href=""><i class="fas fa-heart"> J'aime ce billet</i></a></div>
+        <div class="footer" > 
+
+          <?php
+         if ( $_SESSION['like'.$idArticle] === $idArticle){
+          ?>
+          <a href="index.php?action=ilike&amp;id=<?= $idArticle?>&amp;val=moins"> J'aime ce billet  <i id="redHearth" class="fas fa-heart" style="color:red;"> <?= $thisarticle['numberlike']; ?> </i></a>
+        <?php
+      } elseif ($_SESSION['like'.$idArticle] === 0) {
+        ?>
+          <a href="index.php?action=ilike&amp;id=<?= $idArticle?>&amp;val=plus"> J'aime ce billet  <i id="redHearth" class="fas fa-heart"> <?= $thisarticle['numberlike']; ?> </i></a>           
+        <?php }
+
+         ?>
+        </div>
 
       </div>
   </article>    
 <?php
+
+/*SI like != 0 
+    le coeur doit etre rouge 
+    on creer un lien avec  coueur rouge
+
+  sinon on creer un lien avec un coueur gris
+*/
+
+
+
 }
 $article->closeCursor(); // Termine le traitement de la requête
+
+
+
+
 while ($thiscomment = $comment->fetch())
 {
 ?>

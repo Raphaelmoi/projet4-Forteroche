@@ -1,3 +1,4 @@
+
 function spaceForSecondMenu() {
     let aside = document.getElementById('aside');
     let corps = document.getElementsByClassName('contenuCorps')[0];
