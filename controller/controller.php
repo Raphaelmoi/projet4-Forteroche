@@ -136,3 +136,8 @@ function deleteCommentFromViewPage($id)
     $delete = $commentManager -> deleteComment($id);
     post();
 }
+function validateComment($id){
+    $commentManager = new CommentManager();
+    $validate = $commentManager -> validateComment($id);
+    badCommentView();
+}

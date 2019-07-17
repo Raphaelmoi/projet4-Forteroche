@@ -51,6 +51,13 @@ class CommentManager extends Manager
 
         return $req;
     }
+    public function validateComment($currentId)
+    {
+        $bdd = $this->dbConnect();
+        $validate = $bdd->query("UPDATE commentaires SET signalement = 0 WHERE id = $currentId;");
+
+        return $validate;
+    }
 
     public function deleteComment($id)
     {

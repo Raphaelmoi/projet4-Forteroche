@@ -17,7 +17,7 @@ while ($thisarticle = $article->fetch())
         <p class="textArticle" ><?php echo htmlspecialchars($thisarticle['date_creation_fr']); ?></p>
         <p class="textArticle" ><?php echo $thisarticle['contenu']; ?></p>
 
-        <div class="footer"> <a href=""><i class="fas fa-heart"> J'aime ce billet</i></a></div>
+        <div class="footer" > <a href=""><i class="fas fa-heart"> J'aime ce billet</i></a></div>
 
       </div>
   </article>    
@@ -35,13 +35,13 @@ while ($thiscomment = $comment->fetch())
 
       <?php
           if (!empty($_SESSION['pseudo'])) {?>
-            <a href="index.php?action=deletecommentfromviewpage&amp;commentid=<?=$thiscomment['id']?>&amp;id=<?=$idArticle?>">
+            <a  href="index.php?action=deletecommentfromviewpage&amp;commentid=<?=$thiscomment['id']?>&amp;id=<?=$idArticle?>">
               <i class="fas fa-trash"> Supprimer ce commentaire</i>
             </a> <?php
           }
           else
           {?>
-            <a id="modifyLink" href="index.php?action=signalcomment&amp;commentid=<?=$thiscomment['id']?>&amp;id=<?=$idArticle?>">Signaler ce commentaire</a>
+            <a  href="index.php?action=signalcomment&amp;commentid=<?=$thiscomment['id']?>&amp;id=<?=$idArticle?>">Signaler ce commentaire</a>
          <?php }
       ?>
 

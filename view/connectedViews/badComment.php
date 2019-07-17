@@ -17,7 +17,7 @@ while ($thiscomment = $comment->fetch())
       <div class="titreComm"> Commentaire signalé <?= $thiscomment['signalement']?> fois 
 
         <a href="index.php?action=deletecomment&amp;id=<?=$thiscomment['id']?>" ><i class="fas fa-trash" style = 'color:red;'><span>Supprimer ce commentaire</span></i> </a>
-        <a href="" > <i class="fas fa-check" style = 'color:green;'> <span>Valider ce commentaire</span> </i></a>
+        <a href="index.php?action=validatecomment&amp;id=<?=$thiscomment['id']?>" > <i class="fas fa-check" style = 'color:green;'> <span>Valider ce commentaire</span> </i></a>
       </div>
     </article>
     <?php

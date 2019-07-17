@@ -23,10 +23,10 @@
             $uploadOk = 2;
         }
         // Check file size
-        if ($_FILES["fileToUpload"]["size"] > 500000) {
+/*        if ($_FILES["fileToUpload"]["size"] > 500000) {
             echo "Sorry, your file is too large.";
             $uploadOk = 3;
-        }
+        }*/
         // Allow certain file formats
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif" ) {

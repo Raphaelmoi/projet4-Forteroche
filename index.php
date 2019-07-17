@@ -147,6 +147,11 @@ try {
                 deleteCommentFromViewPage($_GET['commentid']);
             }
         }
+        elseif ($_GET['action'] == 'validatecomment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0 ) {
+                validateComment($_GET['id']);
+            }
+        }
 
 
         } else {
@@ -174,5 +179,14 @@ if (!empty($_SESSION['pseudo'])) {?>
                 <?php
                 echo "spaceForSecondMenu();"
                 ?>
+
+                let redWhenActive = document.getElementById('redWhenActive');
+
+                redWhenActive.addEventListener("pointerdown", colorinRed(), false);
+
+                function colorinRed() {
+                    redWhenActive.style.color = 'red';
+                    // body...
+                }
             </script>
      <?php } ?>
