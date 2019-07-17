@@ -21,15 +21,6 @@ class CommentManager extends Manager
 
         return $comment;
     }
-    //recupere le commentaire que l'on souhaite modifier grace à son id
-/*    public function getCommentToModify($id)
-    {
-        $bdd = $this->dbConnect();
-        $comment = $bdd->prepare("SELECT id, id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%imin') AS date_commentaire_fr FROM commentaires WHERE id = ? ");
-        $comment->execute(array($id));
-
-        return $comment;
-    }*/
     //permet la création dun nouveau commentaire
     public function postComment($idArticle, $auteur, $commentaire)
     {
@@ -44,7 +35,7 @@ class CommentManager extends Manager
         return $req;
     }
 
-    public function updateComment($currentId)
+    public function reportComment($currentId)
     {
         $bdd = $this->dbConnect();
         $req = $bdd->query("UPDATE commentaires SET signalement = signalement + 1 WHERE id = $currentId;");
@@ -65,7 +56,7 @@ class CommentManager extends Manager
         $delete = $bdd->query("DELETE FROM commentaires WHERE id = $id; ");
     }    
 
-        public function countBadComment()
+    public function countBadComment()
     {
         $bdd = $this->dbConnect();
         $count = $bdd->query('SELECT COUNT(*) FROM commentaires where signalement != 0')->fetchColumn();

@@ -110,7 +110,7 @@ function signalComment($id, $commentid){
     $commentManager = new CommentManager();
     $postManager = new PostManager();
 
-    $req = $commentManager -> updateComment($commentid);
+    $req = $commentManager -> reportComment($commentid);
     $article = $postManager -> getPost($id);
     $comment = $commentManager -> getComments($id);
     require('view/postView.php');
