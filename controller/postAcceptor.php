@@ -1,10 +1,17 @@
 <?php
+// Uploading image with tinyMCE
 // Allowed origins to upload images
-$accepted_origins = array("http://localhost", "http://107.161.82.130", "http://codexworld.com");
+
+if (isset($_FILES['fileToUpload'])) {
+    $pathIsFromIndex = true;
+}
+else
+    $pathIsFromIndex = false;
+
+$accepted_origins = array("http://localhost");
 
 // Images upload path
 $imageFolder = "public/images/";
-$jsonToReturn = 'public/images/';
 
 reset($_FILES);
 $temp = current($_FILES);
@@ -33,12 +40,21 @@ if(is_uploaded_file($temp['tmp_name'])){
   
     // Accept upload if there was no origin, or if it is an accepted origin
     $filetowrite =  $imageFolder . $temp['name'];
-    move_uploaded_file($temp['tmp_name'], '../' . $filetowrite);
+    //produce different path if this code is call from index.php or from the tinyMCE js code
+    if ($pathIsFromIndex == true) {
+        move_uploaded_file($temp['tmp_name'], $filetowrite);
+    }
+    else {
+         move_uploaded_file($temp['tmp_name'], '../' .$filetowrite);  
+         // Respond to the successful upload with JSON.
+         echo json_encode(array('location' => $filetowrite));
+     } 
   
-    // Respond to the successful upload with JSON.
-    echo json_encode(array('location' => $filetowrite));
+    
 } else {
     // Notify editor that the upload failed
     header("HTTP/1.1 500 Server Error");
 }
+
+$pathIsFromIndex = false;
 ?>

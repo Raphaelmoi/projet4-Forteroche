@@ -1,3 +1,4 @@
+//define preset for tinyMCE
 tinymce.init({
 	selector:'textarea',
 
@@ -19,7 +20,7 @@ tinymce.init({
       
         xhr = new XMLHttpRequest();
         xhr.withCredentials = false;
-        xhr.open('POST', 'controller/postAcceptor.php');
+        xhr.open('POST', 'controller/postAcceptor.php?id=2');
       
         xhr.onload = function() {
             var json;
@@ -43,8 +44,7 @@ tinymce.init({
         formData.append('file', blobInfo.blob(), blobInfo.filename());
       
         xhr.send(formData);
-    },
-
-  });
+    }
+});
 
 

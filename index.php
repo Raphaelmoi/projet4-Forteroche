@@ -1,23 +1,22 @@
- <?php
- session_start();
+<?php
+session_start();
 require('controller/controller.php');
-
 try {
-    //ACCUEIL visiteur
     if (isset($_GET['action'])) {
+        //home page
         if ($_GET['action'] == 'listPosts') {
             listPosts();
-        } 
-        //page article selon id de celui ci
+        }
+        //page for any article 
         elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 post();
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        } 
-        //page pour ajouter commentaire 
-        elseif ($_GET['action'] == 'addComment') {
+        }
+        //action when visitor add a new comment
+            elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['auteur']) && !empty($_POST['commentaire'])) {
                     addComment($_GET['id'], $_POST['auteur'], $_POST['commentaire']);
@@ -27,104 +26,73 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        } 
-        //pour modifier commentaire A SUPPRIMER
-        elseif ($_GET['action'] == 'modifyCommentView') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                modifyCommentView($_GET['id']);
-            } else {
-                throw new Exception('Impossible d\'acceder à ce commentaire');
-            }
-        } 
-        //A SUPPRIMER AUSSI
-        elseif ($_GET['action'] == 'modifyComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['commentaire']) && !empty($_POST['idArticle'])) {
-                    modifyComment($_GET['id'], $_POST['commentaire'], $_POST['idArticle']);
-                }
-            } else {
-                throw new Exception('Impossible de modifier ce commentaire');
-            }
         }
         //PAGE BIO
-        elseif ($_GET['action'] == 'bio') {
+            elseif ($_GET['action'] == 'bio') {
             biographie();
         }
         //PAGE CONTACT
-        elseif ($_GET['action'] == 'contact') {
+            elseif ($_GET['action'] == 'contact') {
             contact();
         }
-        //PAGE POUR SE CONNECTER
-        elseif ($_GET['action'] == 'connect') {
+        //PAGE for connect
+            elseif ($_GET['action'] == 'connect') {
             connect();
         }
-        //POUR SE DECONNECTER
-        elseif ($_GET['action'] == 'disconnect') {
+        //page for disconnect
+            elseif ($_GET['action'] == 'disconnect') {
             disconnect();
         }
-
-        //ACCUEIL UNE FOIS CONNECTER
-        elseif ($_GET['action'] == 'homeControl') {
+        //home when you are connect
+            elseif ($_GET['action'] == 'homeControl') {
             homeControl();
         }
-        //PAGE CREATION NOUVEAU BILLET
-        elseif ($_GET['action'] == 'nouveaubillet') {
+        //page when you want create new article
+            elseif ($_GET['action'] == 'nouveaubillet') {
             nouveauBillet();
         }
-
-        // pour ajouter billet 
-        elseif ($_GET['action'] == 'addPost') {
-
-
+        // creating a new article
+            elseif ($_GET['action'] == 'addPost') {
             if (!empty($_POST['titre']) && !empty($_POST['contenu']) && isset($_FILES['fileToUpload'])) {
-            
-                require 'controller/upload.php';                
-                imageUploader();
-                $target_dir = "public/images/";
-                $imageurl = $target_dir . basename($_FILES['fileToUpload']["name"]);
-                addPost( $_POST['titre'], $_POST['contenu'], $imageurl);
+                require 'controller/postAcceptor.php';
+                $imageurl   = "public/images/" . basename($_FILES['fileToUpload']["name"]);
+                addPost($_POST['titre'], $_POST['contenu'], $imageurl);
             } else {
                 throw new Exception('Tous les champs ne sont pas remplis !');
             }
         }
-
-        elseif ($_GET['action'] == 'modifyPostView') {
+        //page for modify a post
+            elseif ($_GET['action'] == 'modifyPostView') {
             # recuperer id de l'article
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 modifyPost($_GET['id']);
             }
         }
-
-        elseif ($_GET['action'] == 'modifyPost') {
+        //modify a post with 2 possibility : with or without an img
+            elseif ($_GET['action'] == 'modifyPost') {
             # recuperer id de l'article
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['titre']) && !empty($_POST['contenu'])) {
                     if (($_FILES['fileToUpload']['name'] != "")) {
-                        require 'controller/upload.php';                
-                        imageUploader();
-
-                        $target_dir = "public/images/";
-                        $imageurl = $target_dir . basename($_FILES['fileToUpload']["name"]);
-
+                        require 'controller/postAcceptor.php';
+                        $imageurl   = "public/images/" . basename($_FILES['fileToUpload']["name"]);
                         updateThePost($_GET['id'], $_POST['titre'], $_POST['contenu'], $imageurl);
-                    }
-                    else {
+                    } else {
                         updatePostWithoutImg($_GET['id'], $_POST['titre'], $_POST['contenu']);
                     }
-                }
-                else {
+                } else {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             }
         }
-
-        elseif ($_GET['action'] == 'deletePost') {
+        //when you delete a post
+            elseif ($_GET['action'] == 'deletePost') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 deletePost($_GET['id']);
             }
         }
-
-        elseif ($_GET['action'] == 'signalcomment') {
+        //when a comment is reported
+            elseif ($_GET['action'] == 'signalcomment') {
             # garde l'id de l'article pour y revenir, ajoute 1 au comm signale
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (isset($_GET['commentid']) && $_GET['commentid'] > 0) {
@@ -132,61 +100,41 @@ try {
                 }
             }
         }
-
-        elseif ($_GET['action'] == 'badcommentview') {
+        //page where all the comment who are report appear
+            elseif ($_GET['action'] == 'badcommentview') {
             badCommentView();
         }
-
-        elseif ($_GET['action'] == 'deletecomment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0 ) {
-                deleteComment($_GET['id']);
-            }
-        }
-        elseif ($_GET['action'] == 'deletecommentfromviewpage') {
-            if (isset($_GET['commentid']) && $_GET['commentid'] > 0 ) {
-                deleteCommentFromViewPage($_GET['commentid']);
-            }
-        }
-        elseif ($_GET['action'] == 'validatecomment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0 ) {
+        //reset the value of comment signalement for abusive reporting
+            elseif ($_GET['action'] == 'validatecomment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
                 validateComment($_GET['id']);
             }
         }
-
-
-        } else {
+        //when you want delete a comment from the badcommentview page
+            elseif ($_GET['action'] == 'deletecomment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                deleteComment($_GET['id']);
+            }
+        }
+        //when you want delete a comment from any page
+            elseif ($_GET['action'] == 'deletecommentfromviewpage') {
+            if (isset($_GET['commentid']) && $_GET['commentid'] > 0) {
+                deleteCommentFromViewPage($_GET['commentid']);
+            }
+        }
+        //if no $_GET['action'] defined, go to home page
+    } else {
         listPosts();
     }
 }
 catch (Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
-} 
-
+}
 
 //créé un espace pour le deuxieme menu si on est connecté
-if (!empty($_SESSION['pseudo'])) {?>
-
-         <script type="text/javascript">
-
-                function spaceForSecondMenu(){
-                    let aside = document.getElementById('aside');
-                    let corps = document.getElementsByClassName('contenuCorps')[0];
-                    if (aside != null) {
-                        aside.style.top = "100px";
-                        corps.style.marginTop ="100px";
-                    }
-                };
-                <?php
-                echo "spaceForSecondMenu();"
-                ?>
-
-                let redWhenActive = document.getElementById('redWhenActive');
-
-                redWhenActive.addEventListener("pointerdown", colorinRed(), false);
-
-                function colorinRed() {
-                    redWhenActive.style.color = 'red';
-                    // body...
-                }
-            </script>
-     <?php } ?>
+if (!empty($_SESSION['pseudo'])) {
+?>
+    <script type="text/javascript" src="public/DesignScript.js"></script>
+<?php
+}
+?>
