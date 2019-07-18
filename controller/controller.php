@@ -116,7 +116,7 @@ function validateComment($id){
     badCommentView();
 }
 
-function ILike($id, $val){
+function likeAPost($id, $val){
     $postManager = new PostManager();
     $commentManager = new CommentManager();
     $like = $postManager -> setLike($id, $val);

@@ -17,7 +17,7 @@
                 <?php include('menu.php'); ?> 
             </div>
         </header>
-        <section class="corps">
+        <section class="corps corpsConnected">
         <section class="insideSide">
             <?= $content ?>              
         </section>

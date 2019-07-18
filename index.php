@@ -136,13 +136,12 @@ try {
                 
                 if ($_GET['val'] == 'plus') {
                     $_SESSION['like'.$_GET['id']] = $_GET['id']; 
-                    ILike($_GET['id'], 1);
+                    likeAPost($_GET['id'], 1);
                 }
                 elseif($_GET['val'] == 'moins'){
                     $_SESSION['like'.$_GET['id']] = 0;
-                    ILike($_GET['id'], -1);
-                }
-                     
+                    likeAPost($_GET['id'], -1);
+                }                     
             }
         }
         //if no $_GET['action'] defined, go to home page
