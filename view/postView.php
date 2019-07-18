@@ -16,11 +16,8 @@ while ($thisarticle = $article->fetch())
     $idArticle = $thisarticle['id'];
 
   if (!isset($_SESSION['like'.$idArticle]) || ( $_SESSION['like'.$idArticle] !== $idArticle) ) {
-      $_SESSION['like'.$idArticle] = 0;
-    
+      $_SESSION['like'.$idArticle] = 0;    
   };
-
-  echo $_SESSION['like'.$idArticle];
 ?>
 
    <p id="retour"><a  href="index.php">Retour à la liste des billets</a></p>    
@@ -38,11 +35,15 @@ while ($thisarticle = $article->fetch())
           <?php
          if ( $_SESSION['like'.$idArticle] === $idArticle){
           ?>
-          <a href="index.php?action=ilike&amp;id=<?= $idArticle?>&amp;val=moins"> J'aime ce billet  <i id="redHearth" class="fas fa-heart" style="color:red;"> <?= $thisarticle['numberlike']; ?> </i></a>
+          <a href="index.php?action=ilike&amp;id=<?= $idArticle?>&amp;val=moins"> J'aime ce billet  
+            <i id="redHearth" class="fas fa-heart" style="color:red;"> <?= $thisarticle['numberlike']; ?> </i>
+          </a>
         <?php
       } elseif ($_SESSION['like'.$idArticle] === 0) {
         ?>
-          <a href="index.php?action=ilike&amp;id=<?= $idArticle?>&amp;val=plus"> J'aime ce billet  <i id="redHearth" class="fas fa-heart"> <?= $thisarticle['numberlike']; ?> </i></a>           
+          <a href="index.php?action=ilike&amp;id=<?= $idArticle?>&amp;val=plus"> J'aime ce billet  
+            <i id="redHearth" class="fas fa-heart"> <?= $thisarticle['numberlike']; ?> </i>
+          </a>           
         <?php }
 
          ?>
@@ -52,23 +53,14 @@ while ($thisarticle = $article->fetch())
   </article>    
 <?php
 
-/*SI like != 0 
-    le coeur doit etre rouge 
-    on creer un lien avec  coueur rouge
-
-  sinon on creer un lien avec un coueur gris
-*/
-
-
-
 }
 $article->closeCursor(); // Termine le traitement de la requête
 
-
-
-
 while ($thiscomment = $comment->fetch())
 {
+    if (!isset($_SESSION['report'.$thiscomment['id']]) ) {
+      $_SESSION['report'.$thiscomment['id']] = 0;    
+  };
 ?>
    <article class="commentaire">
       <div class="titreComm">
@@ -82,14 +74,18 @@ while ($thiscomment = $comment->fetch())
               <i class="fas fa-trash"> Supprimer ce commentaire</i>
             </a> <?php
           }
-          else
-          {?>
-            <a  href="index.php?action=signalcomment&amp;commentid=<?=$thiscomment['id']?>&amp;id=<?=$idArticle?>">Signaler ce commentaire</a>
-         <?php }
-      ?>
+          else{
+            if ($_SESSION['report'.$thiscomment['id']] == $thiscomment['id']) {
+              ?>
+                <a href="index.php?action=signalcomment&amp;commentid=<?=$thiscomment['id']?>&amp;id=<?=$idArticle?>&amp;val=moins" style="color:red;">Ce commentaire a été signalé</a>
 
-
-
+           <?php }
+            elseif ($_SESSION['report'.$thiscomment['id']] == 0) { ?>
+              <a href="index.php?action=signalcomment&amp;commentid=<?=$thiscomment['id']?>&amp;id=<?=$idArticle?>&amp;val=plus">Signaler ce commentaire</a>
+              <?php        
+              }
+            }
+          ?>
        
       </div>
       <div>

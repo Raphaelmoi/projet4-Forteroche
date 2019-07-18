@@ -96,10 +96,17 @@ try {
         //when a comment is reported
         elseif ($_GET['action'] == 'signalcomment') {
             # garde l'id de l'article pour y revenir, ajoute 1 au comm signale
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (isset($_GET['commentid']) && $_GET['commentid'] > 0) {
-                    signalComment($_GET['id'], $_GET['commentid']);
+             if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['commentid']) && $_GET['commentid'] > 0) {
+                
+                if ($_GET['val'] == 'plus') {
+                    $_SESSION['report'.$_GET['commentid']] = $_GET['commentid']; 
+                    signalComment($_GET['id'],$_GET['commentid'], 1);
                 }
+                elseif($_GET['val'] == 'moins'){
+                    $_SESSION['report'.$_GET['commentid']] = 0;
+                    signalComment($_GET['id'],$_GET['commentid'], -1);
+                }
+                     
             }
         }
         //page where all the comment who are report appear

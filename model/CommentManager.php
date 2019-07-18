@@ -35,10 +35,10 @@ class CommentManager extends Manager
         return $req;
     }
     //report a comment
-    public function reportComment($currentId)
+    public function reportComment($currentId, $val)
     {
         $bdd = $this->dbConnect();
-        $req = $bdd->query("UPDATE commentaires SET signalement = signalement + 1 WHERE id = $currentId;");
+        $req = $bdd->query("UPDATE commentaires SET signalement = signalement + $val WHERE id = $currentId;");
 
         return $req;
     }

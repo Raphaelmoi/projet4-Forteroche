@@ -83,13 +83,13 @@ function deletePost($id)
     $req = $postManager -> deletePost($id); 
     homeControl();
 }
-function signalComment($id, $commentid){
+function signalComment($id, $commentid, $val){
     $commentManager = new CommentManager();
     $postManager = new PostManager();
-    $req = $commentManager -> reportComment($commentid);
+    $req = $commentManager -> reportComment($commentid, $val);
     $article = $postManager -> getPost($id);
     $comment = $commentManager -> getComments($id);
-    require('view/postView.php');
+    header('Location: index.php?action=post&id='.$id);
 }
 
 function badCommentView()
@@ -120,9 +120,7 @@ function ILike($id, $val){
     $postManager = new PostManager();
     $commentManager = new CommentManager();
     $like = $postManager -> setLike($id, $val);
-    $_GET['val'] = "";
     $article = $postManager -> getPost($id);
     $comment = $commentManager -> getComments($id);
-    require('view/postView.php');
-
+    header('Location: index.php?action=post&id='.$id);
 }
