@@ -10,17 +10,22 @@ while ($thisarticle = $article->fetch())
 
 
 <form class="tinyForm" method="post" action="index.php?action=modifyPost&amp;id=<?= $thisarticle['id'] ?>" enctype="multipart/form-data">
-	<input  class="tinyFormTitre" type="titre" name="titre" value="<?= htmlspecialchars($thisarticle['titre']) ?>">
+	<input  class="tinyFormTitre" type="titre" name="titre" value="<?= htmlspecialchars($thisarticle['titre']) ?>" required>
 	<textarea name="contenu"> <?php echo $thisarticle['contenu']; ?></textarea>
 	<div class="changeThePicture">
-		<img src="<?php echo $thisarticle['url']?>">
+		<img src="<?php echo $thisarticle['url']?>" id="outputImg">
 		<div>
-			<p >Changer l'image ?</p>
-			<input class="tinyFormImg" type="file" name="fileToUpload" id="fileToUpload">
+			<p >Choisissez une image</p>
+			<input class="tinyFormImg" type="file" name="fileToUpload" id="fileToUpload" onchange="loadFile(event)">
 		</div>
-
+		<script type="text/javascript">
+		 	let loadFile = function(event) {
+			console.log('yep');
+		    var output = document.getElementById('outputImg');
+		    output.src = URL.createObjectURL(event.target.files[0]);
+		  };
+		</script>
 	</div>
-
 	<input class="tinyFormButon" type="submit" value="valider" >
 </form>
 

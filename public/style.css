@@ -71,6 +71,10 @@ li
     margin: 0 20px;
     font-size: 20px;
 }
+input
+{
+    padding-left: 10px;
+}
 .fas>span
 {
     font-weight: normal;
@@ -304,7 +308,7 @@ form
 .nouvelArticle
 {
     height: 100px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 .nouvelArticle a
 {
@@ -320,6 +324,9 @@ form
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    padding: 10px;
 }
 
 .tinyForm textarea
@@ -329,15 +336,15 @@ form
 }
 .tinyForm input
 {
-    height: 30px;
     border-radius: 5px;
     margin: 10px 0;
 }
 .tinyFormTitre{
-    width: 80%;
+    width: 90%;
     height: 50px;
     font-size: 30px;
-    color: red;
+    color: #111;
+    margin : 10px;
 }
 .tinyFormButon{
     background-color: #26a69a;
@@ -370,3 +377,9 @@ form
     width: 100%;
 }
 
+#outputImg{
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    background-color: lightgray;
+}

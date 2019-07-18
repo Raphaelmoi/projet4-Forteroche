@@ -7,7 +7,7 @@ tinymce.init({
       'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
       'save table contextmenu directionality emoticons template paste textcolor image'
     ],
-    toolbar: ['insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | preview media fullpage | forecolor backcolor emoticons'],
+    toolbar: ['insertfile undo redo|styleselect| bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | forecolor backcolor emoticons || preview  fullpage fullscreen'],
   
   	paste_data_images: true,
 
