@@ -96,6 +96,7 @@ function badCommentView()
 {
     $commentManager = new CommentManager();
     $comment = $commentManager -> getSignaledComments();
+    $number =  $commentManager -> countBadComment();
     require('view/connectedViews/badComment.php');
 }
 function deleteComment($id)

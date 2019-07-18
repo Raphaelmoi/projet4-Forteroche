@@ -66,17 +66,16 @@ while ($thiscomment = $comment->fetch()) {
       <?php
     if (!empty($_SESSION['pseudo'])) {
 ?>
-           <a  href="index.php?action=deletecommentfromviewpage&amp;commentid=<?= $thiscomment['id'] ?>&amp;id=<?= $idArticle ?>">
+           <a  href="index.php?action=deletecommentfromviewpage&amp;commentid=<?= $thiscomment['id'] ?>&amp;id=<?= $idArticle ?>"  onclick="return confirm('Êtes vous sûr de vouloir supprimer ce commentaire? \nCette action est irréversible!')">
               <i class="fas fa-trash"> Supprimer ce commentaire</i>
             </a> <?php
     } else {
-        if ($_SESSION['report' . $thiscomment['id']] == $thiscomment['id']) {
+        if (isset($_SESSION['report' . $thiscomment['id']]) && $_SESSION['report' . $thiscomment['id']] == $thiscomment['id']) {
 ?>
                <a href="index.php?action=signalcomment&amp;commentid=<?= $thiscomment['id'] ?>&amp;id=<?= $idArticle ?>&amp;val=moins" style="color:red;">Ce commentaire a été signalé</a>
 
            <?php
-        } elseif ($_SESSION['report' . $thiscomment['id']] == 0 || 
-          !isset($_SESSION['report' . $thiscomment['id']])) {
+        } elseif (!isset($_SESSION['report' . $thiscomment['id']]) || $_SESSION['report' . $thiscomment['id']] == 0 ) {
 ?>
              <a href="index.php?action=signalcomment&amp;commentid=<?= $thiscomment['id'] ?>&amp;id=<?= $idArticle ?>&amp;val=plus">Signaler ce commentaire</a>
               <?php

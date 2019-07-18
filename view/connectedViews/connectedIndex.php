@@ -4,7 +4,8 @@ $title = 'gestion';
 ob_start(); ?>
 
 <article class="nouvelArticle">
-	<a href="/projet4/index.php?action=nouveaubillet"> Créer un nouveau billet</a>
+	<a href="/projet4/index.php?action=nouveaubillet"><i class="fas fa-plus-circle"></i>
+Créer un nouveau billet</a>
 </article>
 
 <?php
@@ -35,7 +36,7 @@ while ($donnees = $reponse->fetch())
 		          <div class="gestionnaireArticle">
 			          	<nav>
 			          		<li><a href="index.php?action=modifyPostView&amp;id=<?=$donnees['id'] ?>">Modifier le billet</a></li>
-			          		<li><a href="index.php?action=deletePost&amp;id=<?=$donnees['id'] ?>"><i class="fas fa-trash"></i> Supprimer le billet</a></li>     		
+			          		<li><a href="index.php?action=deletePost&amp;id=<?=$donnees['id'] ?>" onclick="return confirm('Êtes vous sûr de vouloir supprimer cet article?\nCette action est irréversible')" ><i class="fas fa-trash"></i> Supprimer le billet</a></li>     		
 			          	</nav>
 			       </div>
       </div>

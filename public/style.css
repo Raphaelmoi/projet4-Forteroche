@@ -308,15 +308,22 @@ form
 .nouvelArticle
 {
     height: 100px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.85);
+    line-height: 100px;
+    text-align: center;
+    border: 4px rgb(226, 230, 233) dashed;
+}
+.nouvelArticle:hover
+{
+    border: 4px #888 dashed;
 }
 .nouvelArticle a
 {
     height: 100%;
     width: 100%;
     text-align: center;
-    line-height: 100px;
     font-size: 30px;
+    line-height: 100px;
 }
 
 .tinyForm
@@ -382,4 +389,18 @@ form
     height: 200px;
     object-fit: cover;
     background-color: lightgray;
+}
+.fa-plus-circle{
+    margin-right: 20px;
+    color: #AAA;
+}
+
+.badcommentview
+{
+    background-color: whitesmoke;
+    border-radius: 4px;
+    padding: 10px;
+    top: 100px;
+    bottom: 20px;
+    width: 100%;
 }

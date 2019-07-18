@@ -1,6 +1,12 @@
 <?php
 ob_start();
-
+?>
+<section class="badcommentview">
+<?php
+if ($number == 0) {
+  echo '<p>Aucun commentaire n\'a été signalé ! </p>';
+}
+else
 while ($thiscomment = $comment->fetch())
 {
 ?>
@@ -23,7 +29,9 @@ while ($thiscomment = $comment->fetch())
     <?php
 }
 $comment->closeCursor(); // Termine le traitement de la requête
-
+?>
+</section>
+<?php
 $content = ob_get_clean();
 require ('templateconnected.php');
 ?>
