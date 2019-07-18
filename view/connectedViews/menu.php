@@ -19,8 +19,8 @@ if (!empty($_SESSION['pseudo'])) {?>
 			?> <script type="text/javascript">
 				badComm = document.getElementById('signaledComm');
 				span =document.getElementById('span');
-				badComm.style.color = 'red';
-				span.style.color = 'red';
+				badComm.style.color = '#f44336';
+				span.style.color = '#f44336';
 				span.textContent +=" (" + <?php echo $count ?> + ")";
 				span.style.fontWeight = 'normal';
 			</script><?php

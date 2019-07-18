@@ -15,9 +15,10 @@ while ($donnees = $reponse->fetch())
     <article>
       <img src="<?php echo ($donnees['url']); ?>">
       <div>
-          <div class="enteteSommaire enteteConnected"> <h2><?php echo htmlspecialchars($donnees['titre']); ?>  </h2> 
+          <div class="enteteSommaire enteteConnected"> 
+            <h2><?php echo htmlspecialchars($donnees['titre']); ?>  </h2> 
           </div>
-          <p class="textArticle"> <?php
+          <div class="textArticle"> <?php
 
           $machin = $donnees['contenu'];
           //fait disparaitre iage et video des extraits
@@ -31,12 +32,13 @@ while ($donnees = $reponse->fetch())
           $machin = substr($machin, 0, 600).'...'; 
           echo $machin;
            ?>
-          </p>
-          <a href="index.php?action=post&amp;id=<?=$donnees['id'] ?>">Lire la suite</a>
+          </div>
 		          <div class="gestionnaireArticle">
 			          	<nav>
+                    <li><a href="index.php?action=post&amp;id=<?=$donnees['id'] ?>">Lire la suite</a> </li> 
 			          		<li><a href="index.php?action=modifyPostView&amp;id=<?=$donnees['id'] ?>">Modifier le billet</a></li>
-			          		<li><a href="index.php?action=deletePost&amp;id=<?=$donnees['id'] ?>" onclick="return confirm('Êtes vous sûr de vouloir supprimer cet article?\nCette action est irréversible')" ><i class="fas fa-trash"></i> Supprimer le billet</a></li>     		
+			          		<li><a href="index.php?action=deletePost&amp;id=<?=$donnees['id'] ?>" onclick="return confirm('Êtes vous sûr de vouloir supprimer cet article?\nCette action est irréversible')" ><i class="fas fa-trash"></i> Supprimer le billet</a></li>
+                        		
 			          	</nav>
 			       </div>
       </div>

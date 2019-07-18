@@ -103,50 +103,81 @@ input
 }
 article
 {
+    position: relative;
     display: flex;
     background-color: whitesmoke;
+    padding: 0;
     margin-bottom: 20px;
     border-radius: 5px;
     align-items: center;
 }
-article img{
-    width: 300px;
+article img {
+    margin: 0;
+    min-width: 300px;
+    max-width: 300px;
     height: 250px;
+    border-radius: 5px 0 0 5px;
     object-fit: cover;
 }
 article>div
 {
+    margin: 0;
+    padding: 0;
     width: 100%;
+    height: 100%;
 }
 article a 
 {
     float: right;
     margin-right: 20px;
 }
-
+.noComment
+{
+    text-align: center;
+    font-size: 20px;
+}
 .commentaire {
     background-color: #f6f4e7;
     width: 90%;
     margin: auto;
-    border: 1px solid lightblue;
+    border: 2px solid lightblue;
     border-radius: 5px;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
 }
-.titreComm
+.titreComm, .bottomComm
 {
     margin: 0;
-    background-color: lightblue;
+    background-color: #8eacbb;
     width: 100%;
-    border-radius: 5px 5px 0 0;
-    height: 25px;
-    line-height: 25px;
+    height: 35px;
+    line-height: 35px;
+}
+.dateCommentaire
+{
+    float: right;
+    padding-right: 20px;
+}
+.bottomComm
+{
+    background-color: #f6f4e7;
+    border-top : 2px #CCC solid;
+
+}
+.bottomComm span
+{
+    padding-left: 10px;
+}
+.contenuCommentaire
+{
+    padding-left: 10px;
 }
 strong
 {
     margin-left: 15px;
-    font-size: 20px;
+    font-size: 23px;
+    color: #111;
 }
 /*titre article quand on est sur sa page*/
 .entete
@@ -272,20 +303,17 @@ form
     margin-left: auto;
     margin-right: auto;
 }
-.insideSide article>div
-{
-    position: relative;
-    height: 100%;
-}
+
 /* supression ou modification d'un article en dessous de lui meme*/
 .gestionnaireArticle
 {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 300px;
     right: 0;
     height: 40px;
-    background-color: lightblue;
+    background-color: #8eacbb;
+    border-radius: 0 0 5px 0; 
 
 }
 .gestionnaireArticle nav
@@ -299,6 +327,11 @@ form
     float: none;
     line-height: 42px;
 }
+.gestionnaireArticle a:hover i, .gestionnaireArticle a:hover
+{
+    color: #C30000;
+}
+
 .enteteConnected
 {
     margin-top: 10px;
@@ -315,7 +348,9 @@ form
 }
 .nouvelArticle:hover
 {
-    border: 4px #888 dashed;
+    border: 4px #999 dashed;
+    background-color: rgba(255, 255, 255, 0.92);
+
 }
 .nouvelArticle a
 {
