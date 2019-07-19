@@ -100,12 +100,21 @@ while ($thiscomment = $comment->fetch()) {
 $comment->closeCursor(); // Termine le traitement de la requête
 
 ?>
- <form class="blocformulaire" action="index.php?action=addComment&amp;id=<?= $_GET['id'] ?>" method="post">
-      <p> Pseudo : <br><input type="text" name="auteur" /></p>
-      <p> Message : <br><textarea id="commentaire" name="commentaire" rows="5" cols="33"></textarea></p>
-      <input name="pageArticle" type="hidden">
-      <input id="bouton" type="submit" value="valider" >
-    </form>
+ <article class="commentaire">
+  <div class="titreComm">
+    <span>Poster un commentaire :</span>
+  </div>
+      <form class="formulaireComment" action="index.php?action=addComment&amp;id=<?= $_GET['id'] ?>" method="post">
+
+        <p> Pseudo : <input type="text" name="auteur" placeholder="pseudo" required /></p>
+        <textarea id="commentaire" name="commentaire"> Votre commentaire ici</textarea>
+        <input name="pageArticle" type="hidden">
+        <input id="bouton" type="submit" value="Publier ce commentaire" class="publishComment"  >
+      </form>
+
+</article>
+
+
   
 <?php
 $content = ob_get_clean();

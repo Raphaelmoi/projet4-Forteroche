@@ -127,7 +127,7 @@ input
 {
     margin-right: 10px;
 }
-.btnBackHome:hover, .btnBackHome a:hover, .btnBackHome i:hover
+.btnBackHome:hover
 {
     background-color: rgba(255,255, 255, 0.8);
 }
@@ -222,9 +222,19 @@ article>div
     height: 35px;
     line-height: 35px;
 }
+.bottomComm a
+{
+    float: right;
+    margin-right: 10px;
+}
 .titreComm{
 
     border-bottom: 1px gray solid;
+}
+.titreComm span
+{
+    margin-left: 15px;
+    font-weight: bolder;
 }
 .deleteComment, .reportComment
 {
@@ -244,7 +254,6 @@ article>div
 {
     background-color: #f6f4e7;
     border-top : 2px #CCC solid;
-
 }
 .bottomComm span
 {
@@ -254,6 +263,38 @@ article>div
 {
     padding-left: 10px;
 }
+.formulaireComment
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0;
+}
+.formulaireComment textarea, .formulaireComment p
+{
+    width: 80%;
+}
+.formulaireComment input
+{
+    height: 40px;
+    border-radius: 5px;
+}
+.formulaireComment  textarea
+{
+    height: 100px;
+    border-radius: 5px;
+}
+
+.publishComment
+{
+    margin: 10px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px #8eacbb solid;
+    align-self: flex-end;
+    margin-right: 10%;
+}
 strong
 {
     margin-left: 15px;
@@ -261,6 +302,10 @@ strong
     color: #111;
 }
 /*titre article quand on est sur sa page*/
+.billetAlone
+{
+    border: 2px solid lightblue;
+}
 .entete
 {
     display: flex;
@@ -326,8 +371,10 @@ aside a
 {
     line-height: 35px;
     overflow: hidden;
-        
-
+}
+aside a:hover
+{
+    font-weight: bolder;
 }
 .asideHasard
 {
@@ -563,8 +610,8 @@ form
 }
 .contactForm>input
 {
-    background-color: rgba(187, 222, 250, 0.8);
     border-radius: 10px;
+    border: 2px #26a69a solid;
     float: right;
     width: 150px;
     margin-top: 30px;
