@@ -6,6 +6,7 @@ body
 }
 *
 {
+    font-family: 'Open Sans', sans-serif;
     color: #333;
 }
 /*MENU PRINCIPAL*/
@@ -14,11 +15,11 @@ header
     align-items: center;
     width: 100%;
 }
-
 .test
 {   
-    background-color: rgba(255, 255, 255, 0.5);
-    width: 100%;
+    background-color: #cfd8dc;
+/*    background-color: rgba(255, 255, 255, 0.5);
+*/    width: 100%;
     height: 42px;
     position: fixed;
     display: flex;
@@ -47,6 +48,12 @@ h1
     text-align: center;
     margin : 0;
     line-height: 42px;
+    font-family: 'Mali', cursive;
+}
+h2, h3
+{
+    font-family: 'Mali', cursive;
+
 }
 a
 {
@@ -97,8 +104,8 @@ input
     margin: 3.5%;
     margin-top: 55px;
     border-radius: 10px;
-    background-color: rgba(187, 222, 250, 0.4);
-    display: flex;
+/*    background-color: rgba(187, 222, 250, 0.4);
+*/    display: flex;
     flex-direction: column;
 }
 article
@@ -126,11 +133,27 @@ article>div
     width: 100%;
     height: 100%;
 }
-article a 
+
+.btnReadMore
 {
-    float: right;
-    margin-right: 20px;
+    background-color:   rgba(100, 100, 100, 0.2);
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 10px;
+    border-radius: 4px;
 }
+.btnReadMore a
+{
+    color: black;
+}
+.btnReadMore:hover
+{
+    background-color:   rgba(100, 100, 100, 0.4);
+}
+
 .noComment
 {
     text-align: center;
@@ -153,6 +176,11 @@ article a
     width: 100%;
     height: 35px;
     line-height: 35px;
+
+}
+.titreComm{
+
+    border-bottom: 1px gray solid;
 }
 .dateCommentaire
 {
@@ -209,6 +237,8 @@ strong
     height: 30px;
     line-height: 30px;
     padding-left: 20px;
+        margin-top: 10px;
+
 }
 
 aside
@@ -332,10 +362,6 @@ form
     color: #C30000;
 }
 
-.enteteConnected
-{
-    margin-top: 10px;
-}
 
 /*GRAND BOUTON POUR CREER NOUVEAU BILLET*/
 .nouvelArticle
@@ -438,4 +464,80 @@ form
     top: 100px;
     bottom: 20px;
     width: 100%;
+}
+
+.formP
+{
+    margin: 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
+.contactForm>div
+{
+    display: flex;
+    justify-content: space-around;
+}
+.personalInfo{
+    display: flex;
+    flex-direction: column;
+
+}
+.contactForm input
+{
+    min-height: 30px;
+    width: 300px;
+    border-radius: 4px;
+    margin: 10px 0px;
+}
+.contactForm textarea
+{
+    width: 400px;
+    height: 90%;
+    border-radius: 4px;
+    margin-top: 20px;
+    padding: 10px;
+}
+.contactForm>input
+{
+    background-color: rgba(187, 222, 250, 0.8);
+    border-radius: 10px;
+    float: right;
+    width: 150px;
+    margin-top: 30px;
+    margin-right: 100px;
+}
+
+.biographie
+{
+    background-color: whitesmoke;
+    padding: 20px 40px;
+    margin: 20px 50px;
+    margin-top: 0;
+    border-radius: 5px;
+}
+.biographie h2
+{
+    text-align: center;
+}
+.biographie div
+{
+    display: flex;
+}
+.biographie div p
+{
+    flex: 2;
+}
+.biographie img
+{
+    flex: 1;
+    object-fit: contain;
+    margin: 20px;
+}
+.smallImgBio
+{
+    height: 200px;
+}
+.biographie p
+{
+    text-align: justify;
 }

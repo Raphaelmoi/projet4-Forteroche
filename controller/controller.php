@@ -125,3 +125,9 @@ function likeAPost($id, $val){
     $comment = $commentManager -> getComments($id);
     header('Location: index.php?action=post&id='.$id);
 }
+
+function sendmail(){
+
+    require 'controller/sendMail.php';
+    contact();
+}

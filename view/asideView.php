@@ -11,7 +11,7 @@ while ($thisarticle = $article->fetch())
     $title = htmlspecialchars($thisarticle['titre']);
 ?>
   <div class="asideDecoration"></div>
-  <a href="index.php?action=post&amp;id=<?=$thisarticle['id'] ?>"><?=htmlspecialchars($thisarticle['titre']) ?> : lorem ipsum etc</a>
+  <a href="index.php?action=post&amp;id=<?=$thisarticle['id'] ?>"><?=htmlspecialchars($thisarticle['titre']) ?> </a>
   <br>
 <?php
 }

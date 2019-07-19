@@ -144,6 +144,9 @@ try {
                 }                     
             }
         }
+        elseif ($_GET['action'] == 'sendmail') {
+           sendmail();
+        }
         //if no $_GET['action'] defined, go to home page
     } else {
         listPosts();

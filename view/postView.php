@@ -15,7 +15,7 @@ while ($thisarticle = $article->fetch()) {
   <article>
       <div class="news">
         <div class="entete">
-          <h2><?= htmlspecialchars($thisarticle['titre']) ?> : lorem ipsum etc</h2>
+          <h2><?= htmlspecialchars($thisarticle['titre']) ?> </h2>
         </div >
         <p class="textArticle" ><?php
     echo htmlspecialchars($thisarticle['date_creation_fr']);

@@ -15,7 +15,7 @@ while ($donnees = $reponse->fetch())
     <article>
       <img src="<?php echo ($donnees['url']); ?>">
       <div>
-          <div class="enteteSommaire enteteConnected"> 
+          <div class="enteteSommaire"> 
             <h2><?php echo htmlspecialchars($donnees['titre']); ?>  </h2> 
           </div>
           <div class="textArticle"> <?php
@@ -29,7 +29,7 @@ while ($donnees = $reponse->fetch())
           if(preg_match("/<iframe[^>]+\>/i", $machin)) {
               $machin = preg_replace("/<iframe[^>]+\>/i", "", $machin); 
           }
-          $machin = substr($machin, 0, 600).'...'; 
+          $machin = substr($machin, 0, 520).'...'; 
           echo $machin;
            ?>
           </div>
