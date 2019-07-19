@@ -5,13 +5,13 @@ ob_start(); ?>
 while ($donnees = $reponse->fetch())
 {
 ?>
-    <article>
+    <article class="articleBillet">
       <img src="<?php echo ($donnees['url']); ?>">
       <div>
           <div class="enteteSommaire"> 
             <h2><?php echo ($donnees['titre']); ?>  </h2> 
           </div>
-          <p class="textArticle"> <?php
+          <div class="textArticle"> <?php
 
           $machin = $donnees['contenu'];
           //fait disparaitre iMage et video des extraits
@@ -25,7 +25,7 @@ while ($donnees = $reponse->fetch())
           $machin = substr($machin, 0, 520).'...'; 
           echo $machin;
            ?>
-          </p>
+          </div>
           <div class="btnReadMore">
               <a href="index.php?action=post&amp;id=<?=$donnees['id'] ?>">Lire la suite</a>
           </div>

@@ -1,4 +1,3 @@
-
 <?php 
 $title = 'gestion';
 ob_start(); ?>
@@ -12,7 +11,7 @@ Créer un nouveau billet</a>
 while ($donnees = $reponse->fetch())
 {
 ?>
-    <article>
+    <article class="articleBillet">
       <img src="<?php echo ($donnees['url']); ?>">
       <div>
           <div class="enteteSommaire"> 

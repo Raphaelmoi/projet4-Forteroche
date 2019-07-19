@@ -13,7 +13,7 @@ class PostManager extends Manager
     public function getPost($postId)
     {
         $bdd = $this->dbConnect();
-        $article = $bdd->prepare('SELECT id, titre, contenu, url, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS date_creation_fr, numberlike FROM billets WHERE id = ?');
+        $article = $bdd->prepare('SELECT id, titre, contenu, url, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr, numberlike FROM billets WHERE id = ?');
         $article->execute(array($postId));
 
         return $article;
