@@ -106,7 +106,7 @@ $comment->closeCursor(); // Termine le traitement de la requête
   </div>
       <form class="formulaireComment" action="index.php?action=addComment&amp;id=<?= $_GET['id'] ?>" method="post">
 
-        <p> Pseudo : <input type="text" name="auteur" placeholder="pseudo" required /></p>
+        <p> Pseudo : <input type="text" name="auteur" placeholder="Pseudo" required /></p>
         <textarea id="commentaire" name="commentaire"> Votre commentaire ici</textarea>
         <input name="pageArticle" type="hidden">
         <input id="bouton" type="submit" value="Publier ce commentaire" class="publishComment"  >

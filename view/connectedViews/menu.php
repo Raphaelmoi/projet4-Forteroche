@@ -4,7 +4,7 @@ $commentManager = new CommentManager();
 $count = $commentManager -> countBadComment();
 
 
-if (!empty($_SESSION['pseudo'])) {?>
+if ( !empty($_SESSION['pseudo']) ) {?>
   
 
 <nav class="navDeux">

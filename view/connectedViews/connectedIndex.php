@@ -1,4 +1,5 @@
 <?php 
+if ( !empty($_SESSION['pseudo']) ) {
 $title = 'gestion';
 ob_start(); ?>
 
@@ -47,4 +48,10 @@ while ($donnees = $reponse->fetch())
 }
 $reponse->closeCursor(); // Termine le traitement de la requête
 $content = ob_get_clean();
-require ('templateConnected.php'); ?>
+require ('templateConnected.php');
+}
+else
+    header('Location: /projet4/index.php?action=connect');
+
+
+ ?>

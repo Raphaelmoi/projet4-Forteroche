@@ -59,7 +59,9 @@ function addPost($titre, $contenu, $imageurl)
 {
     $postManager = new PostManager(); 
     $envoi = $postManager -> postPost($titre, $contenu, $imageurl);
-    homeControl();
+    //pour eviter en cas de f5 de publier 2 fois le meme article :  
+    $reponse = $postManager -> getPosts();
+    header('Location: index.php?action=homeControl');
 }
 function modifyPost($id)
 {
@@ -70,12 +72,16 @@ function modifyPost($id)
 function updateThePost($id, $titre, $contenu, $url){
     $postManager = new PostManager();
     $req = $postManager -> updatePost($id, $titre, $contenu, $url); 
-    homeControl();
+    //pour eviter en cas de f5 de publier 2 fois le meme article :  
+    $reponse = $postManager -> getPosts();
+    header('Location: index.php?action=homeControl');
 }
 function updatePostWithoutImg($id, $titre, $contenu) {
     $postManager = new PostManager();
     $req = $postManager -> updatePostWithoutImg($id, $titre, $contenu); 
-    homeControl();
+        //pour eviter en cas de f5 de publier 2 fois le meme article :  
+    $reponse = $postManager -> getPosts();
+    header('Location: index.php?action=homeControl');   
 }
 function deletePost($id)
 {
@@ -127,7 +133,8 @@ function likeAPost($id, $val){
 }
 
 function sendmail(){
-
+    $postManager = new PostManager(); 
+    $reponse = $postManager -> getPosts();
     require 'controller/sendMail.php';
     contact();
 }

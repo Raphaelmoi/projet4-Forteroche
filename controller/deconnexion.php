@@ -2,17 +2,14 @@
 <?php 
 session_start();
 
-
-echo $_SESSION['pseudo'];
 // Suppression des variables de session et de la session
 $_SESSION = array();
 session_destroy();
 
-
-
-// Suppression des cookies de connexion automatique
-setcookie('login', '');
-setcookie('pass_hache', '');
+// Suppression du fichier cookie
+setcookie('login', '', time() - 3600, '/');
+// Suppression de la valeur du cookie en mémoire dans $_COOKIE
+unset($_COOKIE['login']);
 
 header('Location: /projet4/index.php');
 ?>

@@ -1,4 +1,7 @@
-<?php $title = 'modifier billet';
+<?php 
+if ( !empty($_SESSION['pseudo']) ) {
+
+$title = 'modifier billet';
 ob_start();?>
 
 
@@ -33,5 +36,9 @@ while ($thisarticle = $article->fetch())
 }
 $article->closeCursor(); // Termine le traitement de la requête
 $content = ob_get_clean();
-require ('templateConnected.php'); ?>
+require ('templateConnected.php');
+}
+else
+    header('Location: /projet4/index.php?action=connect');
+ ?>
 

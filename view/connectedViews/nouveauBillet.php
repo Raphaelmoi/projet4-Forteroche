@@ -1,4 +1,7 @@
 <?php $title = 'nouveau billet';
+if (empty($_SESSION['pseudo']) ) {
+    header('Location: /projet4/index.php?action=connect');
+}
 ob_start(); ?>
 
 
@@ -12,7 +15,7 @@ ob_start(); ?>
 		<img src="" id="outputImg"/>
 		<div>
 			<p >Choisissez l'image qui illustrera l'article : </p>
-			<input class="tinyFormImg" type="file" name="fileToUpload" id="fileToUpload" onchange="loadFile(event)">
+			<input class="tinyFormImg" type="file" name="fileToUpload" id="fileToUpload" onchange="loadFile(event)" required>
 		</div>
 		<script type="text/javascript">
 		 	let loadFile = function(event) {

@@ -1,4 +1,6 @@
 <?php
+if ( !empty($_SESSION['pseudo']) ) {
+
 ob_start();
 ?>
 <section class="badcommentview">
@@ -34,4 +36,8 @@ $comment->closeCursor(); // Termine le traitement de la requête
 <?php
 $content = ob_get_clean();
 require ('templateconnected.php');
+}
+else
+    header('Location: /projet4/index.php?action=connect');
+
 ?>

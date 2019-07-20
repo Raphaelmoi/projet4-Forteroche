@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!empty($_COOKIE['login']) ) {
+   $_SESSION['pseudo'] = $_COOKIE['login'];
+
+}
 
 
 require('controller/controller.php');
@@ -157,6 +161,7 @@ catch (Exception $e) {
 }
 
 //créé un espace pour le deuxieme menu si on est connecté
+
 if (!empty($_SESSION['pseudo'])) {
 ?>
     <script type="text/javascript" src="public/DesignScript.js"></script>

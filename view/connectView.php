@@ -1,7 +1,9 @@
 <!-- page permettant la connexion , ne s'ouvre que si aucune session n'est en cours -->
+<?php 
 
+  
 
-<?php $title = 'biographie';
+$title = 'connexion';
 ob_start(); ?>
             <section class="corpConnectPage">
                 <form action="controller/connexion.php" method="post">

@@ -1,14 +1,13 @@
 //define preset for tinyMCE
 tinymce.init({
 	selector:'textarea',
-  content_css : '/public/tinymcecss.css',
     plugins: [
-      'advlist code autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+      'autosave advlist code autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
       'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
       'save table contextmenu directionality emoticons template paste textcolor image'
     ],
-    toolbar: ['insertfile undo redo|styleselect| bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | forecolor backcolor emoticons || preview  fullpage fullscreen'],
-  
+    toolbar: ['insertfile undo redo|styleselect| bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | forecolor backcolor emoticons || preview  fullpage fullscreen restoredraft'],
+    autosave_interval: "20s",
 
   	paste_data_images: true,
 
