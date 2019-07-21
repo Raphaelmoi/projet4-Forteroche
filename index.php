@@ -10,19 +10,8 @@ try {
     if (isset($_GET['action'])) {
         //home page
         if ($_GET['action'] == 'listPosts') {
-/*            if (isset($_GET['page'])) {
-                listPosts($_GET['page']);
-            }
-            else */
                 listPosts();
         }
-/*        if ($_GET['action'] == 'listPostsAside') {
-            if (isset($_GET['page'])) {
-                listPostsAside($_GET['page']);
-            }
-            else 
-                listPostsAside();
-        }*/
         //page for any article 
         elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -167,7 +156,10 @@ try {
         elseif ($_GET['action'] == 'newpw') {            
            updatePass($_POST['new_password'],  $_POST['pseudo']);
         }
-        //if no $_GET['action'] defined, go to home page
+/*        elseif ($_GET['action'] == 'forgetpwd') {            
+           forgetpwd();
+        }    */ 
+       //if no $_GET['action'] defined, go to home page
     } else {
         listPosts();
     }

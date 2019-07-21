@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Mali:300|Open+Sans&display=swap" rel="stylesheet">     </head>
     <body>
         <header>
-            <div class="test">
+            <div class="menuPrincipal">
                 <?php include('headerView.php'); ?>  
             </div>
             <div class="menuIn">

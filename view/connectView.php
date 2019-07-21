@@ -21,7 +21,8 @@ ob_start(); ?>
                     <p><br> <input type="password" name="connexion_motdepasse" placeholder="mot de passe" required /></p>
                     <p>connexion automatique <input id="checkbox" type="checkbox" name="connexionAuto"></p>
                     <input type="submit" value="Se connecter" >
-
+<!--                     <p><a href="index.php?action=forgetpwd">Mot de passe oublié ? </a></p>
+ -->
                  </form> 
             </section>       
 

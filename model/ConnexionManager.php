@@ -12,7 +12,7 @@ class ConnexionManager extends Manager
 				header('Location: accueil.php?action=connect&erreur=a');
 			}
 
-		$req = $bdd->prepare('SELECT id, pseudo, pass FROM membres WHERE pseudo = ?');
+		$req = $bdd->prepare('SELECT id, pseudo, pass, email FROM membres WHERE pseudo = ?');
 		$req->execute(array($pseudo));
 
 		return $req;
@@ -23,4 +23,13 @@ class ConnexionManager extends Manager
     	$req = $bdd->query("UPDATE membres SET pass = '$pass' WHERE pseudo = '$pseudo';");
         return $req;
     }
+
+/*    public function getUserForNewPw($email)
+    {
+        $bdd = $this->dbConnect();
+        $req = $bdd->prepare('SELECT id, pseudo, pass, email FROM membres WHERE email = ?');
+        $req->execute(array($email));
+
+        return $req;
+    }*/
 }

@@ -3,7 +3,7 @@ require_once("model/Manager.php");
 
 class PostManager extends Manager 
 {
-        public function getPosts()
+    public function getPosts()
     {
         $bdd = $this->dbConnect();
         $reponse = $bdd->query('SELECT id, titre, contenu, url, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr FROM billets ORDER BY id');

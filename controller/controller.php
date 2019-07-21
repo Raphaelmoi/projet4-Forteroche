@@ -13,8 +13,9 @@ function listPosts() {
 }
 /*function listPostsAside($offset = 0) {
     $postManager = new PostManager();
-    $reponse = $postManager -> getPostsPage($offset);   
-    require('view/affichageAccueil.php');
+    $reponse = $postManager -> getPostsPage($offset);
+        require('view/affichageAccueil.php');
+
 }*/
 function post() {
     $postManager = new PostManager();
@@ -151,10 +152,11 @@ function settings(){
 function updatePass($newPass, $pseudo){
     $connexionManager = new ConnexionManager();
     require('newPass.php');
-
-    
-/*    $req = $connexionManager -> updateUserPw($newPass, $pseudo);*/
-
-        header('Location: index.php?action=homeControl');   
-
+    header('Location: index.php?action=homeControl');   
 }
+
+/*function forgetpwd(){
+    $connexionManager = new ConnexionManager();
+    require('forgetPass.php');
+
+}*/

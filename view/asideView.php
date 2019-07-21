@@ -24,12 +24,12 @@ while ($thisarticle = $article->fetch() )
 }
 $article->closeCursor(); // Termine le traitement de la requête
 	?>
-	<div class="asideHasard"> 
+	<div class="asideNavigation"> 
 	<?php 
 	//propose les 10 articles suivant
 	$count = (int) $postManager->count();
 	$indice = floor($count/10);
-	if ($count/10 > 1) {
+	if ($indice >= 1) {
 		for ($i=0; $i <= $indice; $i++) { 
 			$url= getUrl()."page=".$i;
 			?> 

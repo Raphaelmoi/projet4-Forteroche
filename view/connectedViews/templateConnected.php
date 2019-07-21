@@ -13,7 +13,7 @@
     </head>
     <body>
         <header>
-            <div class="test">
+            <div class="menuPrincipal">
                 <?php include('view/headerView.php'); ?>  
             </div>
             <div class="menuIn">
