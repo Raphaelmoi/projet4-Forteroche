@@ -3,10 +3,21 @@ require_once("model/Manager.php");
 
 class PostManager extends Manager 
 {
-    public function getPosts()
+        public function getPosts()
     {
         $bdd = $this->dbConnect();
-        $reponse = $bdd->query('SELECT id, titre, contenu, url, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr FROM billets ORDER BY id ');
+        $reponse = $bdd->query('SELECT id, titre, contenu, url, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr FROM billets ORDER BY id');
+        return $reponse;
+    }
+
+    public function getPostsPage($offset = 0)
+    {
+        if ($offset > 0) {
+            $offset *= 10;
+        };
+
+        $bdd = $this->dbConnect();
+        $reponse = $bdd->query('SELECT id, titre, contenu, url, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr FROM billets ORDER BY id LIMIT '.$offset.',10');
         return $reponse;
     }
 

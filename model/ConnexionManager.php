@@ -21,8 +21,6 @@ class ConnexionManager extends Manager
     public function updateUserPw($pass, $pseudo){
     	$bdd = $this->dbConnect();
     	$req = $bdd->query("UPDATE membres SET pass = '$pass' WHERE pseudo = '$pseudo';");
-    	echo "string";
-
         return $req;
     }
 }

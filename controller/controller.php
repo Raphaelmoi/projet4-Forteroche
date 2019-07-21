@@ -11,6 +11,11 @@ function listPosts() {
     $reponse = $postManager -> getPosts();
     require('view/affichageAccueil.php');
 }
+/*function listPostsAside($offset = 0) {
+    $postManager = new PostManager();
+    $reponse = $postManager -> getPostsPage($offset);   
+    require('view/affichageAccueil.php');
+}*/
 function post() {
     $postManager = new PostManager();
     $commentManager = new CommentManager();

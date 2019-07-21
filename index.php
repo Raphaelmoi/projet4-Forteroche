@@ -5,14 +5,24 @@ if (!empty($_COOKIE['login']) ) {
 
 }
 
-
 require('controller/controller.php');
 try {
     if (isset($_GET['action'])) {
         //home page
         if ($_GET['action'] == 'listPosts') {
-            listPosts();
+/*            if (isset($_GET['page'])) {
+                listPosts($_GET['page']);
+            }
+            else */
+                listPosts();
         }
+/*        if ($_GET['action'] == 'listPostsAside') {
+            if (isset($_GET['page'])) {
+                listPostsAside($_GET['page']);
+            }
+            else 
+                listPostsAside();
+        }*/
         //page for any article 
         elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {

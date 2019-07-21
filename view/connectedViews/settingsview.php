@@ -23,6 +23,7 @@ ob_start();
 	   <input type="submit" value="Changer mot de passe" >
 
 	</form> 
+	
 
 </section>
 <?php

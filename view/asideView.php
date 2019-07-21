@@ -1,12 +1,15 @@
 
 <?php
 require_once('model/PostManager.php');
-$article = $postManager -> getPosts();
 
+ if (isset($_GET['page'])) {
+    $article = $postManager -> getPostsPage($_GET['page']);
+            }
+    else 
+        $article = $postManager -> getPostsPage();
 ?>
 <h2 class="asideTitre">Listes des articles</h2>
 <?php
-$i = 0;
 while ($thisarticle = $article->fetch() )
 {
     $title = htmlspecialchars($thisarticle['titre']);
@@ -20,14 +23,47 @@ while ($thisarticle = $article->fetch() )
 
 }
 $article->closeCursor(); // Termine le traitement de la requête
-
-//propose la lecture d'n article au hasard
-$count = (int) $postManager->count();
-$random = rand(1, $count);
-?>
-<div class="asideHasard"> <a href="index.php?action=post&amp;id=<?=$random ?>">Lire un article au hasard</a></div>
+	?>
+	<div class="asideHasard"> 
+	<?php 
+	//propose les 10 articles suivant
+	$count = (int) $postManager->count();
+	$indice = floor($count/10);
+	if ($count/10 > 1) {
+		for ($i=0; $i <= $indice; $i++) { 
+			$url= getUrl()."page=".$i;
+			?> 
+ 			<a href="<?= $url ?>" ><?= $i +1 ?></a>
+		<?php
+		}
+		?>
+	</div>
 <?php
+}
 
-$article->closeCursor(); // Termine le traitement de la requête
+//recupere url actuel et la met au bon format pour pouvoir y ajouter identifiant
+function getUrl(){
+	$protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https')
+                === FALSE ? 'http' : 'https';
 
+	$host     = $_SERVER['HTTP_HOST'];
+	$script   = $_SERVER['SCRIPT_NAME'];
+	$params   = $_SERVER['QUERY_STRING'];
+	 
+	$currentUrl = $protocol . '://' . $host . $script . '?' . $params;
+
+	 if (preg_match("#\?page=[0-9]#", $currentUrl)) {
+	 	$currentUrl = preg_replace("#\?page=[0-9]#", '?', $currentUrl);
+	 }
+	 elseif (preg_match("#page=[0-9]#", $currentUrl)) {
+	 	$currentUrl = preg_replace("#page=[0-9]#", '', $currentUrl);
+	 }
+	elseif (preg_match("#&page=[0-9]#", $currentUrl)) {
+		 	$currentUrl = preg_replace("#&page=[0-9]#", '&', $currentUrl);
+		 }
+	else{
+		$currentUrl = $currentUrl.'&';  
+	}
+	return $currentUrl;
+}
 ?>
