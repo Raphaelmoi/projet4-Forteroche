@@ -21,17 +21,9 @@
 		}
 
 	   	if ($connexionIsOn == true) {
-		    $ConnexionManager = new ConnexionManager(); // Création d'un objet
-		    $bdd = $ConnexionManager -> dbConnect();
 
-			//verifie si pseudo est présent dans la bdd
-			$nRows = $bdd->query("SELECT count(pseudo) FROM membres WHERE pseudo = '$pseudo'")->fetchColumn(); 
-			if ($nRows ==0) {
-				header('Location: accueil.php?action=connect&erreur=a');
-			}
-
-			$req = $bdd->prepare('SELECT id, pseudo, pass FROM membres WHERE pseudo = ?');
-			$req->execute(array($pseudo));
+		    $connexionManager = new ConnexionManager();
+		    $req = $connexionManager -> getUser($pseudo);
 			
 			while ($donnees = $req->fetch())
 			{
@@ -46,8 +38,7 @@
 				    	//si on coche case connexion auto
 				    	if (isset($_POST['connexionAuto'])) {
 				    		setcookie('login', $donnees['pseudo'], time() + 365*24*3600,'/',null,false,true);
-/*							setcookie('login', $donnees['pseudo'], time() + 365*24*3600,'/');
-*/
+
 				    	}
 
 				    	header('Location: /projet4/index.php?action=homeControl');

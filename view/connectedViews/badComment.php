@@ -35,7 +35,8 @@ $comment->closeCursor(); // Termine le traitement de la requête
 </section>
 <?php
 $content = ob_get_clean();
-require ('templateconnected.php');
+require ('templateConnected.php');
+
 }
 else
     header('Location: /projet4/index.php?action=connect');

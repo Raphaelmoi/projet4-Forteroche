@@ -6,7 +6,8 @@ $article = $postManager -> getPosts();
 ?>
 <h2 class="asideTitre">Listes des articles</h2>
 <?php
-while ($thisarticle = $article->fetch())
+$i = 0;
+while ($thisarticle = $article->fetch() )
 {
     $title = htmlspecialchars($thisarticle['titre']);
 ?>
@@ -15,6 +16,8 @@ while ($thisarticle = $article->fetch())
    <div class="asideDecoration"></div>
 
 <?php
+	
+
 }
 $article->closeCursor(); // Termine le traitement de la requête
 

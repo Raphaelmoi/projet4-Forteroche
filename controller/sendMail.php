@@ -1,8 +1,9 @@
 <?php
 
-	$name = 'nom : ' . htmlspecialchars($_POST['name']) . '<br>';
-	$tel = 'telephone : ' . htmlspecialchars($_POST['tel']) . '<br>';
- 
+
+	$name = 'nom : ' . htmlspecialchars($_POST['name'])  ;
+	$tel = 'telephone : ' . htmlspecialchars($_POST['tel']) ;
+
     ini_set( 'display_errors', 1 );
  
     error_reporting( E_ALL );
@@ -18,6 +19,6 @@
     $headers = "From:" . $from;
  
     mail($to,$subject,$message, $headers);
- 
-	echo "<script> alert('message envoyé');</script>" ;
+
+	echo "<script> alert('message envoyé')</script>" ;
 ?>

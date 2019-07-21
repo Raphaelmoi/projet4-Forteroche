@@ -42,6 +42,7 @@ function contact(){
 function connect(){
     $postManager = new PostManager(); 
     $reponse = $postManager -> getPosts();
+
     require 'view/connectView.php';
 }
 function disconnect(){
@@ -137,4 +138,18 @@ function sendmail(){
     $reponse = $postManager -> getPosts();
     require 'controller/sendMail.php';
     contact();
+}
+
+function settings(){
+    require('view/connectedViews/settingsview.php');
+}
+function updatePass($newPass, $pseudo){
+    $connexionManager = new ConnexionManager();
+    require('newPass.php');
+
+    
+/*    $req = $connexionManager -> updateUserPw($newPass, $pseudo);*/
+
+        header('Location: index.php?action=homeControl');   
+
 }

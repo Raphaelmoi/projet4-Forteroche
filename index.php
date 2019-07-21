@@ -151,6 +151,12 @@ try {
         elseif ($_GET['action'] == 'sendmail') {
            sendmail();
         }
+        elseif ($_GET['action'] == 'settings') {
+           settings();
+        }
+        elseif ($_GET['action'] == 'newpw') {            
+           updatePass($_POST['new_password'],  $_POST['pseudo']);
+        }
         //if no $_GET['action'] defined, go to home page
     } else {
         listPosts();

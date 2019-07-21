@@ -31,6 +31,7 @@ header a:hover
 {
     color: #000;
     text-decoration: underline;
+    text-decoration-color: #8eacbb;
 }
 
 header div>a
@@ -398,8 +399,11 @@ aside a:hover
 .corpConnectPage
 {
     position: absolute;
-    background-color: rgba(243, 156, 18, 0.9);
-    border-radius: 10px;
+    background-color: #8eacbb;
+/*    background-color: rgba(243, 156, 18, 0.9);
+*/  
+	border-radius: 10px;
+	border: 2px #DDD solid;
     text-align: center;
     width: 34%;
     margin-top: 30vh; /* poussé de la moitié de hauteur de viewport */
@@ -410,7 +414,13 @@ aside a:hover
 {
     width: 90%;
     height: 37px;
-    border-radius: 5px;
+    border-radius: 10px;
+}
+.corpConnectPage form>input
+{
+	width: 50%;
+	border: 2px #26a69a solid; 
+	font-size: 20px;
 }
 #checkbox
 {
@@ -489,11 +499,10 @@ form
     background-color: rgba(255, 255, 255, 0.85);
     line-height: 100px;
     text-align: center;
-    border: 4px rgb(226, 230, 233) dashed;
 }
 .nouvelArticle:hover
 {
-    border: 4px #999 dashed;
+    box-shadow: 0 0 10px white;
     background-color: rgba(255, 255, 255, 0.92);
 
 }
@@ -523,7 +532,7 @@ form
 }
 .tinyForm input
 {
-    border-radius: 5px;
+    border-radius: 8px;
     margin: 10px 0;
 }
 .tinyFormTitre{
@@ -534,8 +543,7 @@ form
     margin : 10px;
 }
 .tinyFormButon{
-    background-color: #26a69a;
-    color: white;
+	border: 2px #26a69a solid;
     font-size: 20px;
     width: 30%;
 }

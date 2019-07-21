@@ -20,7 +20,7 @@ ob_start(); ?>
                     <p><br><input type="text" name="connexion_pseudo" placeholder="Pseudo" required ></p>
                     <p><br> <input type="password" name="connexion_motdepasse" placeholder="mot de passe" required /></p>
                     <p>connexion automatique <input id="checkbox" type="checkbox" name="connexionAuto"></p>
-                    <input type="submit" value="valider" >
+                    <input type="submit" value="Se connecter" >
 
                  </form> 
             </section>       

@@ -25,7 +25,7 @@ if ( !empty($_SESSION['pseudo']) ) {?>
 				span.style.fontWeight = 'normal';
 			</script><?php
 		}?>
-		
+		<li ><a href="/projet4/index.php?action=settings"><i class="fas fa-cog">Paramètres</i></a></li>
 	</ul>
 </nav>
 
