@@ -1,11 +1,11 @@
 <?php
 session_start();
+//if login cookie is found, declare the session open
 if (!empty($_COOKIE['login']) ) {
    $_SESSION['pseudo'] = $_COOKIE['login'];
-
 }
-
 require('controller/controller.php');
+
 try {
     if (isset($_GET['action'])) {
         //home page
@@ -40,9 +40,12 @@ try {
         elseif ($_GET['action'] == 'contact') {
             contact();
         }
-        //PAGE for connect
+        //PAGE CONNEXION
         elseif ($_GET['action'] == 'connect') {
             connect();
+        }//verification of the connexion parameters
+         elseif ($_GET['action'] == 'isconnected') {
+            isconnected();
         }
         //page for disconnect
         elseif ($_GET['action'] == 'disconnect') {
@@ -156,10 +159,7 @@ try {
         elseif ($_GET['action'] == 'newpw') {            
            updatePass($_POST['new_password'],  $_POST['pseudo']);
         }
-/*        elseif ($_GET['action'] == 'forgetpwd') {            
-           forgetpwd();
-        }    */ 
-       //if no $_GET['action'] defined, go to home page
+
     } else {
         listPosts();
     }
@@ -168,8 +168,8 @@ catch (Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
 }
 
-//créé un espace pour le deuxieme menu si on est connecté
 
+//créé un espace pour le deuxieme menu si on est connecté
 if (!empty($_SESSION['pseudo'])) {
 ?>
     <script src="public/DesignScript.js"></script>

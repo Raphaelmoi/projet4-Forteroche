@@ -43,12 +43,20 @@ function contact(){
 function connect(){
     $postManager = new PostManager(); 
     $reponse = $postManager -> getPosts();
-
     require 'view/connectView.php';
 }
-function disconnect(){
-    header('Location: controller/deconnexion.php');
+function isconnected(){
+    require 'controller/Connect.php';
+
+    $connect = new Connect();
+    $connexion = $connect -> connexion(); 
 }
+function disconnect(){
+    require 'controller/Connect.php';
+    $connect = new Connect();
+    $deconnexion = $connect -> deconnexion(); 
+/*    header('Location: controller/deconnexion.php');
+*/}
 function homeControl(){
     $postManager = new PostManager();
     $reponse = $postManager -> getPosts();
@@ -146,8 +154,9 @@ function settings(){
     require('view/connectedViews/settingsview.php');
 }
 function updatePass($newPass, $pseudo){
-    $connexionManager = new ConnexionManager();
-    require('newPass.php');
+    require 'controller/Connect.php';
+    $connect = new Connect();
+    $newPass = $connect -> newPass();
     header('Location: index.php?action=homeControl');   
 }
 

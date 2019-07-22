@@ -9,7 +9,6 @@ class CommentManager extends Manager
         $bdd = $this->dbConnect();
         $comment = $bdd->prepare("SELECT id, id_billet, auteur, commentaire, DATE_FORMAT(date_commentaire, '%d/%m/%Y à %Hh%imin') AS date_commentaire_fr, signalement FROM commentaires WHERE id_billet = ? && signalement < 10 ORDER BY date_commentaire");
         $comment->execute(array($postId));
-
         return $comment;
     }
     //get comment who are report at least one time or more
@@ -31,7 +30,6 @@ class CommentManager extends Manager
                     'auteur' => $auteur,
                     'commentaire' => $commentaire
                 ));
-
         return $req;
     }
     //report a comment
@@ -61,7 +59,6 @@ class CommentManager extends Manager
     {
         $bdd = $this->dbConnect();
         $count = $bdd->query('SELECT COUNT(*) FROM commentaires where signalement != 0')->fetchColumn();
-
         return $count;
     }
 }
