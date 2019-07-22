@@ -1,17 +1,13 @@
 <?php
-
 /**
- * 
+ * Contain 
+ *getURL() --> produce a clean URL for navigation beetwen page on the asideView without changing the current page
+ *formateArticle -> take off img and iframe from previews of article
+ *sendAMail ->well, send a mail for the contact page
+ *imageUploader -> uploadimage, from tiny.js and from nouveaubillet.php and modifyBillet.php
  */
 class UtiController {
-	
-	function __construct(argument)
-	{
-		# code...
-	}
-
-	//recupere url actuel et la met au bon format pour pouvoir y ajouter identifiant
-	//sert uniquement au systeme de page de aside
+	//get current Url and return a formated URL where we can easily add a $_GET['page']
 	function getUrl() {
 		$protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']) , 'https') === false ? 'http' : 'https';
 
@@ -35,9 +31,8 @@ class UtiController {
 		}
 		return $currentUrl;
 	}
-
-	//fait disparaitre image et video des extraits
-	//plus donne une longueur max a l'extrait de 600 caracteres
+	//image and video are delete from the argument
+	//The content is limited at 520 car
 	function formateArticle($ContenuBillet){
 
 	    if(preg_match("/<img[^>]+\>/i", $ContenuBillet)) {
@@ -49,8 +44,7 @@ class UtiController {
 	    $ContenuBillet = substr($ContenuBillet, 0, 520).'...'; 
 	    return $ContenuBillet;
 	}
-
-
+	//send mail
 	function sendAMail($name, $mail, $tel, $msg){
 	    $name = 'nom : ' . $name;
 	    $tel = 'telephone : ' . $tel ;
@@ -65,4 +59,44 @@ class UtiController {
 
 	    echo " <script> alert('message envoyé')</script>" ;
 	}
+	//upload Image and return the URL where is upload the image
+	function imageUploader(){
+        $accepted_origins = array("http://localhost");
+        // Images upload path
+        $imageFolder = "public/images/";
+        reset($_FILES);
+        $temp = current($_FILES);
+        if(is_uploaded_file($temp['tmp_name'])){
+            if(isset($_SERVER['HTTP_ORIGIN'])){
+                // Same-origin requests won't set an origin. If the origin is set, it must be valid.
+                if(in_array($_SERVER['HTTP_ORIGIN'], $accepted_origins)){
+                    header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
+                }else{
+                    header("HTTP/1.1 403 Origin Denied");
+                    return;
+                }
+            }
+            // Sanitize input
+            if(preg_match("/([^\w\s\d\-_~,;:\[\]\(\).])|([\.]{2,})/", $temp['name'])){
+                header("HTTP/1.1 400 Invalid file name.");
+                return;
+            }          
+            // Verify extension
+            if(!in_array(strtolower(pathinfo($temp['name'], PATHINFO_EXTENSION)), array("gif", "jpg", "png"))){
+                header("HTTP/1.1 400 Invalid extension.");
+                return;
+            }          
+            // Accept upload if there was no origin, or if it is an accepted origin
+            $filetowrite =  $imageFolder . $temp['name'];
+
+            move_uploaded_file($temp['tmp_name'],$filetowrite);  
+             // Respond to the successful upload with JSON.
+            echo json_encode(array('location' => $filetowrite));
+
+        } else {
+            // Notify editor that the upload failed
+            header("HTTP/1.1 500 Server Error");
+        }
+        return $filetowrite;
+    }
 }

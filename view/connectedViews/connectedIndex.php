@@ -20,7 +20,7 @@ while ($donnees = $reponse->fetch())
             </div>
             <div class="textArticle"> 
                 <?php
-                $ContenuBillet = formateArticle($donnees['contenu']);               
+                $ContenuBillet = $uticontroller -> formateArticle($donnees['contenu']);
                 echo $ContenuBillet;
                 ?>
             </div>

@@ -9,7 +9,8 @@ spl_autoload_register('chargerClasse');
 function listPosts() {
     $postManager = new PostManager();
     $reponse = $postManager -> getPosts();
-    require 'controller/regexArticle.php';
+    require 'controller/UtiController.php';
+    $uticontroller = new UtiController();
     require('view/affichageAccueil.php');
 }
 function post($id) {
@@ -60,7 +61,8 @@ function disconnect(){
 function homeControl(){
     $postManager = new PostManager();
     $reponse = $postManager -> getPosts();
-    require 'controller/regexArticle.php';
+    require 'controller/UtiController.php';
+    $uticontroller = new UtiController();
     require('view/connectedViews/connectedIndex.php');
 }
 function nouveauBillet(){
@@ -68,9 +70,7 @@ function nouveauBillet(){
 }
 function addPost($titre, $contenu, $imageurl)
 {
-    require 'controller/postAcceptor.php';
-    $imageUploader = new postAcceptor();
-    $imageurl = $imageUploader -> imageUploader($imageurl);
+    $imageurl = uploadImg();
 
     $postManager = new PostManager(); 
     $envoi = $postManager -> postPost($titre, $contenu, $imageurl);
@@ -85,9 +85,7 @@ function modifyPost($id)
     require('view/connectedViews/modifyBillet.php');
 }
 function updateThePost($id, $titre, $contenu, $imageUrl){
-    require 'controller/postAcceptor.php';
-    $imageUploader = new postAcceptor();
-    $imageUrl = $imageUploader -> imageUploader($imageUrl);
+    $imageUrl = uploadImg();
 
     $postManager = new PostManager();
     $req = $postManager -> updatePost($id, $titre, $contenu, $imageUrl); 
@@ -154,8 +152,10 @@ function likeAPost($id, $val){
 function sendmail($name, $mail, $tel, $msg){
     $postManager = new PostManager(); 
     $reponse = $postManager -> getPosts();
-    require 'controller/sendMail.php';
-    sendAMail($name, $mail, $tel, $msg);
+    require 'controller/UtiController.php';
+    $sendMail = new UtiController();
+    $sendAMail = $sendMail -> sendAMail($name, $mail, $tel, $msg);
+    
     contact();
 }
 
@@ -168,7 +168,8 @@ function updatePass($oldPass, $newPass, $pseudo){
     $newPass = $connect -> newPass($oldPass, $newPass, $pseudo);
 }
 function uploadImg(){
-    require 'controller/postAcceptor.php';
-    $imageUploader = new postAcceptor();
+    require 'controller/UtiController.php';
+    $imageUploader = new UtiController();
     $imageUrl = $imageUploader -> imageUploader();
+    return $imageUrl;
 }

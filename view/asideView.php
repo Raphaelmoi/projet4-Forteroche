@@ -1,7 +1,7 @@
 <!-- ASIDE PAGE -->
 <?php
 require_once ('model/PostManager.php');
-require_once ('controller/getUrl.php');
+require_once ('controller/UtiController.php');
 
 if (isset($_GET['page'])) {
 	$article = $postManager->getPostsPage($_GET['page']);
@@ -27,12 +27,14 @@ $article->closeCursor();
 <div class="asideNavigation"> 
 <?php
 $count = (int)$postManager->count();
+$uticontroller = new UtiController();
+
 $indice = floor($count / 10);
 if ($indice >= 1) {
 	for ($i = 0;$i <= $indice;$i++) {
-		$url = getUrl() . "page=" . $i;//give the url of the actual page in the good format
+		$getUrl = $uticontroller -> getUrl() . "page=" . $i;//give the url of the actual page in the good format
 			?> 
- 			<a href="<?=$url?>" ><?=$i + 1 ?></a>
+ 			<a href="<?=$getUrl?>" ><?=$i + 1 ?></a>
 	<?php
 	}
 	?>

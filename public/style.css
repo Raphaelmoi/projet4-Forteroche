@@ -215,6 +215,10 @@ form
 {
     border: 2px solid lightblue;
 }
+.billetAlone>div
+{
+    width: 100%;    
+}
 .entete
 {
     display: flex;

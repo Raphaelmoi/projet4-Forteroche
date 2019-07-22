@@ -29,8 +29,8 @@ tinymce.init({
                 failure('HTTP Error: ' + xhr.status);
                 return;
             }
-        	console.log(xhr.responseText);
-            json = JSON.parse(xhr.responseText);
+        	console.log(xhr.responseText);  
+          json = JSON.parse(xhr.responseText);
         
             if (!json || typeof json.location != 'string') {
                 failure('Invalid JSON: ' + xhr.responseText);
