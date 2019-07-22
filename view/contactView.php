@@ -1,10 +1,10 @@
+<!-- CONTACT PAGE  -->
 <?php $title = 'contact';
 ob_start(); ?>
 
-	<section class="biographie">
-			<h2>Me contacter</h2>
-			<p class="formP">Vous êtes éditeur et vous souhaitez publier mon livre ou bien vous êtes un fan trop pudique pour vous exprimer par commentaire? Contactez-moi via ce formulaire :</p>
-
+<section class="biographie">
+	<h2>Me contacter</h2>
+	<p class="formP">Vous êtes éditeur et vous souhaitez publier mon livre ou bien vous êtes un fan trop pudique pour vous exprimer par commentaire? Contactez-moi via ce formulaire :</p>
 
 	<form class="contactForm" action="index.php?action=sendmail" method="post">
 		<div>
@@ -16,15 +16,13 @@ ob_start(); ?>
 				<label>Télephone</label>
 				<input type="tel" name="tel" placeholder="votre télephone" required>
 			</div>
-			 <div>
-			 	<textarea name="msg">  Saisissez ici votre message</textarea>
-			 </div>
-		</div>
-
-		
+			<div>
+				<textarea name="msg">  Saisissez ici votre message</textarea>
+			</div>
+		</div>		
 		<input type="submit" name="submit">
 	</form>
-	</section>
+</section>
 
 <?php
 $content = ob_get_clean();

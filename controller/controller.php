@@ -9,14 +9,9 @@ spl_autoload_register('chargerClasse');
 function listPosts() {
     $postManager = new PostManager();
     $reponse = $postManager -> getPosts();
+    require 'controller/regexArticle.php';
     require('view/affichageAccueil.php');
 }
-/*function listPostsAside($offset = 0) {
-    $postManager = new PostManager();
-    $reponse = $postManager -> getPostsPage($offset);
-        require('view/affichageAccueil.php');
-
-}*/
 function post() {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
@@ -57,6 +52,7 @@ function disconnect(){
 function homeControl(){
     $postManager = new PostManager();
     $reponse = $postManager -> getPosts();
+    require 'controller/regexArticle.php';
     require('view/connectedViews/connectedIndex.php');
 }
 function nouveauBillet(){

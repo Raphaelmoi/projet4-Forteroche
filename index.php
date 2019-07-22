@@ -172,7 +172,7 @@ catch (Exception $e) {
 
 if (!empty($_SESSION['pseudo'])) {
 ?>
-    <script type="text/javascript" src="public/DesignScript.js"></script>
+    <script src="public/DesignScript.js"></script>
 <?php
 
 }

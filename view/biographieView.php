@@ -1,5 +1,8 @@
-<?php $title = 'biographie';
-ob_start(); ?>
+<!-- BIOGRAPHIE OF JEAN FORTEROCHE PAGE -->
+<?php 
+$title = 'biographie';
+ob_start(); 
+?>
 <section class="biographie">
 	<h2>Biographie de Jean Forteroche</h2>
 
@@ -21,13 +24,10 @@ ob_start(); ?>
 		<div>
 			<p>Aujourd'hui plus que centenaire, Jean Forteroche est de retour sur ses terres d'origine. Résolument moderne, son nouveau roman "Billet simple pour l'Alaska" est publié chapitre par chapitre sur son site internet. Il y raconte sa vie d'aventurier et son retour définitif sur la terre de ses ancêtres. Son humour potache et sa grande vitalité en font une star des réseaux sociaux et ses billets sont lus par plus d'un million de lecteurs chaque semaine. </p>
 			<img src="public/images/forterochecent.jpg" class="smallImgBio">
-
-		</div>
-		
-         
+		</div>         
 </section>
-
 
 <?php
 $content = ob_get_clean();
-require ('template.php'); ?>
+require ('template.php'); 
+?>

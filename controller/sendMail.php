@@ -1,6 +1,5 @@
 <?php
 
-
 	$name = 'nom : ' . htmlspecialchars($_POST['name'])  ;
 	$tel = 'telephone : ' . htmlspecialchars($_POST['tel']) ;
 

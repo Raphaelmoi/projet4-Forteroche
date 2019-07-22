@@ -1,40 +1,31 @@
-<?php $title = 'Mon blog';
-ob_start(); ?>
-
+<!-- HOME PAGE -->
 <?php
+$title = 'Mon blog';
+ob_start();
+
 while ($donnees = $reponse->fetch())
 {
 ?>
     <article class="articleBillet">
-      <img src="<?php echo ($donnees['url']); ?>">
-      <div>
-          <div class="enteteSommaire"> 
-            <h2><?php echo ($donnees['titre']); ?>  </h2> 
-          </div>
-          <div class="textArticle"> <?php
-
-          $machin = $donnees['contenu'];
-          //fait disparaitre iMage et video des extraits
-          //plus donne une longueur max a l'extrait de 600 caracteres
-          if(preg_match("/<img[^>]+\>/i", $machin)) {
-              $machin = preg_replace("/<img[^>]+\>/i", "", $machin); 
-          }
-          if(preg_match("/<iframe[^>]+\>/i", $machin)) {
-              $machin = preg_replace("/<iframe[^>]+\>/i", "", $machin); 
-          }
-          $machin = substr($machin, 0, 520).'...'; 
-          echo $machin;
-           ?>
-          </div>
-          <div class="btnReadMore">
-              <a href="index.php?action=post&amp;id=<?=$donnees['id'] ?>">Lire la suite</a>
-          </div>
-
-      </div>
+        <img src="<?= $donnees['url']; ?>">
+        <div>
+            <div class="enteteSommaire"> 
+                <h2><?= $donnees['titre']; ?>  </h2> 
+            </div>
+            <div class="textArticle"> 
+            <?php
+                $ContenuBillet = formateArticle($donnees['contenu']);               
+                echo $ContenuBillet;
+            ?>
+            </div>
+            <div class="btnReadMore">
+                <a href="index.php?action=post&amp;id=<?=$donnees['id'] ?>">Lire la suite</a>
+            </div>
+        </div>
     </article>   
-
 <?php
 }
 $reponse->closeCursor(); // Termine le traitement de la requête
 $content = ob_get_clean();
-require ('template.php'); ?>
+require ('template.php'); 
+?>

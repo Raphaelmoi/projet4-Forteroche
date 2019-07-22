@@ -1,4 +1,3 @@
-
 function spaceForSecondMenu() {
     let aside = document.getElementById('aside');
     let corps = document.getElementsByClassName('contenuCorps')[0];
@@ -9,3 +8,11 @@ function spaceForSecondMenu() {
 };
 spaceForSecondMenu();
 
+function redComments(qtt){
+	badComm = document.getElementById('signaledComm');
+	span =document.getElementById('span');
+	badComm.style.color = '#f44336';
+	span.style.color = '#f44336';
+	span.textContent +=" (" + qtt + ")";
+	span.style.fontWeight = 'normal';
+}

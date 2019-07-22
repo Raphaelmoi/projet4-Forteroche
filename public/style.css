@@ -255,6 +255,7 @@ form
     margin-bottom: 10px;
     border-radius: 5px;
     text-align: center;
+    z-index: 99;
 }
 .btnBackHome i
 {
