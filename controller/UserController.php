@@ -1,4 +1,11 @@
 <?php
+/*
+*USER LOGIN, LOGOUT AND PASWWORD CHANGING FUNCTIONS
+*logIN() -> connect 
+*logOut() -> disconnect
+*newPass() -> change password
+*/
+
 class UserController{
 	public function logIn()
 	{
