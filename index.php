@@ -1,9 +1,6 @@
 <?php
 session_start();
-//if login cookie is found, declare the session open
-if (!empty($_COOKIE['login']) ) {
-   $_SESSION['pseudo'] = $_COOKIE['login'];
-}
+
 require('controller/controller.php');
 
 try {
@@ -15,7 +12,7 @@ try {
         //page for any article 
         elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                post();
+                post($_GET['id']);
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
@@ -62,9 +59,7 @@ try {
         // creating a new article
         elseif ($_GET['action'] == 'addPost') {
             if (!empty($_POST['titre']) && !empty($_POST['contenu']) && isset($_FILES['fileToUpload'])) {
-                require 'controller/postAcceptor.php';
-                $imageurl   = "public/images/" . basename($_FILES['fileToUpload']["name"]);
-                addPost($_POST['titre'], $_POST['contenu'], $imageurl);
+                addPost($_POST['titre'], $_POST['contenu'], $_FILES['fileToUpload']);
             } else {
                 throw new Exception('Tous les champs ne sont pas remplis !');
             }
@@ -82,9 +77,7 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['titre']) && !empty($_POST['contenu'])) {
                     if (($_FILES['fileToUpload']['name'] != "")) {
-                        require 'controller/postAcceptor.php';
-                        $imageurl   = "public/images/" . basename($_FILES['fileToUpload']["name"]);
-                        updateThePost($_GET['id'], $_POST['titre'], $_POST['contenu'], $imageurl);
+                     updateThePost($_GET['id'], $_POST['titre'], $_POST['contenu'], $_FILES['fileToUpload']);
                     } else {
                         updatePostWithoutImg($_GET['id'], $_POST['titre'], $_POST['contenu']);
                     }
@@ -92,6 +85,13 @@ try {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             }
+        }
+        elseif ($_GET['action'] == 'addImg') {
+            /*if (isset($_FILES['fileToUpload'])) {
+                uploadImg($_FILES['fileToUpload']);
+            }
+            else echo "bug";*/
+            uploadImg();
         }
         //when you delete a post
         elseif ($_GET['action'] == 'deletePost') {
@@ -151,29 +151,26 @@ try {
             }
         }
         elseif ($_GET['action'] == 'sendmail') {
-           sendmail();
+            if (isset($_POST['name']) AND isset($_POST['mail']) AND isset($_POST['tel'])  AND isset($_POST['msg'])) 
+            { 
+                    sendmail($_POST['name'], $_POST['mail'], $_POST['tel'], $_POST['msg']);
+            }
         }
         elseif ($_GET['action'] == 'settings') {
            settings();
         }
-        elseif ($_GET['action'] == 'newpw') {            
-           updatePass($_POST['new_password'],  $_POST['pseudo']);
+        elseif ($_GET['action'] == 'newpw') {
+            if (isset($_POST['pseudo']) AND isset($_POST['old_password']) AND isset($_POST['new_password'])) { 
+                updatePass($_POST['old_password'], $_POST['new_password'],  $_POST['pseudo']);
+            }else
+            echo 'isset bug';
         }
-
     } else {
         listPosts();
     }
 }
+
 catch (Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
 }
 
-
-//créé un espace pour le deuxieme menu si on est connecté
-if (!empty($_SESSION['pseudo'])) {
-?>
-    <script src="public/DesignScript.js"></script>
-<?php
-
-}
-?>

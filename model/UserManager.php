@@ -1,7 +1,7 @@
 <?php
 require_once("Manager.php"); 
 
-class ConnexionManager extends Manager
+class UserManager extends Manager
 {
     //get user data, needed when try to connect
     public function getUser($pseudo)

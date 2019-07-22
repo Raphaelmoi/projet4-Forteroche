@@ -12,7 +12,7 @@ tinymce.init({
   	paste_data_images: true,
 
   	 /* without images_upload_url set, Upload tab won't show up*/
-  	images_upload_url: 'controller/postAcceptor.php',
+  	images_upload_url: 'index.php?action=addImg',
 
   /* we override default upload handler to simulate successful upload*/
 	images_upload_handler: function (blobInfo, success, failure) {
@@ -20,7 +20,7 @@ tinymce.init({
       
         xhr = new XMLHttpRequest();
         xhr.withCredentials = false;
-        xhr.open('POST', 'controller/postAcceptor.php?id=2');
+        xhr.open('POST', 'index.php?action=addImg');
       
         xhr.onload = function() {
             var json;

@@ -1,23 +1,26 @@
 <?php
 
-	$name = 'nom : ' . htmlspecialchars($_POST['name'])  ;
-	$tel = 'telephone : ' . htmlspecialchars($_POST['tel']) ;
+function sendAMail($name, $mail, $tel, $msg){
+    $name = 'nom : ' . $name;
+    $tel = 'telephone : ' . $tel ;
 
     ini_set( 'display_errors', 1 );
  
     error_reporting( E_ALL );
  
-    $from = htmlspecialchars($_POST['mail']);
+    $from = $mail;
  
     $to = "raphael.mouly@free.fr";
  
     $subject =  "message depuis le site de Jean Forteroche";
- 	
-    $message = $name . $tel . htmlspecialchars($_POST['msg']);
-	 
+    
+    $message = $name . $tel . $msg;
+     
     $headers = "From:" . $from;
  
     mail($to,$subject,$message, $headers);
 
-	echo "<script> alert('message envoyé')</script>" ;
+    echo " <script> alert('message envoyé')</script>" ;
+}
+
 ?>

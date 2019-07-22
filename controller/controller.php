@@ -12,11 +12,11 @@ function listPosts() {
     require 'controller/regexArticle.php';
     require('view/affichageAccueil.php');
 }
-function post() {
+function post($id) {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
-    $article = $postManager -> getPost($_GET['id']);
-    $comment = $commentManager -> getComments($_GET['id']);
+    $article = $postManager -> getPost($id);
+    $comment = $commentManager -> getComments($id);
     require('view/postView.php');
 }
 function addComment($postId, $author, $comment) {
@@ -46,15 +46,15 @@ function connect(){
     require 'view/connectView.php';
 }
 function isconnected(){
-    require 'controller/Connect.php';
+    require 'controller/UserController.php';
 
-    $connect = new Connect();
-    $connexion = $connect -> connexion(); 
+    $connect = new UserController();
+    $connexion = $connect -> logIn(); 
 }
 function disconnect(){
-    require 'controller/Connect.php';
-    $connect = new Connect();
-    $deconnexion = $connect -> deconnexion(); 
+    require 'controller/UserController.php';
+    $connect = new UserController();
+    $deconnexion = $connect -> logOut(); 
 /*    header('Location: controller/deconnexion.php');
 */}
 function homeControl(){
@@ -68,6 +68,10 @@ function nouveauBillet(){
 }
 function addPost($titre, $contenu, $imageurl)
 {
+    require 'controller/postAcceptor.php';
+    $imageUploader = new postAcceptor();
+    $imageurl = $imageUploader -> imageUploader($imageurl);
+
     $postManager = new PostManager(); 
     $envoi = $postManager -> postPost($titre, $contenu, $imageurl);
     //pour eviter en cas de f5 de publier 2 fois le meme article :  
@@ -80,9 +84,13 @@ function modifyPost($id)
     $article = $postManager -> getPost($id); 
     require('view/connectedViews/modifyBillet.php');
 }
-function updateThePost($id, $titre, $contenu, $url){
+function updateThePost($id, $titre, $contenu, $imageUrl){
+    require 'controller/postAcceptor.php';
+    $imageUploader = new postAcceptor();
+    $imageUrl = $imageUploader -> imageUploader($imageUrl);
+
     $postManager = new PostManager();
-    $req = $postManager -> updatePost($id, $titre, $contenu, $url); 
+    $req = $postManager -> updatePost($id, $titre, $contenu, $imageUrl); 
     //pour eviter en cas de f5 de publier 2 fois le meme article :  
     $reponse = $postManager -> getPosts();
     header('Location: index.php?action=homeControl');
@@ -143,25 +151,24 @@ function likeAPost($id, $val){
     header('Location: index.php?action=post&id='.$id);
 }
 
-function sendmail(){
+function sendmail($name, $mail, $tel, $msg){
     $postManager = new PostManager(); 
     $reponse = $postManager -> getPosts();
     require 'controller/sendMail.php';
+    sendAMail($name, $mail, $tel, $msg);
     contact();
 }
 
 function settings(){
     require('view/connectedViews/settingsview.php');
 }
-function updatePass($newPass, $pseudo){
-    require 'controller/Connect.php';
-    $connect = new Connect();
-    $newPass = $connect -> newPass();
-    header('Location: index.php?action=homeControl');   
+function updatePass($oldPass, $newPass, $pseudo){
+    require 'controller/UserController.php';
+    $connect = new UserController();
+    $newPass = $connect -> newPass($oldPass, $newPass, $pseudo);
 }
-
-/*function forgetpwd(){
-    $connexionManager = new ConnexionManager();
-    require('forgetPass.php');
-
-}*/
+function uploadImg(){
+    require 'controller/postAcceptor.php';
+    $imageUploader = new postAcceptor();
+    $imageUrl = $imageUploader -> imageUploader();
+}

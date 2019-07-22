@@ -6,7 +6,6 @@ function spaceForSecondMenu() {
         corps.style.marginTop = "100px";
     }
 };
-spaceForSecondMenu();
 
 function redComments(qtt){
 	badComm = document.getElementById('signaledComm');
@@ -15,4 +14,8 @@ function redComments(qtt){
 	span.style.color = '#f44336';
 	span.textContent +=" (" + qtt + ")";
 	span.style.fontWeight = 'normal';
-}
+};
+
+window.onload = function() {
+	spaceForSecondMenu();
+};

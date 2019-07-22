@@ -7,10 +7,15 @@ ob_start();
 	<form action="index.php?action=newpw" method="post">
 	    <h2>changer mot de passe</h2>
 	    <p id="wrongid" style="color: red;"> <?php
-	     	if (isset($_GET['erreur'])) {
-	    		if ($_GET['erreur'] == 'a' ) {
+	     	if (isset($_GET['error'])) {
+	    		if ($_GET['error'] == 'samepw' ) {
 	            ?>
-	            identifiant ou mot de passe incorect   
+	            Vous avez saisie deux fois le même mot de passe 
+	            <?php
+	        	}
+	            elseif ($_GET['error'] == 'fail' ) {
+	            ?>
+	            Vous n'avez pas saisie le bon mot de passe 
 	            <?php
 	        	}
 	    	}

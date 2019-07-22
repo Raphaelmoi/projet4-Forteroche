@@ -8,7 +8,14 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="public/style.css">
         <link href="https://fonts.googleapis.com/css?family=Mali:300|Open+Sans&display=swap" rel="stylesheet">
-        <script src="public/DesignScript.js"></script>
+        <?php
+        //créé un espace pour le deuxieme menu si on est connecté
+        if (!empty($_SESSION['pseudo'])) {
+        ?>
+            <script src="public/DesignScript.js"></script>
+        <?php
+        }
+        ?>
     </head>
     <body>
         <header>

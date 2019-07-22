@@ -1,58 +1,68 @@
 <?php
-// Uploading image with tinyMCE
-// Allowed origins to upload images
+// Uploading image with tinyMCE and under
+//tinyMCE produce different path
+class postAcceptor{
 
-if (isset($_FILES['fileToUpload'])) {
-    $pathIsFromIndex = true;
-}
-else
-    $pathIsFromIndex = false;
 
-$accepted_origins = array("http://localhost");
-
-// Images upload path
-$imageFolder = "public/images/";
-
-reset($_FILES);
-$temp = current($_FILES);
-if(is_uploaded_file($temp['tmp_name'])){
-    if(isset($_SERVER['HTTP_ORIGIN'])){
-        // Same-origin requests won't set an origin. If the origin is set, it must be valid.
-        if(in_array($_SERVER['HTTP_ORIGIN'], $accepted_origins)){
-            header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
-        }else{
-            header("HTTP/1.1 403 Origin Denied");
-            return;
+    function imageUploader($image = 0){
+        /*if (isset($_FILES['fileToUpload'])) {
+        $pathIsFromIndex = true;
         }
-    }
-  
-    // Sanitize input
-    if(preg_match("/([^\w\s\d\-_~,;:\[\]\(\).])|([\.]{2,})/", $temp['name'])){
-        header("HTTP/1.1 400 Invalid file name.");
-        return;
-    }
-  
-    // Verify extension
-    if(!in_array(strtolower(pathinfo($temp['name'], PATHINFO_EXTENSION)), array("gif", "jpg", "png"))){
-        header("HTTP/1.1 400 Invalid extension.");
-        return;
-    }
-  
-    // Accept upload if there was no origin, or if it is an accepted origin
-    $filetowrite =  $imageFolder . $temp['name'];
-    //produce different path if this code is call from index.php or from the tinyMCE js code
-    if ($pathIsFromIndex == true) {
-        move_uploaded_file($temp['tmp_name'], $filetowrite);
-    }
-    else {
-         move_uploaded_file($temp['tmp_name'], '../' .$filetowrite);  
-         // Respond to the successful upload with JSON.
-         echo json_encode(array('location' => $filetowrite));
-     }     
-} else {
-    // Notify editor that the upload failed
-    header("HTTP/1.1 500 Server Error");
-}
+        else
+            $pathIsFromIndex = false;
+*/
+        $accepted_origins = array("http://localhost");
 
-$pathIsFromIndex = false;
-?>
+        // Images upload path
+        $imageFolder = "public/images/";
+
+        reset($_FILES);
+        $temp = current($_FILES);
+        if(is_uploaded_file($temp['tmp_name'])){
+            if(isset($_SERVER['HTTP_ORIGIN'])){
+                // Same-origin requests won't set an origin. If the origin is set, it must be valid.
+                if(in_array($_SERVER['HTTP_ORIGIN'], $accepted_origins)){
+                    header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
+                }else{
+                    header("HTTP/1.1 403 Origin Denied");
+                    return;
+                }
+            }
+          
+            // Sanitize input
+            if(preg_match("/([^\w\s\d\-_~,;:\[\]\(\).])|([\.]{2,})/", $temp['name'])){
+                header("HTTP/1.1 400 Invalid file name.");
+                return;
+            }
+          
+            // Verify extension
+            if(!in_array(strtolower(pathinfo($temp['name'], PATHINFO_EXTENSION)), array("gif", "jpg", "png"))){
+                header("HTTP/1.1 400 Invalid extension.");
+                return;
+            }
+          
+            // Accept upload if there was no origin, or if it is an accepted origin
+            $filetowrite =  $imageFolder . $temp['name'];
+            //produce different path if this code is call from index.php or from the tinyMCE js code
+
+                 move_uploaded_file($temp['tmp_name'], $filetowrite);  
+                 // Respond to the successful upload with JSON.
+                 echo json_encode(array('location' => $filetowrite));
+
+/*            if ($pathIsFromIndex == true) {
+                move_uploaded_file($temp['tmp_name'], $filetowrite);
+            }*/
+/*            else {
+                 move_uploaded_file($temp['tmp_name'], '../' .$filetowrite);  
+                 // Respond to the successful upload with JSON.
+                 echo json_encode(array('location' => $filetowrite));
+             }   */  
+        } else {
+            // Notify editor that the upload failed
+            header("HTTP/1.1 500 Server Error");
+        }
+
+        // $pathIsFromIndex = false;
+        return $filetowrite;
+    }
+}

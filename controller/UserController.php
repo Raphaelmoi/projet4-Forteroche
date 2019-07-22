@@ -1,8 +1,8 @@
 <?php
-class Connect{
-	public function connexion()
+class UserController{
+	public function logIn()
 	{
-		require_once("model/ConnexionManager.php"); 
+		require_once("model/UserManager.php"); 
 		/*verifie la bonne recuperation des donnees d'un connexion en cours*/
 		$connexionIsOn = false;
 		//si pseudo et mot de passe sont passé via post
@@ -13,7 +13,7 @@ class Connect{
 			$connexionIsOn = true;
 		}
 	   	if ($connexionIsOn == true) {
-		    $connexionManager = new ConnexionManager();
+		    $connexionManager = new UserManager();
 		    $req = $connexionManager -> getUser($pseudo);
 			while ($donnees = $req->fetch())
 			{
@@ -32,7 +32,7 @@ class Connect{
 			$req->closeCursor(); 
 		}
 	}
-	public function deconnexion()
+	public function logOut()
 	{
 		session_start();
 		// Suppression des variables de session et de la session
@@ -41,22 +41,26 @@ class Connect{
 		header('Location: /projet4/index.php');
 	}
 
-	public function newPass()
+	public function newPass($oldPass, $newPass, $pseudo)
 	{
-		if (isset($_POST['pseudo']) AND isset($_POST['old_password']) AND isset($_POST['new_password'])) {
+		require_once("model/UserManager.php"); 
+		$connexionManager = new UserManager();
+		$test = $connexionManager -> getUser($pseudo);
+		while ($donnees = $test->fetch())
+		{
+			if (password_verify($oldPass, $donnees['pass'])) {
+				if ($oldPass != $newPass) {
+					$hashed_password = password_hash($newPass, PASSWORD_DEFAULT);
+					$req = $connexionManager -> updateUserPw($hashed_password, $pseudo);
+					header('Location: index.php?action=homeControl');  
+				}
+				 else
+				 	header('Location: index.php?action=settings&error=samepw');   
 
-	   		$pseudo = htmlspecialchars($_POST['pseudo']);
-			$old_password = htmlspecialchars($_POST['old_password']);
-			$new_password = htmlspecialchars($_POST['new_password']);
-			
-			require_once("model/ConnexionManager.php"); 
-			$connexionManager = new ConnexionManager();
-			$hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-			$req = $connexionManager -> updateUserPw($hashed_password, $pseudo);				
-			} 	   			
-		else { 
-			echo 'isset bug';
-	   	}
+			}
+			else
+				header('Location: index.php?action=settings&error=fail');   
+		}
 	}
 }
 
