@@ -152,8 +152,8 @@ try {
         }
         //DELETE A COMMENT from article page
         elseif ($_GET['action'] == 'deletecommentfromviewpage') {
-            if (isset($_GET['commentid']) && $_GET['commentid'] > 0) {
-                deleteCommentFromViewPage($_GET['commentid']);
+            if (isset($_GET['commentid']) && $_GET['commentid'] > 0 && isset($_GET['id']) && $_GET['id'] > 0 ) {
+                deleteCommentFromViewPage($_GET['commentid'], $_GET['id']);
             }
         }
         //SEND A MAIL

@@ -11,14 +11,14 @@ function listPosts() {
     $reponse = $postManager -> getPosts();
     require 'controller/UtiController.php';
     $uticontroller = new UtiController();
-    require('view/affichageAccueil.php');
+    require('view/frontend/affichageAccueil.php');
 }
 function post($id) {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
     $article = $postManager -> getPost($id);
     $comment = $commentManager -> getComments($id);
-    require('view/postView.php');
+    require('view/frontend/postView.php');
 }
 function addComment($postId, $author, $comment) {
     $postManager = new PostManager();
@@ -34,17 +34,17 @@ function addComment($postId, $author, $comment) {
 function biographie(){
     $postManager = new PostManager(); 
     $reponse = $postManager -> getPosts();
-    require 'view/biographieView.php';
+    require 'view/frontend/biographieView.php';
 }
 function contact(){
     $postManager = new PostManager(); 
     $reponse = $postManager -> getPosts();
-    require 'view/contactView.php';
+    require 'view/frontend/contactView.php';
 }
 function connect(){
     $postManager = new PostManager(); 
     $reponse = $postManager -> getPosts();
-    require 'view/connectView.php';
+    require 'view/frontend/connectView.php';
 }
 function isconnected(){
     require 'controller/UserController.php';
@@ -63,10 +63,10 @@ function homeControl(){
     $reponse = $postManager -> getPosts();
     require 'controller/UtiController.php';
     $uticontroller = new UtiController();
-    require('view/connectedViews/connectedIndex.php');
+    require('view/backend/connectedIndex.php');
 }
 function nouveauBillet(){
-    require('view/connectedViews/nouveauBillet.php');
+    require('view/backend/nouveauBillet.php');
 }
 function addPost($titre, $contenu, $imageurl)
 {
@@ -82,7 +82,7 @@ function modifyPost($id)
 {
     $postManager = new PostManager();
     $article = $postManager -> getPost($id); 
-    require('view/connectedViews/modifyBillet.php');
+    require('view/backend/modifyBillet.php');
 }
 function updateThePost($id, $titre, $contenu, $imageUrl){
     $imageUrl = uploadImg();
@@ -120,7 +120,7 @@ function badCommentView()
     $commentManager = new CommentManager();
     $comment = $commentManager -> getSignaledComments();
     $number =  $commentManager -> countBadComment();
-    require('view/connectedViews/badComment.php');
+    require('view/backend/badComment.php');
 }
 function deleteComment($id)
 {
@@ -128,11 +128,11 @@ function deleteComment($id)
     $delete = $commentManager -> deleteComment($id);
     badCommentView();
 }
-function deleteCommentFromViewPage($id)
+function deleteCommentFromViewPage($commentid, $articleid)
 {
     $commentManager = new CommentManager();
-    $delete = $commentManager -> deleteComment($id);
-    post();
+    $delete = $commentManager -> deleteComment($commentid);
+    post($articleid);
 }
 function validateComment($id){
     $commentManager = new CommentManager();
@@ -160,7 +160,7 @@ function sendmail($name, $mail, $tel, $msg){
 }
 
 function settings(){
-    require('view/connectedViews/settingsview.php');
+    require('view/backend/settingsview.php');
 }
 function updatePass($oldPass, $newPass, $pseudo){
     require 'controller/UserController.php';
