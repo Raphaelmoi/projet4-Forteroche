@@ -53,10 +53,13 @@ class UtiController {
 	    $from = $mail;	 
 	    $to = "raphael.mouly@free.fr";
 	    $subject =  "message depuis le site de Jean Forteroche";
-	    $message = $name . $tel . $msg;	     
-	    $headers = "From:" . $from;
-	    mail($to,$subject,$message, $headers);
+	    $message = nl2br($name ."\n". $tel ."\n". $msg);
 
+	    echo $message;
+
+	    $headers = "From:" . $from;
+/*	    mail($to,$subject,$message, $headers);
+*/
 	    echo " <script> alert('message envoyé')</script>" ;
 	}
 	//upload Image and return the URL where is upload the image

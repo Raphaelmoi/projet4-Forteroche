@@ -4,10 +4,16 @@ require_once("model/Manager.php");
 class PostManager extends Manager 
 {
     //give all the posts for home page and connected home page
-    public function getPosts()
+    public function getPosts($sort = 0)
     {
+        if ($sort == 1) {
+            $order = "DESC";
+        }
+        else
+           $order = "";
+
         $bdd = $this->dbConnect();
-        $reponse = $bdd->query('SELECT id, titre, contenu, url, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin\') AS date_creation_fr FROM billets ORDER BY id');
+        $reponse = $bdd->query('SELECT id, titre, contenu, url, DATE_FORMAT(date_creation, \'%d/%m/%Y \') AS date_creation_fr FROM billets ORDER BY id '.$order);
         return $reponse;
     }
     //give posts per 10 for the aside view

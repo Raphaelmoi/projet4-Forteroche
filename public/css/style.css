@@ -437,6 +437,16 @@ form
     margin-left: auto;
     margin-right: auto;
 }
+/*sort aricle and changing the kind of preview btns*/
+.homeGestionnaire{
+    display: flex;
+    justify-content: space-around;
+}
+.homeGestionnaire span
+{
+    margin-left: 15px;
+}
+
 /* read more , modify or delete under each preview article*/
 .gestionnaireArticle
 {
@@ -463,6 +473,38 @@ form
 {
     font-weight: bolder;
     color: #111;
+}
+
+.inlineView{
+    display: flex;
+    margin: 5px;
+}
+.inlineView:hover{
+    background-color: #DDD;
+}
+.inlineView h2{
+    margin : 0 ;
+    background-color: #DDD;
+    width: 350px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.gestionnaireArticleInline nav
+{
+    display: inline-block;
+    float: right;
+    height: auto;
+}
+.gestionnaireArticleInline nav a
+{
+    font-size: 18px;
+}
+.gestionnaireArticleInline span
+{
+    font-size: 12px;
 }
 /*Big buton for new article*/
 .nouvelArticle

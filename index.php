@@ -33,7 +33,11 @@ try {
         }
         //HOME BACKEND
         elseif ($_GET['action'] == 'homeControl') {
-            $controller -> homeControl();
+            if (isset($_GET['sort']) && $_GET['sort'] == 'antichrono') {
+                $controller -> homeControl(1);
+            }
+            else
+                $controller -> homeControl();
         }
         //NEW ARTICLE VIEW
         elseif ($_GET['action'] == 'nouveaubillet') {
