@@ -1,7 +1,6 @@
 <?php
 ob_start();
 
-
 while ($donnees = $reponse->fetch())
 {
 ?>

@@ -37,7 +37,7 @@ try {
                 $controller -> homeControl(1);
             }
             else
-                $controller -> homeControl();
+            $controller -> homeControl();
         }
         //NEW ARTICLE VIEW
         elseif ($_GET['action'] == 'nouveaubillet') {
@@ -173,6 +173,17 @@ try {
                 $controller -> updatePass($_POST['old_password'], $_POST['new_password'], $_POST['pseudo']);
             }
             else echo 'isset bug';
+        }
+        //CHANGE THE EMAIL
+        elseif ($_GET['action'] == 'newmail') {
+            if (isset($_POST['pseudo']) and isset($_POST['old_mail']) and isset($_POST['new_mail']) and isset($_POST['pass'])) {
+                $controller -> updateMail($_POST['pseudo'], $_POST['old_mail'], $_POST['new_mail'], $_POST['pass']);
+            }
+        }
+        elseif ($_GET['action'] == 'newpseudo') {
+            if (isset($_POST['newpseudo']) and isset($_POST['pseudo']) and isset($_POST['pass'])) {
+                $controller -> updatePseudo($_POST['newpseudo'], $_POST['pseudo'], $_POST['pass']);
+            }
         }
     }
     else {

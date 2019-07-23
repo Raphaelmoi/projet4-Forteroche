@@ -408,6 +408,21 @@ form
     width: auto;
     height: auto;
 }
+/*settings */
+.settingChoice
+{
+    position: absolute;
+    width: 15%;
+    left: 5%;
+    margin-top: 30vh; /* poussé de la moitié de hauteur de viewport */
+    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+    flex-direction: column;
+}
+.settingChoice a
+{
+    margin : 10px;
+}
+
 /*PAGES QUAND CONNECTE*/
 /*menu connection*/
 .menuIn
@@ -441,12 +456,20 @@ form
 .homeGestionnaire{
     display: flex;
     justify-content: space-around;
+    padding: 5px;
 }
 .homeGestionnaire span
 {
     margin-left: 15px;
 }
-
+.homeGestionnaire span, .homeGestionnaire i
+{
+    color: gray;
+}
+.homeGestionnaire span:hover, .homeGestionnaire i:hover
+{
+    color: #222;
+}
 /* read more , modify or delete under each preview article*/
 .gestionnaireArticle
 {

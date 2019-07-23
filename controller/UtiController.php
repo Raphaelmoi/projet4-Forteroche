@@ -46,20 +46,24 @@ class UtiController {
 	}
 	//send mail
 	function sendAMail($name, $mail, $tel, $msg){
+		//will drop to the actual mail of user in case he change mail in settings
+		$connexionManager = new UserManager();
+	    $req = $connexionManager -> getUser($_SESSION['pseudo']);
+		while ($donnees = $req->fetch())
+			{
+			$userMail = $donnees['email'];
+		}
+
 	    $name = 'nom : ' . $name;
 	    $tel = 'telephone : ' . $tel ;
 	    ini_set( 'display_errors', 1 ); 
 	    error_reporting( E_ALL );
 	    $from = $mail;	 
-	    $to = "raphael.mouly@free.fr";
+	    $to = $userMail;
 	    $subject =  "message depuis le site de Jean Forteroche";
 	    $message = nl2br($name ."\n". $tel ."\n". $msg);
-
-	    echo $message;
-
 	    $headers = "From:" . $from;
-/*	    mail($to,$subject,$message, $headers);
-*/
+	    mail($to,$subject,$message, $headers);
 	    echo " <script> alert('message envoyé')</script>" ;
 	}
 	//upload Image and return the URL where is upload the image
@@ -88,7 +92,7 @@ class UtiController {
             if(!in_array(strtolower(pathinfo($temp['name'], PATHINFO_EXTENSION)), array("gif", "jpg", "png"))){
                 header("HTTP/1.1 400 Invalid extension.");
                 return;
-            }          
+            }  
             // Accept upload if there was no origin, or if it is an accepted origin
             $filetowrite =  $imageFolder . $temp['name'];
 

@@ -5,7 +5,6 @@
 *logOut() -> disconnect
 *newPass() -> change password
 */
-
 class UserController{
 	public function logIn()
 	{
@@ -67,6 +66,50 @@ class UserController{
 			}
 			else
 				header('Location: index.php?action=settings&error=fail');   
+		}
+	}
+
+	public function newMail($pseudo, $oldmail, $newmail, $pass){
+		require_once("model/UserManager.php"); 
+		$connexionManager = new UserManager();
+		$test = $connexionManager -> getUser($pseudo);
+		while ($donnees = $test->fetch())
+		{
+			if (password_verify($pass, $donnees['pass'])) {
+				if ($oldmail == $donnees['email']) {
+
+					if (preg_match ( " /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ " , $newmail )) {
+						$req = $connexionManager -> updateUserMail($newmail, $pseudo);
+						header('Location: index.php?action=homeControl');  
+					}
+					else 
+						header('Location: index.php?action=settings&change=mail&error=mailbadsyntax');
+				}
+				else			
+				header('Location: index.php?action=settings&change=mail&error=badmailfrombbd');   
+			}
+			else
+				header('Location: index.php?action=settings&change=mail&error=passpseudo');   
+		}
+	}
+
+	public function newPseudo($newpseudo, $pseudo, $pass)
+	{
+		require_once("model/UserManager.php"); 
+		$connexionManager = new UserManager();
+		$test = $connexionManager -> getUser($pseudo);
+		while ($donnees = $test->fetch())
+		{
+			if (password_verify($pass, $donnees['pass'])) {
+				if ($pseudo != $newpseudo) {
+					$req = $connexionManager -> updateUserPseudo($pseudo, $newpseudo);
+					header('Location: index.php?action=homeControl');  
+				}
+				 else
+				 	header('Location: index.php?action=settings&change=pseudo&error=diffpseudo'); 
+			}
+			else
+				header('Location: index.php?action=settings&change=pseudo&error=passpseudo');   
 		}
 	}
 }

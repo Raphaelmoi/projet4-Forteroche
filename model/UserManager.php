@@ -21,4 +21,15 @@ class UserManager extends Manager
     	$req = $bdd->query("UPDATE membres SET pass = '$pass' WHERE pseudo = '$pseudo';");
         return $req;
     }
+    //when user want to change mail
+    public function updateUserMail($mail, $pseudo){
+        $bdd = $this->dbConnect();
+        $req = $bdd->query("UPDATE membres SET email = '$mail' WHERE pseudo = '$pseudo';");
+        return $req;
+    }
+    public function updateUserPseudo($pseudo, $newpseudo){
+        $bdd = $this->dbConnect();
+        $req = $bdd->query("UPDATE membres SET pseudo = '$newpseudo' WHERE pseudo = '$pseudo';");
+        return $req;
+    }
 }
