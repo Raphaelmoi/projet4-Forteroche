@@ -30,7 +30,7 @@
         <?php
         if (isset($_GET['erreur']) || isset($_GET['success']))
         {
-            require 'alertBox.php';
+            require_once 'alertBox.php';
             echo $alertBox;
         }
         ?>

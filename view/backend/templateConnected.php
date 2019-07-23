@@ -24,7 +24,7 @@
         <?php
         if (isset($_GET['erreur']) || isset($_GET['success']))
         {
-            require 'view/frontend/alertBox.php';
+            require_once 'view/frontend/alertBox.php';
             echo $alertBox;
         }
         ?>
