@@ -7,10 +7,6 @@ class UserManager extends Manager
     public function getUser($pseudo)
     {
     	$bdd = $this->dbConnect();
-    	$nRows = $bdd->query("SELECT count(pseudo) FROM membres WHERE pseudo = '$pseudo'")->fetchColumn(); 
-		if ($nRows ==0) {
-				header('Location: accueil.php?action=connect&erreur=a');
-			}
 		$req = $bdd->prepare('SELECT id, pseudo, pass, email FROM membres WHERE pseudo = ?');
 		$req->execute(array($pseudo));
 		return $req;
@@ -27,9 +23,16 @@ class UserManager extends Manager
         $req = $bdd->query("UPDATE membres SET email = '$mail' WHERE pseudo = '$pseudo';");
         return $req;
     }
+    //when user want to change pseudo
     public function updateUserPseudo($pseudo, $newpseudo){
         $bdd = $this->dbConnect();
         $req = $bdd->query("UPDATE membres SET pseudo = '$newpseudo' WHERE pseudo = '$pseudo';");
         return $req;
+    }
+    //if result = 0 $pseudo is not in the database
+    public function count($pseudo){
+        $bdd = $this->dbConnect();
+        $count = $bdd->query("SELECT count(pseudo) FROM membres WHERE pseudo = '$pseudo'")->fetchColumn(); 
+        return $count;
     }
 }

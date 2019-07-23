@@ -719,3 +719,31 @@ form
 {
     color: rgb(220,20,40);
 }
+
+.alert{
+    position: absolute;
+    border-radius: 20px;
+    width: 90%;
+    left: 5%;
+    top: 10%;
+    z-index: 99;
+    text-align: center;
+    animation-name: disparait;
+    animation-delay: 3s;
+    animation-duration: 3s;
+}
+.alertRed
+{
+    background-color: rgba(255 ,100 ,100 ,0.7);
+}
+.alertGreen
+{
+    background-color: rgba(100 ,255 ,100 ,0.7);
+}
+.alert p{
+    font-size: 20px;
+}
+@keyframes disparait {
+  from {opacity : 1;}
+  to {opacity : 0 ;}
+}

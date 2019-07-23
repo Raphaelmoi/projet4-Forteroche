@@ -20,6 +20,15 @@
                 <?php include('menu.php'); ?> 
             </div>
         </header>
+
+        <?php
+        if (isset($_GET['erreur']) || isset($_GET['success']))
+        {
+            require 'view/frontend/alertBox.php';
+            echo $alertBox;
+        }
+        ?>
+
         <section class="corps corpsConnected">
         <section class="insideSide">
             <?= $content ?>              

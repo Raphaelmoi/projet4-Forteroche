@@ -77,7 +77,7 @@ class Controller
         $envoi = $postManager -> postPost($titre, $contenu, $imageurl);
         //pour eviter en cas de f5 de publier 2 fois le meme article :  
         $reponse = $postManager -> getPosts();
-        header('Location: index.php?action=homeControl');
+        header('Location: index.php?action=homeControl&success=addpost');
     }
     function modifyPost($id) {
         $postManager = new PostManager();
@@ -90,14 +90,14 @@ class Controller
         $req = $postManager -> updatePost($id, $titre, $contenu, $imageUrl); 
         //pour eviter en cas de f5 de publier 2 fois le meme article :  
         $reponse = $postManager -> getPosts();
-        header('Location: index.php?action=homeControl');
+        header('Location: index.php?action=homeControl&success=modifypost');
     }
     function updatePostWithoutImg($id, $titre, $contenu) {
         $postManager = new PostManager();
         $req = $postManager -> updatePostWithoutImg($id, $titre, $contenu); 
             //pour eviter en cas de f5 de publier 2 fois le meme article :  
         $reponse = $postManager -> getPosts();
-        header('Location: index.php?action=homeControl');   
+        header('Location: index.php?action=homeControl&success=modifypost');   
     }
     function deletePost($id)
     {
@@ -150,7 +150,8 @@ class Controller
         $reponse = $postManager -> getPosts();
         $sendMail = new UtiController();
         $sendAMail = $sendMail -> sendAMail($name, $mail, $tel, $msg);
-        Controller::contact();
+        header('Location: index.php?action=contact&success=mail');
+
     }
     function settings(){
         require('view/backend/settingsview.php');

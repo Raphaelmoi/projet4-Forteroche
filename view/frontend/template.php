@@ -26,6 +26,15 @@
                 <?php include('view/backend/menu.php'); ?> 
             </div>
         </header>
+        
+        <?php
+        if (isset($_GET['erreur']) || isset($_GET['success']))
+        {
+            require 'alertBox.php';
+            echo $alertBox;
+        }
+        ?>
+
         <section class="corps">
             <section class="contenuCorps">
                 <?= $content ?>              

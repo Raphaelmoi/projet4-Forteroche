@@ -12,7 +12,7 @@ if ( !empty($_SESSION['pseudo']) )
 		<li><a href="/projet4/index.php?action=nouveaubillet">Créer un nouveau billet</a></li>
 		<li><a  href="/projet4/index.php?action=badcommentview"> 
 			<i id="signaledComm" class="fas fa-exclamation-triangle">
-				<span id="span">Commentaires signalés</span></i>
+				<span id="span" >Commentaires signalés</span></i>
 			</a>
 		</li>
 		<?php if ($count != 0) {
@@ -20,7 +20,8 @@ if ( !empty($_SESSION['pseudo']) )
 				redComments(<?= $count ?>);
 			</script><?php
 		}?>
-		<li ><a href="/projet4/index.php?action=settings"><i class="fas fa-cog"><span>Paramètres</span></i></a></li>
+		<li ><a href="/projet4/index.php?action=settings"><i class="fas fa-cog">
+			<span style="margin-right: 10px;">Paramètres</span></i></a></li>
 	</ul>
 </nav>
 

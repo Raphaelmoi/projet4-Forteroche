@@ -52,19 +52,18 @@ class UtiController {
 		while ($donnees = $req->fetch())
 			{
 			$userMail = $donnees['email'];
+		    $name = 'nom : ' . $name;
+		    $tel = 'telephone : ' . $tel ;
+		    ini_set( 'display_errors', 1 ); 
+		    error_reporting( E_ALL );
+		    $from = $mail;	 
+		    $to = $userMail;
+		    echo $userMail;
+		    $subject =  "message depuis le site de Jean Forteroche";
+		    $message = nl2br($name ."\n". $tel ."\n". $msg);
+		    $headers = "From:" . $from;
+		    mail($to,$subject,$message, $headers);
 		}
-
-	    $name = 'nom : ' . $name;
-	    $tel = 'telephone : ' . $tel ;
-	    ini_set( 'display_errors', 1 ); 
-	    error_reporting( E_ALL );
-	    $from = $mail;	 
-	    $to = $userMail;
-	    $subject =  "message depuis le site de Jean Forteroche";
-	    $message = nl2br($name ."\n". $tel ."\n". $msg);
-	    $headers = "From:" . $from;
-	    mail($to,$subject,$message, $headers);
-	    echo " <script> alert('message envoyé')</script>" ;
 	}
 	//upload Image and return the URL where is upload the image
 	function imageUploader(){

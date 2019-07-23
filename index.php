@@ -180,6 +180,7 @@ try {
                 $controller -> updateMail($_POST['pseudo'], $_POST['old_mail'], $_POST['new_mail'], $_POST['pass']);
             }
         }
+        //CHANGE THE PSEUDO
         elseif ($_GET['action'] == 'newpseudo') {
             if (isset($_POST['newpseudo']) and isset($_POST['pseudo']) and isset($_POST['pass'])) {
                 $controller -> updatePseudo($_POST['newpseudo'], $_POST['pseudo'], $_POST['pass']);
