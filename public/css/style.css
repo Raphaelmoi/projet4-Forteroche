@@ -378,6 +378,15 @@ form
     text-align: center;
     border-radius: 0 0 5px 5px;
 }
+.indexAside
+{
+    font-size: 20px;
+    margin: 0 5px;
+}
+.indexAside:hover
+{
+    font-size: 23px;
+}
 /*PAGE FOR CONNEXION*/
 .corpConnectPage
 {
@@ -457,7 +466,6 @@ form
     display: flex;
     justify-content: space-around;
     padding: 5px;
-    z-index: 20;
 }
 .homeGestionnaire span
 {
@@ -503,13 +511,16 @@ form
     display: flex;
     margin: 5px;
 }
-.inlineView:hover{
-    background-color: #DDD;
+.inlineView:hover h2, .inlineView:hover
+{
+    background-color: #e1f5fe;
+    box-shadow: 0 0 3px white;
+
 }
 .inlineView h2{
     margin : 0 ;
     background-color: #DDD;
-    width: 350px;
+    width: 50%;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
@@ -524,7 +535,7 @@ form
 }
 .gestionnaireArticleInline nav a
 {
-    font-size: 18px;
+    font-size: 16px;
 }
 .gestionnaireArticleInline span
 {
@@ -735,11 +746,11 @@ form
 }
 .alertRed
 {
-    background-color: rgba(255 ,100 ,100 ,0.7);
+    background-color: #f44336;
 }
 .alertGreen
 {
-    background-color: rgba(100 ,255 ,100 ,0.7);
+    background-color: #aeea00;
 }
 .alert p{
     font-size: 20px;
@@ -751,5 +762,5 @@ form
     60%  {opacity : 0.8;}
     100% {opacity : 0;
         z-index: -1;
-         }
+    }
 }

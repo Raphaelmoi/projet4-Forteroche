@@ -91,10 +91,9 @@ class UtiController {
             if(!in_array(strtolower(pathinfo($temp['name'], PATHINFO_EXTENSION)), array("gif", "jpg", "png"))){
                 header("HTTP/1.1 400 Invalid extension.");
                 return;
-            }  
+            }
             // Accept upload if there was no origin, or if it is an accepted origin
             $filetowrite =  $imageFolder . $temp['name'];
-
             move_uploaded_file($temp['tmp_name'],$filetowrite);  
              // Respond to the successful upload with JSON.
             echo json_encode(array('location' => $filetowrite));

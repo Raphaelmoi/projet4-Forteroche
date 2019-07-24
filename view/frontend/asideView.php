@@ -31,11 +31,19 @@ $uticontroller = new UtiController();
 
 $indice = floor($count / 10);
 if ($indice >= 1) {
+
 	for ($i = 0;$i <= $indice;$i++) {
 		$getUrl = $uticontroller -> getUrl() . "page=" . $i;//give the url of the actual page in the good format
+			if ( isset($_GET['page']) && $i == $_GET['page']) {
+				?>
+ 				<a href="<?=$getUrl?>" class="indexAside"  ><?=$i + 1 ?></a>
+ 				<?php
+			}
+			else{
 			?> 
- 			<a href="<?=$getUrl?>" ><?=$i + 1 ?></a>
+ 			<a href="<?=$getUrl?>" class="indexAside" style="color:#888"><?=$i + 1 ?></a>
 	<?php
+		}
 	}
 	?>
 	</div>
