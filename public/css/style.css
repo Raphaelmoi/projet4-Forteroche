@@ -122,6 +122,10 @@ form
     justify-content: space-around;
     z-index: 10;
 }
+.smallScreenTitle
+{
+    display: none;
+}
 .fa-user/*icone connexion*/
 {
     margin-right: 10px;
@@ -164,6 +168,11 @@ form
     line-height: 30px;
     padding-left: 20px;
     margin-top: 10px;
+}
+.textArticle1000, .textArticle1220, .textArticle870, .textArticle600
+{
+    display: none;
+    margin-left: 10px;
 }
 .textArticle/*texte of preview*/
 {
@@ -390,16 +399,22 @@ form
 /*PAGE FOR CONNEXION*/
 .corpConnectPage
 {
+display: flex;
+justify-content: space-around;
+}
+.corpConnectPage form
+{
     position: absolute;
+    width: 450px;
     background-color: #8eacbb;
-	border-radius: 10px;
-	border: 2px #DDD solid;
+    border-radius: 10px;
+    border: 2px #DDD solid;
     text-align: center;
-    width: 34%;
     margin-top: 30vh; /* poussé de la moitié de hauteur de viewport */
     transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
-    margin-left: 18%;
+    padding-bottom: 30px;
 }
+
 .corpConnectPage input
 {
     width: 90%;
@@ -633,14 +648,18 @@ form
 /*CONTACT PAGE*/
 .formP/*short text before form*/
 {
-    margin: 20px;
-    padding: 10px;
-    padding-top: 0; 
+    margin: 0 20px;
+    padding: 0 10px;
 }
 .contactForm>div
 {
     display: flex;
     justify-content: space-around;
+}
+.personalInfo, .textareaContainer
+{
+    width: 100%;
+    margin: 5%;
 }
 .personalInfo{
     display: flex;
@@ -649,13 +668,13 @@ form
 .contactForm input
 {
     min-height: 30px;
-    width: 300px;
+    width: 100%;
     border-radius: 4px;
     margin: 10px 0px;
 }
 .contactForm textarea
 {
-    width: 400px;
+    width: 100%;
     height: 90%;
     border-radius: 4px;
     margin-top: 20px;
@@ -671,28 +690,28 @@ form
     margin-right: 30px;
 }
 /*BIO PAGE*/
-.biographie
+.biographie, .contactView
 {
     background-color: whitesmoke;
-    padding: 20px 40px;
     margin: 20px 50px;
     margin-top: 0;
     border-radius: 10px;
+    position: relative;
 }
-.biographie h2
+.biographie h2, .biographie h3, .contactView h2
 {
     text-align: center;
 }
-.biographie div
+.biographie div, .biographie>p
 {
     display: flex;
+    padding: 20px 40px;
 }
-.biographie img
+.bioPicture
 {
-    flex: 1;
-    object-fit: contain;
-    margin: 20px;
-    max-width: 250px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
 }
 .biographie div p
 {
@@ -701,6 +720,7 @@ form
 .smallImgBio
 {
     height: 200px;
+    margin: 15px;
 }
 .biographie p
 {
@@ -763,4 +783,182 @@ form
     100% {opacity : 0;
         z-index: -1;
     }
+}
+
+@media all and (max-width: 1220px) {
+    h1
+    {
+        font-size: 21px;
+    }
+    li
+    {
+    margin: 0 10px;
+    font-size: 17px;
+    }
+    .articleBillet
+    {
+        height: 220px;
+    }
+    .articleBillet img
+    {
+        height: 220px;
+        width: 270px;
+    }
+    .textArticle
+    {
+    display: none;    
+    }
+    .textArticle1220
+    {
+        display: block;
+    }
+    .textArticle p
+    {
+        margin-top: 0;
+    }
+}
+
+
+@media all and (max-width: 1010px) {
+    h1
+    {
+        font-size: 17px;
+    }
+    li
+    {
+    margin: 0 7px;
+    font-size: 15px;
+    }
+    .articleBillet
+    {
+        height: 180px;
+    }
+    .articleBillet img
+    {
+        height: 180px;
+        min-width: 200px;
+        max-width: 200px;
+    }
+    .textArticle1220
+    {
+        display: none;
+    }
+    .textArticle1000
+    {
+        display: block;
+    }
+}
+
+@media all and (max-width: 870px) {
+    h1
+    {
+        font-size: 15px;
+    }
+    li
+    {
+    margin: 0 5px;
+    }
+    .btnConnexion
+    {
+        margin: 0;
+        margin-left: 5px;
+        font-size: 13px; 
+    }
+    .textArticle1000
+    {
+        display: none;
+    }
+    .textArticle870
+    {
+        display: block;
+    }
+    aside
+    {
+        display: none;
+    }
+    .contenuCorps{
+        width: 86%;
+        margin-left: 7%;
+    }
+    .biographie, .contactView   
+    {
+        margin: 10px 10px;
+    }
+}
+@media all and (max-width: 750px) {
+    .menuPrincipal
+    {
+        height: 84px;
+        flex-direction: column;
+        z-index: 50;
+    }
+    .contenuCorps{
+        margin-top: 97px;
+    }
+    h1
+    {
+        text-align: left;
+        margin-left: 20px;
+    }
+    .btnConnexion
+    {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        margin: 0;
+    }
+    .articleBillet img
+    {
+        height: 180px;
+        min-width: 180px;
+        max-width: 180px;
+    }
+    .contactForm>div
+    {
+        flex-direction: column;
+        width: 85%;
+    }
+    .corpConnectPage form
+    {
+        width: 350px;
+    }
+
+}
+@media all and (max-width: 600px) {
+    h1
+    {
+        display: none;
+    }
+    .smallScreenTitle
+    {
+        display: block;
+    }
+    .textArticle870
+    {
+        display: none;
+    }
+    .textArticle600
+    {
+        display: block;
+    }
+    .formP
+    {
+        display: none;
+    }
+    .corpConnectPage form
+    {
+        width: 90%;
+    }   
+}
+@media all and (max-width: 450px) {
+    .articleBillet img
+    {
+        display: none;
+    }
+    .btnConnexion
+    {
+        width: 10px;
+    }
+
 }

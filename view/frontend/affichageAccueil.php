@@ -18,6 +18,30 @@ while ($donnees = $reponse->fetch())
                 echo $ContenuBillet;
             ?>
             </div>
+            <div class="textArticle1220"> 
+            <?php
+                $ContenuBillet = $uticontroller -> formateArticle($donnees['contenu'], 1220);
+                echo $ContenuBillet;
+            ?>
+            </div>
+            <div class="textArticle1000"> 
+            <?php
+                $ContenuBillet = $uticontroller -> formateArticle($donnees['contenu'], 1000);
+                echo $ContenuBillet;
+            ?>
+            </div>
+            <div class="textArticle870"> 
+            <?php
+                $ContenuBillet = $uticontroller -> formateArticle($donnees['contenu'], 870);
+                echo $ContenuBillet;
+            ?>
+            </div>
+            <div class="textArticle600"> 
+            <?php
+                $ContenuBillet = $uticontroller -> formateArticle($donnees['contenu'], 600);
+                echo $ContenuBillet;
+            ?>
+            </div>
             <div class="btnReadMore">
                 <a href="index.php?action=post&amp;id=<?=$donnees['id'] ?>">Lire la suite</a>
             </div>

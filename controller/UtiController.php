@@ -33,7 +33,7 @@ class UtiController {
 	}
 	//image and video are delete from the argument
 	//The content is limited at 520 car
-	function formateArticle($ContenuBillet){
+	function formateArticle($ContenuBillet, $screenSize = 0){
 
 	    if(preg_match("/<img[^>]+\>/i", $ContenuBillet)) {
 	        $ContenuBillet = preg_replace("/<img[^>]+\>/i", "", $ContenuBillet); 
@@ -41,9 +41,32 @@ class UtiController {
 	    if(preg_match("/<iframe[^>]+\>/i", $ContenuBillet)) {
 	         $ContenuBillet = preg_replace("/<iframe[^>]+\>/i", "", $ContenuBillet); 
 	    }
-	    $ContenuBillet = substr($ContenuBillet, 0, 520).'...'; 
+
+	    switch ($screenSize) {
+	    	case 1220:
+	    		$ContenuBillet = substr($ContenuBillet, 0, 350).'...'; 
+	    		break;
+	    	case 1000:
+	    		$ContenuBillet = substr($ContenuBillet, 0, 200).'...'; 
+	    		break;
+	    	case 870:
+	    		$ContenuBillet = substr($ContenuBillet, 0, 150).'...'; 
+	    		break;	
+	    	case 600:
+	    		$ContenuBillet = substr($ContenuBillet, 0, 90).'...'; 
+	    		break;	    	
+	    	default:
+	    		$ContenuBillet = substr($ContenuBillet, 0, 520).'...'; 
+	    		break;
+	    }
+/*	    if ($screenSize == 0) {
+	    	$ContenuBillet = substr($ContenuBillet, 0, 520).'...'; 
+	    }
+	    if ($screenSize == 1000) {
+	    	$ContenuBillet = substr($ContenuBillet, 0, 20).'...'; 
+	    }*/
 	    return $ContenuBillet;
-	}
+	}	
 	//send mail
 	function sendAMail($name, $mail, $tel, $msg){
 		//will drop to the actual mail of user in case he change mail in settings
