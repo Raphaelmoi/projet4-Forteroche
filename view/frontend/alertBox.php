@@ -67,6 +67,11 @@ elseif (isset($_GET['success'])) {
 			<p>Bienvenue <?=$_GET['pseudo']?> ! </p>
 			<?php
 		}
+		elseif ($_GET['success'] == 'disconnect' ) {
+			?>
+			<p>Au revoir !</p>
+			<?php
+		}
 		elseif ($_GET['success'] == 'mail' ) {
 			?>
 			<p>Votre Email a été envoyé avec succès ! </p>

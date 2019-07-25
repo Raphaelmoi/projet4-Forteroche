@@ -16,9 +16,7 @@ while ($thisarticle = $article->fetch()) {
         <div >
             <div class="entete">
                 <h2><?= $thisarticle['titre'] ?> </h2>
-                <?=
-                $thisarticle['date_creation_fr'];
-                ?>
+                <span> <?= $thisarticle['date_creation_fr'];?></span> 
             </div>
             <div class="contenuOfArticle">
                 <p class="textArticle" >
@@ -59,7 +57,7 @@ while ($thiscomment = $comment->fetch()) {
     <article class="commentaire">
         <div class="titreComm">
         <strong><?= $thiscomment['auteur'];?> : </strong>
-        <?= $thiscomment['date_commentaire_fr'];?>
+        <span><?= $thiscomment['date_commentaire_fr'];?></span>
 <?php   
     // IF ADMIN IS CONNECT, HE CAN INSTANTLY DELETE COMMENT 
     if (!empty($_SESSION['pseudo'])) {
@@ -73,7 +71,7 @@ while ($thiscomment = $comment->fetch()) {
     else { //USER CAN REPORT COMMENT AND ALSO CHANGE THEM MIND
         if (isset($_SESSION['report' . $thiscomment['id']]) && $_SESSION['report' . $thiscomment['id']] == $thiscomment['id']) {
     ?>
-        <a href="index.php?action=signalcomment&amp;commentid=<?=$thiscomment['id'] ?>&amp;id=<?=$idArticle ?>&amp;val=moins" class="reportComment reportedComment" >Ce commentaire a été signalé</a>
+        <a href="index.php?action=signalcomment&amp;commentid=<?=$thiscomment['id'] ?>&amp;id=<?=$idArticle ?>&amp;val=moins" class="reportComment reportedComment" >Commentaire signalé</a>
 
     <?php
     }//A COMMENT CANNOT BE REPORTED TWICE BY THE SAME USER,SO...
@@ -96,7 +94,7 @@ $comment->closeCursor();
 <!-- POST A NEW COMMENT -->
     <article class="commentaire">
         <div class="titreComm">
-            <span>Poster un commentaire :</span>
+            Poster un commentaire :
         </div>
         <form class="formulaireComment" action="index.php?action=addComment&amp;id=<?=$_GET['id'] ?>" 
             method="post">

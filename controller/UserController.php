@@ -52,7 +52,7 @@ class UserController{
 		// Suppression des variables de session et de la session
 		$_SESSION = array();
 		session_destroy();
-		header('Location: /projet4/index.php');
+		header('Location: /projet4/index.php?success=disconnect');
 	}
 
 	public function newPass($oldPass, $newPass, $pseudo)

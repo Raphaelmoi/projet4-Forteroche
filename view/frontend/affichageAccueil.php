@@ -46,7 +46,8 @@ while ($donnees = $reponse->fetch())
                 <a href="index.php?action=post&amp;id=<?=$donnees['id'] ?>">Lire la suite</a>
             </div>
         </div>
-    </article>   
+        <div class="backgroundArticle"> <img src="<?= $donnees['url']; ?>"></div>   
+    </article>
 <?php
 }
 $reponse->closeCursor(); // Termine le traitement de la requête

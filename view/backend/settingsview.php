@@ -21,7 +21,7 @@ ob_start();
 			<p><input type="mail" name="new_mail" placeholder="Comfirmez votre nouveau email" required /></p>
 			<p>Saisissez votre mot de passe pour confirmer<input type="password" name="pass" placeholder="mot de passe" required /></p>
 
-		   <input type="submit" value="Changer votre email" >
+		   <input class="btnSubmitSetting" type="submit" value="Changer votre email" >
 		</form> 
 		<?php
 		}
@@ -33,7 +33,7 @@ ob_start();
 			   <p>Saisissez votre pseudo actuel<input type="text" name="pseudo" placeholder="Pseudo" required /></p>
 			   <p>Saisissez votre mot de passe pour confirmer <input type="password" name="pass" placeholder="mot de passe" required /></p>
 
-			   <input type="submit" value="Changer de pseudo" >
+			   <input class="btnSubmitSetting" type="submit" value="Changer de pseudo" >
 			</form> 
 			<?php
 		}
@@ -44,7 +44,7 @@ ob_start();
 			<p><input type="text" name="pseudo" placeholder="Pseudo" required ></p>
 			<p><input type="password" name="old_password" placeholder="ancien mot de passe" required /></p>
 			<p><input type="password" name="new_password" placeholder="Nouveau mot de passe" required /></p>
-			<input type="submit" value="Changer mot de passe" >
+			<input class="btnSubmitSetting" type="submit" value="Changer mot de passe" >
 		</form> 
 		<?php
 		}

@@ -1,7 +1,7 @@
 <!-- MENU PRINCIPALE -->
 <h1> Billet simple pour l'Alaska : le blog de Jean Forteroche</h1>
 <h1 class="smallScreenTitle">Billet simple pour l'Alaska</h1>
-<nav>
+<nav class="principalNav">
 	<ul>
 		<li><a href="/projet4/index.php">Blog</a></li>    
 		<li><a href="/projet4/index.php?action=bio">Biographie</a></li>

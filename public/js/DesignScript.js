@@ -14,11 +14,19 @@ function spaceForSecondMenu() {
 
 function redComments(qtt){
 	badComm = document.getElementById('signaledComm');
+	smallScreenBadComm = document.getElementById('signaledCommSmallScreen');
+
 	span =document.getElementById('span');
+	smallSpan =document.getElementById('smallSpan');
+
 	badComm.style.color = '#f44336';
 	span.style.color = '#f44336';
+	smallScreenBadComm.style.color = '#f44336';
+	smallSpan.style.color = '#f44336';	
+	
 	span.textContent +=" (" + qtt + ")";
-	span.style.fontWeight = 'normal';
+	smallSpan.textContent +=" (" + qtt + ")";
+
 };
 
 window.onload = function() {
