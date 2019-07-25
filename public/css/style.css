@@ -122,10 +122,13 @@ form
     justify-content: space-around;
     z-index: 10;
 }
-.smallScreenTitle
+
+#signaledCommSmallScreen, .smallBin, .smallScreenTitle
 {
     display: none;
 }
+
+
 .fa-user/*icone connexion*/
 {
     margin-right: 10px;
@@ -521,10 +524,28 @@ justify-content: space-around;
     font-weight: bolder;
     color: #111;
 }
-
+.BigBin
+{
+    display: inline-block;
+}
 .inlineView{
     display: flex;
     margin: 5px;
+}
+.titreInlineView{
+    margin : 0 ;
+    background-color: #DDD;
+    padding: 0;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.inlineView h2{
+    margin: 0;
+    background-color: #DDD;
+    text-align: center;
+
 }
 .inlineView:hover h2, .inlineView:hover
 {
@@ -532,22 +553,20 @@ justify-content: space-around;
     box-shadow: 0 0 3px white;
 
 }
-.inlineView h2{
-    margin : 0 ;
-    background-color: #DDD;
-    width: 50%;
+.gestionnaireArticleInline
+{
+    flex: 3;
+    display: flex;
     text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
-
 .gestionnaireArticleInline nav
 {
-    display: inline-block;
-    float: right;
+    display: inline;
     height: auto;
+    width: 100%;
 }
+
+
 .gestionnaireArticleInline nav a
 {
     font-size: 16px;
@@ -779,7 +798,8 @@ justify-content: space-around;
     0%   {opacity : 1;
         z-index: 99;
     }
-    60%  {opacity : 0.8;}
+    60%  {opacity : 0.8;
+        z-index: 99;}
     100% {opacity : 0;
         z-index: -1;
     }
@@ -802,7 +822,12 @@ justify-content: space-around;
     .articleBillet img
     {
         height: 220px;
-        width: 270px;
+        max-width: 270px;
+        min-width: 270px;
+    }
+    .gestionnaireArticle
+    {
+        left: 270px;
     }
     .textArticle
     {
@@ -839,6 +864,10 @@ justify-content: space-around;
         min-width: 200px;
         max-width: 200px;
     }
+    .gestionnaireArticle
+    {
+        left: 200px;
+    }
     .textArticle1220
     {
         display: none;
@@ -846,6 +875,14 @@ justify-content: space-around;
     .textArticle1000
     {
         display: block;
+    }
+    .gestionnaireArticleInline a
+    {
+        font-size: 10px;
+    }
+        .insideSide
+    {
+        width: 90%;
     }
 }
 
@@ -884,6 +921,10 @@ justify-content: space-around;
     {
         margin: 10px 10px;
     }
+    .fa-cog span
+    {
+        display: none;
+    }
 }
 @media all and (max-width: 750px) {
     .menuPrincipal
@@ -891,6 +932,15 @@ justify-content: space-around;
         height: 84px;
         flex-direction: column;
         z-index: 50;
+    }
+    .menuIn
+    {
+        position: absolute;
+        top: 42px;
+    }
+    .insideSide
+    {
+        margin-top: 136px;
     }
     .contenuCorps{
         margin-top: 97px;
@@ -914,6 +964,10 @@ justify-content: space-around;
         min-width: 180px;
         max-width: 180px;
     }
+    .gestionnaireArticle
+    {
+        left: 180px;
+    }
     .contactForm>div
     {
         flex-direction: column;
@@ -922,6 +976,33 @@ justify-content: space-around;
     .corpConnectPage form
     {
         width: 350px;
+    }
+    .personalInfo
+    {
+        margin-bottom: 0;
+    }
+    .textareaContainer{
+        margin-top: 0;
+    }
+    .dateInline
+    {
+        display: none;
+    }
+    .navDeux li
+    {
+        margin: 0 5px;
+    }
+    .newArticlebtn
+    {
+        display: none;
+    }
+    .BigBin
+    {
+        display: none;
+    }
+    .smallBin
+    {
+        display: inline-block;
     }
 
 }
@@ -950,15 +1031,61 @@ justify-content: space-around;
     {
         width: 90%;
     }   
+    .nouvelArticle a
+    {
+        font-size: 20px;
+    }   
+    #signaledCommSmallScreen
+    {
+        display: block;
+    }
+    #signaledComm
+    {
+        display: none;
+    }
+    .inlineView 
+    {
+        flex-direction: column;
+    }
+    .titreInlineView
+    {
+        flex: unset;
+    }
+    .changeThePicture
+    {
+        flex-direction: column;
+    }
+    .changeThePicture img
+    {
+        max-width: 100%;
+    }
+    .tinyFormButon
+    {
+        width: 90%;
+    }
 }
 @media all and (max-width: 450px) {
     .articleBillet img
     {
         display: none;
     }
+    .gestionnaireArticle
+    {
+        left: 0px;
+    }
+
     .btnConnexion
     {
         width: 10px;
     }
+    .nouvelArticle
+    {
+        height: 60px;
+    }   
+    .nouvelArticle a
+    {
+        font-size: 15px;
+        line-height: 60px;
+    }   
 
 }

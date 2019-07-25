@@ -9,10 +9,14 @@ if ( !empty($_SESSION['pseudo']) )
 <nav class="navDeux">
 	<ul>
 		<li><a href="/projet4/index.php?action=homeControl">Mes billets</a></li>    
-		<li><a href="/projet4/index.php?action=nouveaubillet">Créer un nouveau billet</a></li>
+		<li class="newArticlebtn"><a href="/projet4/index.php?action=nouveaubillet">Créer un nouveau billet</a></li>
 		<li><a  href="/projet4/index.php?action=badcommentview"> 
 			<i id="signaledComm" class="fas fa-exclamation-triangle">
 				<span id="span" >Commentaires signalés</span></i>
+			</a>
+			<a  href="/projet4/index.php?action=badcommentview">
+			<i id="signaledCommSmallScreen" class="fas fa-exclamation-triangle">
+				<span id="span" >Commentaires</span></i>
 			</a>
 		</li>
 		<?php if ($count != 0) {

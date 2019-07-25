@@ -2,7 +2,6 @@
 ob_start();
 ?>
 <article class="homeGestionnaire">   
-
 <!-- Explication of the mecanism 
     4 situations
     -> we want normal view and chronogical order
@@ -17,7 +16,7 @@ ob_start();
         if(isset($_GET['sort']) && $_GET['sort'] == "antichrono" ){
         ?>
             <a href="index.php?action=homeControl&amp;sort=antichrono&amp;styleView=basic">
-                <i class="fas fa-align-justify"><span>Changer de vue</span></i>
+                <i class="fas fa-align-justify"><span>Vue</span></i>
             </a>
             <a href="index.php?action=homeControl&amp;sort=chrono&amp;styleView=inline">
                 <i class="fas fa-sort"><span> Ordre chronologique</span></i>
@@ -27,7 +26,7 @@ ob_start();
         elseif (!isset($_GET['sort']) || $_GET['sort'] == "chrono") {
         ?>
             <a href="index.php?action=homeControl&amp;styleView=basic">
-                <i class="fas fa-align-justify"><span>Changer de vue</span></i>
+                <i class="fas fa-align-justify"><span>Vue</span></i>
             </a>
             <a href="index.php?action=homeControl&amp;sort=antichrono&amp;styleView=inline">
                 <i class="fas fa-sort"><span> Ordre antichronologique</span></i>
@@ -39,7 +38,7 @@ ob_start();
         if(isset($_GET['sort']) && $_GET['sort'] == "antichrono" ){
             ?>
             <a href="index.php?action=homeControl&amp;sort=antichrono&amp;styleView=inline">
-                <i class="fas fa-align-justify"><span>Changer de vue</span></i>
+                <i class="fas fa-align-justify"><span>Vue</span></i>
             </a>
             <a href="index.php?action=homeControl&amp;sort=chrono&amp;styleView=basic">
                 <i class="fas fa-sort"><span> Ordre chronologique</span></i>
@@ -49,7 +48,7 @@ ob_start();
         elseif (!isset($_GET['sort']) || $_GET['sort'] == "chrono") {
         ?>
         <a href="index.php?action=homeControl&amp;styleView=inline">
-            <i class="fas fa-align-justify"><span>Changer de vue</span></i>
+            <i class="fas fa-align-justify"><span>Vue</span></i>
         </a>
         <a href="index.php?action=homeControl&amp;sort=antichrono&amp;styleView=basic">
             <i class="fas fa-sort"><span> Ordre antichronologique</span></i>
