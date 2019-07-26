@@ -1,6 +1,6 @@
+<!-- Modify an existing article -->
 <?php 
 if ( !empty($_SESSION['pseudo']) ) {
-
 $title = 'modifier billet';
 ob_start();?>
 
@@ -9,7 +9,6 @@ while ($thisarticle = $article->fetch())
 {
 	$title = $thisarticle['titre'];
 	?>
-
 	<form class="tinyForm" method="post" action="index.php?action=modifyPost&amp;id=<?= $thisarticle['id'] ?>" enctype="multipart/form-data">
 		<input class="tinyFormTitre" type="titre" name="titre" value="<?= $thisarticle['titre'] ?>" required>
 		<textarea name="contenu"> <?= $thisarticle['contenu']; ?></textarea>

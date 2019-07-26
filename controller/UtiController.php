@@ -31,7 +31,7 @@ class UtiController {
 		}
 		return $currentUrl;
 	}
-	//image and video are delete from the argument
+	//image and video are delete from the preview of article
 	//The content is limited at 520 car
 	function formateArticle($ContenuBillet, $screenSize = 0){
 
@@ -41,7 +41,7 @@ class UtiController {
 	    if(preg_match("/<iframe[^>]+\>/i", $ContenuBillet)) {
 	         $ContenuBillet = preg_replace("/<iframe[^>]+\>/i", "", $ContenuBillet); 
 	    }
-
+	   	//display different size of preview, the good one appear with css
 	    switch ($screenSize) {
 	    	case 1220:
 	    		$ContenuBillet = substr($ContenuBillet, 0, 350).'...'; 
@@ -59,12 +59,6 @@ class UtiController {
 	    		$ContenuBillet = substr($ContenuBillet, 0, 520).'...'; 
 	    		break;
 	    }
-/*	    if ($screenSize == 0) {
-	    	$ContenuBillet = substr($ContenuBillet, 0, 520).'...'; 
-	    }
-	    if ($screenSize == 1000) {
-	    	$ContenuBillet = substr($ContenuBillet, 0, 20).'...'; 
-	    }*/
 	    return $ContenuBillet;
 	}	
 	//send mail
@@ -82,7 +76,7 @@ class UtiController {
 		    $from = $mail;	 
 		    $to = $userMail;
 		    echo $userMail;
-		    $subject =  "message depuis le site de Jean Forteroche";
+		    $subject =  "Message depuis le site de Jean Forteroche";
 		    $message = nl2br($name ."\n". $tel ."\n". $msg);
 		    $headers = "From:" . $from;
 		    mail($to,$subject,$message, $headers);
@@ -118,7 +112,7 @@ class UtiController {
             // Accept upload if there was no origin, or if it is an accepted origin
             $filetowrite =  $imageFolder . $temp['name'];
             move_uploaded_file($temp['tmp_name'],$filetowrite);  
-             // Respond to the successful upload with JSON.
+            // Respond to the successful upload with JSON.
             echo json_encode(array('location' => $filetowrite));
 
         } else {

@@ -1,30 +1,29 @@
 <?php
 if ( !empty($_SESSION['pseudo']) ) {
-
 ob_start();
 ?>
+
 <article class="settingChoice"> 
 	<a href="index.php?action=settings">Changer mot de passe</a>  
 	<a href="index.php?action=settings&change=mail">Changer mail</a>  
 	<a href="index.php?action=settings&change=pseudo">Changer pseudo </a>  
-
 </article>
 
 <section class="corpConnectPage">
-
+	<!-- Change the mail -->
 	<?php
 		if (isset($_GET['change']) && $_GET['change'] == 'mail' ) {?>
 			<form action="index.php?action=newmail" method="post">
-		    <h2>Changer adresse mail</h2>
-			<p><input type="text" name="pseudo" placeholder="Pseudo" required ></p>
-			<p><input type="mail" name="old_mail" placeholder="Ancien email" required /></p>
-			<p><input type="mail" name="new_mail" placeholder="Comfirmez votre nouveau email" required /></p>
-			<p>Saisissez votre mot de passe pour confirmer<input type="password" name="pass" placeholder="mot de passe" required /></p>
-
-		   <input class="btnSubmitSetting" type="submit" value="Changer votre email" >
-		</form> 
+			    <h2>Changer adresse mail</h2>
+				<p><input type="text" name="pseudo" placeholder="Pseudo" required ></p>
+				<p><input type="mail" name="old_mail" placeholder="Ancien email" required /></p>
+				<p><input type="mail" name="new_mail" placeholder="Comfirmez votre nouveau email" required /></p>
+				<p>Saisissez votre mot de passe pour confirmer<input type="password" name="pass" placeholder="mot de passe" required /></p>
+			   <input class="btnSubmitSetting" type="submit" value="Changer votre email" >
+			</form> 
 		<?php
 		}
+		// Change the pseudo
 		elseif (isset($_GET['change']) && $_GET['change'] == 'pseudo' ) {
 		?>
 			<form action="index.php?action=newpseudo" method="post">
@@ -32,11 +31,11 @@ ob_start();
 			   <p>Saisissez votre nouveau pseudo<input type="text" name="newpseudo" placeholder="Votre nouveau pseudo" required ></p>
 			   <p>Saisissez votre pseudo actuel<input type="text" name="pseudo" placeholder="Pseudo" required /></p>
 			   <p>Saisissez votre mot de passe pour confirmer <input type="password" name="pass" placeholder="mot de passe" required /></p>
-
 			   <input class="btnSubmitSetting" type="submit" value="Changer de pseudo" >
 			</form> 
 			<?php
 		}
+		// default : change the password view
 		else{
 		?>
 		<form action="index.php?action=newpw" method="post">

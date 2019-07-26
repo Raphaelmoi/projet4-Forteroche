@@ -1,3 +1,4 @@
+//create the space for the administration menu when user is connected
 function spaceForSecondMenu() {
     let aside = document.getElementById('aside');
     let corps = document.getElementsByClassName('contenuCorps')[0];
@@ -11,7 +12,7 @@ function spaceForSecondMenu() {
     	}
     }
 };
-
+//'commentaire signalés' appear in red with the quantit of reported comments
 function redComments(qtt){
 	badComm = document.getElementById('signaledComm');
 	smallScreenBadComm = document.getElementById('signaledCommSmallScreen');
@@ -26,7 +27,6 @@ function redComments(qtt){
 	
 	span.textContent +=" (" + qtt + ")";
 	smallSpan.textContent +=" (" + qtt + ")";
-
 };
 
 window.onload = function() {

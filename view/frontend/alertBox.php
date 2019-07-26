@@ -1,4 +1,4 @@
-
+<!-- Show error message or success message for $_GET['erreur'] et $_GET['success']  -->
 <?php
 ob_start();
 
@@ -6,7 +6,6 @@ if (isset($_GET['erreur'])) {
 	?>
 	<section class="alert alertRed">
 		<?php
-
 		if ($_GET['erreur'] == 'identifiant')
 		{
 			?>	
@@ -33,7 +32,7 @@ if (isset($_GET['erreur'])) {
 			<p>Vous avez saisie deux fois le même pseudo </p>
 			<?php
 		}
-		elseif ($_GET['erreur'] == 'samepw' ) {
+		elseif ($_GET['erreur'] == 'samepw') {
 			?>
 			<p>Vous avez saisie deux fois le même mot de passe </p>
 			<?php

@@ -13,7 +13,7 @@ class UserController{
 		require_once("model/UserManager.php"); 
 		/*verifie la bonne recuperation des donnees d'un connexion en cours*/
 		$connexionIsOn = false;
-		//si pseudo et mot de passe sont passé via post
+
 		if (isset($_POST['connexion_pseudo']) AND isset($_POST['connexion_motdepasse']) )
 		{
 			$pseudo = htmlspecialchars($_POST['connexion_pseudo']);
@@ -21,14 +21,13 @@ class UserController{
 			$connexionIsOn = true;
 		}
 	   	if ($connexionIsOn == true) {
-
 		    $connexionManager = new UserManager();
 		    $count = $connexionManager -> count($pseudo);
-			if ($count !=0) {
+			if ($count !=0) {//if the asked pseudo is found
 		    	$req = $connexionManager -> getUser($pseudo);
 				while ($donnees = $req->fetch())
 				{
-					if ( empty($_SESSION['pseudo'])) {
+					if (empty($_SESSION['pseudo'])) {
 						if (password_verify($motdepasse, $donnees['pass'])) {
 					    	$_SESSION['pseudo'] = $donnees['pseudo'];
 					    	header('Location: /projet4/index.php?action=homeControl&success=connexion&pseudo='.$donnees['pseudo']);

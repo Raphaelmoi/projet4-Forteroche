@@ -1,3 +1,4 @@
+<!-- display the article with an image and preview of the article -->
 <?php
 ob_start();
 while ($donnees = $reponse->fetch())
@@ -56,6 +57,5 @@ while ($donnees = $reponse->fetch())
 <?php
 }
 $reponse->closeCursor(); 
-
 $basicView = ob_get_clean();
 ?>

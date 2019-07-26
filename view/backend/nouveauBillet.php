@@ -1,3 +1,4 @@
+<!-- Create a new article -->
 <?php
 $title = 'nouveau billet';
 if (empty($_SESSION['pseudo'])) {

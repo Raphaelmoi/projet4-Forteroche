@@ -2,14 +2,13 @@ body
 {
     height: 100%;
     margin: 0 auto;
-    background: url("images/auroreb.jpg") rgb(70, 90, 101) bottom no-repeat fixed;
+    background: rgb(70, 90, 101) bottom no-repeat fixed;
 }
 *
 {
     font-family: 'Open Sans', sans-serif;
     color: #333;
 }
-
 header div>a
 {
     display: flex;
@@ -42,9 +41,6 @@ a
 {
     text-decoration: none;
     color: #333;
-}
-nav
-{
 }
 ul
 {
@@ -122,13 +118,10 @@ form
     justify-content: space-around;
     z-index: 10;
 }
-
 #signaledCommSmallScreen, .smallBin, .smallScreenTitle
 {
     display: none;
 }
-
-
 .fa-user/*icone connexion*/
 {
     margin-right: 10px;
@@ -172,7 +165,6 @@ form
     line-height: 30px;
     padding-left: 20px;
     margin-top: 10px;
-
 }
 .enteteSommaire h2
 {
@@ -198,7 +190,6 @@ form
     border-radius: 5px 0 0 5px;
     object-fit: cover;
 }
-
 .articleBillet>div
 {
     margin: 0;
@@ -215,7 +206,6 @@ form
 .backgroundArticle{
     display: none;
 }
-
 .btnReadMore
 {
     background-color:   rgba(100, 100, 100, 0.2);
@@ -416,8 +406,8 @@ form
 /*PAGE FOR CONNEXION*/
 .corpConnectPage
 {
-display: flex;
-justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 .corpConnectPage form
 {
@@ -472,7 +462,6 @@ justify-content: space-around;
 {
     color: gray;
 }
-
 /*PAGES QUAND CONNECTE*/
 /*menu connection*/
 .menuIn
@@ -570,7 +559,6 @@ justify-content: space-around;
     margin: 0;
     background-color: #DDD;
     text-align: center;
-
 }
 .inlineView:hover h2, .inlineView:hover
 {
@@ -593,8 +581,6 @@ justify-content: space-around;
     height: auto;
     width: 100%;
 }
-
-
 .gestionnaireArticleInline nav a
 {
     font-size: 16px;
@@ -793,7 +779,6 @@ justify-content: space-around;
 {
     color: rgb(220,20,40);
 }
-
 .alert{
     position: absolute;
     opacity: 0;
@@ -850,8 +835,8 @@ justify-content: space-around;
     }
     li
     {
-    margin: 0 10px;
-    font-size: 17px;
+        margin: 0 10px;
+        font-size: 17px;
     }
     .articleBillet
     {
@@ -869,7 +854,7 @@ justify-content: space-around;
     }
     .textArticle
     {
-    display: none;    
+        display: none;    
     }
     .textArticle1220
     {
@@ -881,7 +866,6 @@ justify-content: space-around;
     }
 }
 
-
 @media all and (max-width: 1010px) {
     h1
     {
@@ -889,8 +873,8 @@ justify-content: space-around;
     }
     li
     {
-    margin: 0 7px;
-    font-size: 15px;
+        margin: 0 7px;
+        font-size: 15px;
     }
     .articleBillet
     {
@@ -935,7 +919,7 @@ justify-content: space-around;
     }
     li
     {
-    margin: 0 5px;
+        margin: 0 5px;
     }
     .btnConnexion
     {
@@ -1004,7 +988,6 @@ justify-content: space-around;
         width: 96%;
         margin-left: 2%;
     }
-
     .btnConnexion
     {
         position: absolute;
@@ -1040,7 +1023,6 @@ justify-content: space-around;
         margin-top: 0;
         min-width: 150px;
     }
-
     .navDeux li
     {
         margin: 0 5px;
@@ -1157,26 +1139,24 @@ justify-content: space-around;
     }
     .backgroundArticle
     {
-    display: block;
-    position: absolute;
-    background-color: rgb(200, 200,200);
-    min-height: 100%;
-    z-index: -10;
+        display: block;
+        position: absolute;
+        background-color: rgb(200, 200,200);
+        min-height: 100%;
+        z-index: -10;
     }
-
     .backgroundArticle img
     {
-    display: block;
-    min-width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.5;
+        display: block;
+        min-width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.5;
     }
     .gestionnaireArticle
     {
         left: 0px;
     }
-
     .btnConnexion
     {
         width: 12px;
@@ -1189,6 +1169,5 @@ justify-content: space-around;
     {
         font-size: 15px;
         line-height: 60px;
-    }   
-
+    }
 }

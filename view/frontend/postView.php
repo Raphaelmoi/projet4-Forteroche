@@ -4,6 +4,7 @@ ob_start();
 while ($thisarticle = $article->fetch()) {
     $title = $thisarticle['titre'];
     $idArticle = $thisarticle['id'];
+    //find if user already like the article during the session
     if (!isset($_SESSION['like' . $idArticle]) || ($_SESSION['like' . $idArticle] !== $idArticle)) {
         $_SESSION['like' . $idArticle] = 0;
     }
@@ -66,6 +67,7 @@ while ($thiscomment = $comment->fetch()) {
             onclick="return confirm('Êtes vous sûr de vouloir supprimer ce commentaire? \nCette action est irréversible!')">
             <i class="fas fa-trash"> <span>Supprimer ce commentaire</span></i>
         </a>
+
     <?php
     }
     else { //USER CAN REPORT COMMENT AND ALSO CHANGE THEM MIND
@@ -83,9 +85,11 @@ while ($thiscomment = $comment->fetch()) {
     }
 ?>
         </div>
+        
         <div>
             <p><?= $thiscomment['commentaire']; ?></p>
         </div>
+    
     </article>
     <?php
 }
@@ -96,7 +100,7 @@ $comment->closeCursor();
         <div class="titreComm">
             Poster un commentaire :
         </div>
-        <form class="formulaireComment" action="index.php?action=addComment&amp;id=<?=$_GET['id'] ?>" 
+        <form class="formulaireComment" action="index.php?action=addComment&amp;id=<?= $_GET['id'] ?>" 
             method="post">
             <p> Pseudo : <input type="text" name="auteur" placeholder="Pseudo" required /></p>
             <textarea id="commentaire" name="commentaire"> Votre commentaire ici</textarea>

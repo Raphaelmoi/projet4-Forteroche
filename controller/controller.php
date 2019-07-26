@@ -1,5 +1,4 @@
 <?php
-
 class Controller
 {       
     function __construct()
@@ -13,7 +12,6 @@ class Controller
     {
         require 'model/'.$classname.'.php';
     }
-
     function listPosts() {
         $postManager = new PostManager();
         $uticontroller = new UtiController();
@@ -151,7 +149,6 @@ class Controller
         $sendMail = new UtiController();
         $sendAMail = $sendMail -> sendAMail($name, $mail, $tel, $msg);
         header('Location: index.php?action=contact&success=mail');
-
     }
     function settings(){
         require('view/backend/settingsview.php');

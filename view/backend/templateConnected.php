@@ -9,8 +9,8 @@
         <link rel="stylesheet" type="text/css" href="public/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Mali:300|Open+Sans&display=swap" rel="stylesheet">
         <script src="public/js/DesignScript.js"></script>
- 
     </head>
+
     <body>
         <header>
             <div class="menuPrincipal">
@@ -28,14 +28,14 @@
             echo $alertBox;
         }
         ?>
-
         <section class="corps corpsConnected">
-        <section class="insideSide">
-            <?= $content ?>              
+            <section class="insideSide">
+                <?= $content ?>              
+            </section>
         </section>
         <!-- tinymce -->
         <script src="https://cdn.tiny.cloud/1/nbm2szncvsw7qyeyg7o32putrav8evdmiwifijffknppjohw/tinymce/5/tinymce.min.js"></script>
-        <script type="text/javascript" src="public/js/tiny.js"></script>
+        <script src="public/js/tiny.js"></script>
         <script src="public/js/imageUrl.js"></script>
     </body>
 </html>

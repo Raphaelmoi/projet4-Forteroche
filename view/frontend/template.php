@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="public/css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Mali:300|Open+Sans&display=swap" rel="stylesheet">
         <?php
-        //créé un espace pour le deuxieme menu si on est connecté
+        //create the space for the second menu if connected
         if (!empty($_SESSION['pseudo'])) {
         ?>
             <script src="public/js/DesignScript.js"></script>
@@ -27,14 +27,13 @@
             </div>
         </header>
         
-        <?php
+        <?php 
         if (isset($_GET['erreur']) || isset($_GET['success']))
         {
             require_once 'alertBox.php';
             echo $alertBox;
         }
         ?>
-
         <section class="corps">
             <section class="contenuCorps">
                 <?= $content ?>              

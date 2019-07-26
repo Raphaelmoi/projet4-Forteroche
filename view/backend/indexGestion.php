@@ -1,7 +1,3 @@
-<?php
-ob_start();
-?>
-<article class="homeGestionnaire">   
 <!-- Explication of the mecanism 
     4 situations
     -> we want normal view and chronogical order
@@ -9,7 +5,10 @@ ob_start();
     -> we want inline view and chronogical order
     -> we want inline view and antichronogical order    
 -->
-
+<?php
+ob_start();
+?>
+<article class="homeGestionnaire">   
     <?php 
     if (isset($_GET['styleView']) && $_GET['styleView'] == 'inline'){
 
@@ -56,8 +55,7 @@ ob_start();
         <?php
         }
     }
- ?>
-           
+ ?>           
 </article>
 
 <?php
