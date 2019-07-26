@@ -13,8 +13,8 @@ ob_start(); ?>
 				<input type="text" name="name" placeholder="votre nom" required>
 				<label>Mail</label>
 				<input type="email" name="mail" placeholder="votre email" required>
-				<label>Télephone</label>
-				<input type="tel" name="tel" placeholder="votre télephone" required>
+				<label>Télephone (optionnel)</label>
+				<input type="tel" name="tel" placeholder="votre télephone" >
 			</div>
 			<div class="textareaContainer">
 				<textarea name="msg">  Saisissez ici votre message</textarea>

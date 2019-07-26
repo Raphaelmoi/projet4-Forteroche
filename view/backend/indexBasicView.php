@@ -3,7 +3,7 @@ ob_start();
 while ($donnees = $reponse->fetch())
 {
 ?>
-    <article class="articleBillet">
+    <article class="articleBillet connectedBillet">
         <img src="<?= $donnees['url']; ?>">
         <div>
             <div class="enteteSommaire"> 

@@ -9,9 +9,7 @@ body
     font-family: 'Open Sans', sans-serif;
     color: #333;
 }
-header
-{
-}
+
 header div>a
 {
     display: flex;
@@ -19,13 +17,14 @@ header div>a
     padding: 0 10px;
     height: 42px;
     background-color: rgba(255, 255, 255, 0.6);
-    color: #333;
+}
+header a
+{
+    color: #555;
 }
 header a:hover
 {
     color: #000;
-    text-decoration: underline;
-    text-decoration-color: #8eacbb;
 }
 h1
 {
@@ -86,9 +85,11 @@ aside
     right: 20px;
     top: 55px;
     height: 480px;
-    margin-top: 42vh; /* poussé de la moitié de hauteur de viewport */
-    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+    margin-top: 42vh; 
+    transform: translateY(-50%); 
     background-color: rgba(187, 222, 250, 0.8);
+    background-color: #eceff1;
+    border: 2px #111 solid;
     flex: 1;
     padding: 10px;
     border-radius: 10px;
@@ -391,7 +392,7 @@ form
 .asideDecoration
 {
     width: 100%;
-    border : 1px solid gray;
+    border : 1px solid #333;
 }
 .asideNavigation
 {
@@ -560,7 +561,7 @@ justify-content: space-around;
     margin : 0 ;
     background-color: #DDD;
     padding: 0;
-    flex: 1;
+    flex: 2;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -575,8 +576,11 @@ justify-content: space-around;
 {
     background-color: #e1f5fe;
     box-shadow: 0 0 3px white;
-
 }
+.inlineView a:hover, .inlineView i:hover
+{
+    color: #555;
+} 
 .gestionnaireArticleInline
 {
     flex: 3;
@@ -800,7 +804,7 @@ justify-content: space-around;
     z-index: -10;
     text-align: center;
     animation-name: disparait;
-    animation-duration: 4s;
+    animation-duration: 3.5s;
 }
 .alertRed
 {
@@ -817,7 +821,7 @@ justify-content: space-around;
     0%   {opacity : 1;
         z-index: 99;
     }
-    60%  {opacity : 0.8;
+    65%  {opacity : 0.9;
         z-index: 99;}
     100% {opacity : 0;
         z-index: -1;
@@ -978,13 +982,12 @@ justify-content: space-around;
     .menuIn
     {
         position: absolute;
-        top: 42px;
-        z-index: 43;
-        background-color: whitesmoke;
+        top: 84px;
     }
     .menuIn ul
     {
         justify-content: space-between;
+        margin-right: 10px;
     }
     .fas
     {
@@ -1016,7 +1019,6 @@ justify-content: space-around;
         min-width: 180px;
         max-width: 180px;
     }
-
     .gestionnaireArticle
     {
         left: 180px;
@@ -1068,7 +1070,8 @@ justify-content: space-around;
     .textArticle600
     {
         display: block;
-        margin-right: 5px;
+        margin: 5px;
+        padding: 3px 10px;
     }
     .formP
     {
@@ -1132,6 +1135,9 @@ justify-content: space-around;
     .articleBillet{
         background-color: rgba(0,0,0,0);
     }
+    .connectedBillet{
+        background-color: white;
+    }
     .enteteSommaire, .btnReadMore
     {
         background-color: whitesmoke;
@@ -1164,7 +1170,7 @@ justify-content: space-around;
     min-width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.3;
+    opacity: 0.5;
     }
     .gestionnaireArticle
     {
