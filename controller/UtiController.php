@@ -32,9 +32,9 @@ class UtiController {
 		return $currentUrl;
 	}
 	//image and video are delete from the preview of article
-	//The content is limited at 520 car
+	//The content is limited depend of the size screen
 	function formateArticle($ContenuBillet, $screenSize = 0){
-
+		//delete img and video from preview
 	    if(preg_match("/<img[^>]+\>/i", $ContenuBillet)) {
 	        $ContenuBillet = preg_replace("/<img[^>]+\>/i", "", $ContenuBillet); 
 	    }
@@ -77,7 +77,7 @@ class UtiController {
 		    $to = $userMail;
 		    echo $userMail;
 		    $subject =  "Message depuis le site de Jean Forteroche";
-		    $message = nl2br($name ."\n". $tel ."\n". $msg);
+		    $message = $name ."\n". $tel ."\n". $msg;
 		    $headers = "From:" . $from;
 		    mail($to,$subject,$message, $headers);
 		}

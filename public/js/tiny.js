@@ -1,4 +1,4 @@
-//define preset for tinyMCE
+//configuration of tinyMCE
 tinymce.init({
 	selector:'textarea',
     plugins: [
@@ -10,7 +10,6 @@ tinymce.init({
     autosave_interval: "20s",
 
   	paste_data_images: true,
-
   	 /* without images_upload_url set, Upload tab won't show up*/
   	images_upload_url: 'index.php?action=addImg',
 

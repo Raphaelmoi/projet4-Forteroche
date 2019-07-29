@@ -73,7 +73,7 @@ class Controller
         $imageurl = Controller::uploadImg();
         $postManager = new PostManager(); 
         $envoi = $postManager -> postPost($titre, $contenu, $imageurl);
-        //pour eviter en cas de f5 de publier 2 fois le meme article :  
+        //if user do f5 we dont want to publish twice the same content so... 
         $reponse = $postManager -> getPosts();
         header('Location: index.php?action=homeControl&success=addpost');
     }
@@ -86,14 +86,14 @@ class Controller
         $imageUrl = Controller::uploadImg();
         $postManager = new PostManager();
         $req = $postManager -> updatePost($id, $titre, $contenu, $imageUrl); 
-        //pour eviter en cas de f5 de publier 2 fois le meme article :  
+        //if user do f5 we dont want to publish twice the same content so... 
         $reponse = $postManager -> getPosts();
         header('Location: index.php?action=homeControl&success=modifypost');
     }
     function updatePostWithoutImg($id, $titre, $contenu) {
         $postManager = new PostManager();
         $req = $postManager -> updatePostWithoutImg($id, $titre, $contenu); 
-            //pour eviter en cas de f5 de publier 2 fois le meme article :  
+        //if user do f5 we dont want to publish twice the same content so... 
         $reponse = $postManager -> getPosts();
         header('Location: index.php?action=homeControl&success=modifypost');   
     }

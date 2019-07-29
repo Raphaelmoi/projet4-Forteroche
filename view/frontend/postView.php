@@ -1,3 +1,4 @@
+<!-- View of only one article with comments and possibility to add a new comment -->
 <?php
 ob_start();
 

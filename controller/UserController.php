@@ -1,6 +1,6 @@
 <?php
 /*
-*USER LOGIN, LOGOUT AND PASWWORD CHANGING FUNCTIONS
+*USER LOGIN, LOGOUT AND PASSWORD CHANGING FUNCTIONS
 *logIN() -> connect 
 *logOut() -> disconnect
 *newPass() -> change password
@@ -48,7 +48,7 @@ class UserController{
 	public function logOut()
 	{
 		session_start();
-		// Suppression des variables de session et de la session
+		// delete current session and global variable SESSION
 		$_SESSION = array();
 		session_destroy();
 		header('Location: /projet4/index.php?success=disconnect');

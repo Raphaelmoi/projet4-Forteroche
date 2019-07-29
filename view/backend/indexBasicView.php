@@ -6,7 +6,7 @@ while ($donnees = $reponse->fetch())
 ?>
     <article class="articleBillet connectedBillet">
         <img src="<?= $donnees['url']; ?>">
-        <div>
+        <div class="boxRightArticle">
             <div class="enteteSommaire"> 
                 <h2><?= $donnees['titre']; ?>  </h2> 
             </div>
@@ -40,6 +40,7 @@ while ($donnees = $reponse->fetch())
                 echo $ContenuBillet;
             ?>
             </div>
+        </div>
     		<div class="gestionnaireArticle">
     			<nav>
                     <li><a href="index.php?action=post&amp;id=<?=$donnees['id'] ?>">Lire la suite</a> </li> 
@@ -51,7 +52,7 @@ while ($donnees = $reponse->fetch())
                     </li>  		
                 </nav>
     		</div>
-        </div>
+
     </article>   
 
 <?php

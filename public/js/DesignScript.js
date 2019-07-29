@@ -3,6 +3,7 @@ function spaceForSecondMenu() {
     let aside = document.getElementById('aside');
     let corps = document.getElementsByClassName('contenuCorps')[0];
     if (aside != null) {
+    	//condition depend of the user window screen
     	if (window.innerWidth < 750) {// ifprincipal menu is in 2 lines (42*3)
     		corps.style.marginTop = "136px";
     	}
@@ -12,7 +13,7 @@ function spaceForSecondMenu() {
     	}
     }
 };
-//'commentaire signalés' appear in red with the quantit of reported comments
+//'commentaire signalés' appear in red with the quantity of reported comments
 function redComments(qtt){
 	badComm = document.getElementById('signaledComm');
 	smallScreenBadComm = document.getElementById('signaledCommSmallScreen');

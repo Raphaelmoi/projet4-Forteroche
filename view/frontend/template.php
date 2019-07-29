@@ -27,6 +27,7 @@
             </div>
         </header>
         
+        <!-- display success or error message -->
         <?php 
         if (isset($_GET['erreur']) || isset($_GET['success']))
         {
